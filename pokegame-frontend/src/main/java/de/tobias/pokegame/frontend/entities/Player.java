@@ -8,16 +8,16 @@ import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.input.KeyboardEntityController;
 import de.gurkenlabs.litiengine.physics.IMovementController;
 
-@EntityInfo(width = 18, height = 18)
+@EntityInfo(width = 16, height = 16)
 @MovementInfo(velocity = 70)
-@CollisionInfo(collisionBoxWidth = 8, collisionBoxHeight = 16, collision = true)
+@CollisionInfo(collisionBoxWidth = 16, collisionBoxHeight = 16, collision = true)
 public class Player extends Creature implements IUpdateable {
 	private static Player instance;
 
 	private Player() {
 		super("src\\main\\resources\\sprites\\player");
-		
-		this.addController(createMovementController()); 
+
+		this.addController(createMovementController());
 	}
 
 	public static Player instance() {
@@ -30,7 +30,7 @@ public class Player extends Creature implements IUpdateable {
 
 	@Override
 	public void update() {
-		
+
 	}
 
 	@Override
