@@ -12,6 +12,7 @@ import de.gurkenlabs.litiengine.gui.SpeechBubbleAppearance;
 import de.tobias.pokegame.frontend.entities.NPC;
 import de.tobias.pokegame.frontend.entities.Player;
 import de.tobias.pokegame.frontend.entities.enums.GameState;
+import de.tobias.pokegame.frontend.entities.enums.PlayerState;
 import de.tobias.pokegame.frontend.screens.IngameScreen;
 
 public class GameLogic {
@@ -58,7 +59,7 @@ public class GameLogic {
 	public static void setState(GameState state) {
 		GameLogic.state = state;
 
-		if (getState() == GameState.INGAME_MENU) {
+		if (getState() == GameState.PAUSED) {
 			Game.loop().setTimeScale(0);
 			IngameScreen.pauseMenu.setVisible(true);
 		} else {
@@ -67,7 +68,19 @@ public class GameLogic {
 		}
 	}
 
-	private static GameState getState() {
+	public static GameState getState() {
 		return state;
+	}
+	
+	public static void showPauseMenu() {
+		if (Player.instance().getState() == PlayerState.LOCKED) {
+			return;
+		}
+
+		if (GameLogic.getState() == GameState.PAUSED) {
+			GameLogic.setState(GameState.INGAME);
+		} else if (GameLogic.getState() == GameState.INGAME) {
+			GameLogic.setState(GameState.PAUSED);
+		}
 	}
 }
