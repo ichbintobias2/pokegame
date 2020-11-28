@@ -8,9 +8,7 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.entities.NPC;
-import de.tobias.pokegame.frontend.entities.Player;
-import de.tobias.pokegame.frontend.entities.enums.GameState;
-import de.tobias.pokegame.frontend.entities.enums.PlayerState;
+import de.tobias.pokegame.frontend.enums.GameState;
 
 public class Dialog extends GuiComponent {
 	// private final BufferedImage DIALOG = Imaging.scale(Resources.images().get("dialog.png"), 5.0);
@@ -47,7 +45,6 @@ public class Dialog extends GuiComponent {
 			if (lineNr < npcLines.size() - 1) {
 				lineNr += 1;
 			} else {
-				Player.instance().setState(PlayerState.CONTROLLABLE);
 				GameLogic.setState(GameState.INGAME);
 				lineNr = 0;
 			}
@@ -55,7 +52,6 @@ public class Dialog extends GuiComponent {
 	}
 	
 	public static void startDialog() {
-		Player.instance().setState(PlayerState.LOCKED);
 		GameLogic.setState(GameState.TALKING);
 	}
 	

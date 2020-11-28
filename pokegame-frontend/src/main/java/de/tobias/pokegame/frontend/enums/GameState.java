@@ -1,4 +1,4 @@
-package de.tobias.pokegame.frontend.entities.enums;
+package de.tobias.pokegame.frontend.enums;
 
 public enum GameState {
 	INGAME, MENU, PAUSED, TALKING

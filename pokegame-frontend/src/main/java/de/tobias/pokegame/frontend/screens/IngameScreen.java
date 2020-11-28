@@ -3,7 +3,7 @@ package de.tobias.pokegame.frontend.screens;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.gui.screens.GameScreen;
 import de.tobias.pokegame.frontend.GameLogic;
-import de.tobias.pokegame.frontend.entities.enums.GameState;
+import de.tobias.pokegame.frontend.enums.GameState;
 
 public class IngameScreen extends GameScreen {
 

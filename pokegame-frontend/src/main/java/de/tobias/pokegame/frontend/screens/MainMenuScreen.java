@@ -8,7 +8,7 @@ import de.gurkenlabs.litiengine.IUpdateable;
 import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.screens.Screen;
 import de.tobias.pokegame.frontend.GameLogic;
-import de.tobias.pokegame.frontend.entities.enums.GameState;
+import de.tobias.pokegame.frontend.enums.GameState;
 
 public class MainMenuScreen extends Screen implements IUpdateable {
 	private static final String COPYRIGHT = "placeholder";

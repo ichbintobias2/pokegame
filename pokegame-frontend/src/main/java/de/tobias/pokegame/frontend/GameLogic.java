@@ -11,8 +11,7 @@ import de.gurkenlabs.litiengine.graphics.PositionLockCamera;
 import de.gurkenlabs.litiengine.gui.SpeechBubbleAppearance;
 import de.tobias.pokegame.frontend.entities.NPC;
 import de.tobias.pokegame.frontend.entities.Player;
-import de.tobias.pokegame.frontend.entities.enums.GameState;
-import de.tobias.pokegame.frontend.entities.enums.PlayerState;
+import de.tobias.pokegame.frontend.enums.GameState;
 import de.tobias.pokegame.frontend.screens.IngameScreen;
 
 public class GameLogic {
@@ -73,10 +72,6 @@ public class GameLogic {
 	}
 	
 	public static void showPauseMenu() {
-		if (Player.instance().getState() == PlayerState.LOCKED) {
-			return;
-		}
-
 		if (GameLogic.getState() == GameState.PAUSED) {
 			GameLogic.setState(GameState.INGAME);
 		} else if (GameLogic.getState() == GameState.INGAME) {

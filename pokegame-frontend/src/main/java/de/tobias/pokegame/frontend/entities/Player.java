@@ -13,14 +13,14 @@ import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.input.KeyboardEntityController;
 import de.gurkenlabs.litiengine.physics.IMovementController;
 import de.gurkenlabs.litiengine.util.geom.GeometricUtilities;
-import de.tobias.pokegame.frontend.entities.enums.PlayerState;
+import de.tobias.pokegame.frontend.GameLogic;
+import de.tobias.pokegame.frontend.enums.GameState;
 
 @EntityInfo(width = 16, height = 16)
 @MovementInfo(velocity = 70)
 @CollisionInfo(collisionBoxWidth = 16, collisionBoxHeight = 16, collision = true)
 public class Player extends Creature implements IUpdateable {
 	private static Player instance;
-	private PlayerState state = PlayerState.CONTROLLABLE;
 
 	private Player() {
 		super("src\\main\\resources\\sprites\\player");
@@ -33,7 +33,7 @@ public class Player extends Creature implements IUpdateable {
 	    
 		this.setController(IMovementController.class, movementController);
 		this.getController(IMovementController.class).onMovementCheck(e -> {
-		      return this.getState() == PlayerState.CONTROLLABLE;
+		      return GameLogic.getState() == GameState.INGAME;
 		});
 	}
 
@@ -51,24 +51,15 @@ public class Player extends Creature implements IUpdateable {
 	}
 	
 	public void talkToNPC() {
-		if (Player.instance().getState() != PlayerState.CONTROLLABLE) {
+		if (GameLogic.getState() != GameState.INGAME) {
 			return;
 		}
 
 		for (IEntity entity : Game.world().environment()
 				.findEntities(GeometricUtilities.extrude(Player.instance().getBoundingBox(), 2))) {
 			if (entity instanceof Entity) {
-				setState(PlayerState.LOCKED);
 				entity.sendMessage(Player.instance(), Entity.ANY_MESSAGE);
 			}
 		}
-	}
-	
-	public PlayerState getState() {
-		return state;
-	}
-	
-	public void setState(PlayerState state) {
-		this.state = state;
 	}
 }
