@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 
 import de.gurkenlabs.litiengine.input.Input;
 import de.tobias.pokegame.frontend.entities.Player;
+import de.tobias.pokegame.frontend.screens.Dialog;
 
 public final class PlayerInput {
 
@@ -11,5 +12,7 @@ public final class PlayerInput {
 		Input.keyboard().onKeyReleased(KeyEvent.VK_F, e -> Player.instance().talkToNPC());
 		
 		Input.keyboard().onKeyReleased(KeyEvent.VK_ESCAPE, e -> GameLogic.showPauseMenu());
+		
+		Input.keyboard().onKeyReleased(KeyEvent.VK_ENTER, e -> Dialog.nextLine());
 	}
 }

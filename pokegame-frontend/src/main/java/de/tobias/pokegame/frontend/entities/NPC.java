@@ -1,36 +1,38 @@
 package de.tobias.pokegame.frontend.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.gurkenlabs.litiengine.entities.AnimationInfo;
 import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.entities.EntityInfo;
-import de.gurkenlabs.litiengine.entities.EntityMessageEvent;
-import de.gurkenlabs.litiengine.entities.EntityMessageListener;
-import de.tobias.pokegame.frontend.entities.enums.PlayerState;
+import de.tobias.pokegame.frontend.screens.Dialog;
 
 @EntityInfo(width = 16, height = 16)
 @AnimationInfo(spritePrefix = "player")
 public class NPC extends Creature {
-	private boolean isTalking = false;
+	private List<String> dialogLines = new ArrayList<String>(); // will be obtained from database later on
 	
 	public NPC() {
-		this.onMessage(ANY_MESSAGE, new EntityMessageListener() {
-			
-			@Override
-			public void messageReceived(EntityMessageEvent event) {
-				if (!isTalking) {
-					getTalkedTo();
-				}
-			}
+		this.addController(new NpcController(this));
+
+		this.onMessage(e -> {
+			getTalkedTo();
 		});
+		
+		// TODO these will be a substitute until actual values are in the database
+		dialogLines.add("Hello");
+		dialogLines.add("Hi");
+		dialogLines.add("henlo");
+		dialogLines.add("bye");
 	}
 	
 	private void getTalkedTo() {
-		Player.instance().setState(PlayerState.LOCKED);
-		isTalking = true;
-		
-		// say stuff
-		
-		Player.instance().setState(PlayerState.CONTROLLABLE);
-		isTalking = false;
+		Dialog.setNpc(this);
+		Dialog.startDialog();
+	}
+	
+	public List<String> getDialogLines() {
+		return dialogLines;
 	}
 }

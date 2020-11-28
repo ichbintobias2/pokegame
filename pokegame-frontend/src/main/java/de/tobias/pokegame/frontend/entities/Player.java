@@ -58,6 +58,7 @@ public class Player extends Creature implements IUpdateable {
 		for (IEntity entity : Game.world().environment()
 				.findEntities(GeometricUtilities.extrude(Player.instance().getBoundingBox(), 2))) {
 			if (entity instanceof Entity) {
+				setState(PlayerState.LOCKED);
 				entity.sendMessage(Player.instance(), Entity.ANY_MESSAGE);
 			}
 		}

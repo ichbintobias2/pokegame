@@ -37,5 +37,6 @@ public class IngameScreen extends GameScreen {
 		});
 		
 		this.getComponents().add(pauseMenu);
+		this.getComponents().add(new Dialog());
 	}
 }
