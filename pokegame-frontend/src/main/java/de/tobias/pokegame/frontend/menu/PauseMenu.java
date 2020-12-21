@@ -15,10 +15,13 @@ public class PauseMenu extends KeyboardMenu {
 	
 	private static PauseMenu instance;
 	
+	private static final String continueText = GameLogic.localize("pause.Continue");
+	private static final String exitText = GameLogic.localize("pause.Exit");
+	
 	private boolean once = false;
 
 	private PauseMenu() {
-		super(x, y, width, height / 2, "Continue", "Exit");
+		super(x, y, width, height / 2, continueText, exitText);
 		
 		onConfirm(c -> {
 			switch (c.intValue()) {

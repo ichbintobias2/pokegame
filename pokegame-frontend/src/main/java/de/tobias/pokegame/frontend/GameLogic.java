@@ -1,5 +1,8 @@
 package de.tobias.pokegame.frontend;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.Prop;
 import de.gurkenlabs.litiengine.entities.Spawnpoint;
@@ -19,6 +22,9 @@ public class GameLogic {
 	
 	@Getter @Setter
 	private static GameState state;
+	
+	@Getter @Setter
+	private static Locale locale = Locale.getDefault();
 
 	public static void init() {
 		// Register Objects here
@@ -59,5 +65,9 @@ public class GameLogic {
 			GameLogic.setState(GameState.PAUSED);
 			PauseMenu.instance().update();
 		}
+	}
+	
+	public static String localize(String text) {
+		return ResourceBundle.getBundle("i18n/i18n", locale).getString(text);
 	}
 }

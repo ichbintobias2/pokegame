@@ -7,11 +7,12 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.IUpdateable;
 import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.screens.Screen;
+import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.enums.SoundControl;
 import de.tobias.pokegame.frontend.menu.MainMenu;
 
 public class MainMenuScreen extends Screen implements IUpdateable {
-	private static final String COPYRIGHT = "placeholder";
+	private static final String COPYRIGHT = GameLogic.localize("CopyrightNote");
 
 	public long lastPlayed;
 
