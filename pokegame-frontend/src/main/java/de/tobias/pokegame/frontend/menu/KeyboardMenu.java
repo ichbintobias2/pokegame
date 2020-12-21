@@ -1,6 +1,7 @@
-package de.tobias.pokegame.frontend.screens;
+package de.tobias.pokegame.frontend.menu;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -9,11 +10,11 @@ import java.util.function.Consumer;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.gui.Menu;
 import de.gurkenlabs.litiengine.input.Input;
-import de.tobias.pokegame.frontend.GameLogic;
 
 public class KeyboardMenu extends Menu {
-	public static final Color BUTTON_RED = new Color(140, 16, 16, 200);
-	public static final Color BUTTON_BLACK = new Color(0, 0, 0, 200);
+	private final Font MENU_FONT = null;
+	private final Color BUTTON_RED = new Color(140, 16, 16, 200);
+	private final Color BUTTON_BLACK = new Color(0, 0, 0, 200);
 	
 	// public static final String UPDATE = "";
 	
@@ -77,7 +78,7 @@ public class KeyboardMenu extends Menu {
 		}
 
 		this.getCellComponents().forEach(comp -> {
-			comp.setFont(GameLogic.MENU_FONT);
+			comp.setFont(MENU_FONT);
 			comp.getAppearance().setForeColor(Color.WHITE);
 			comp.getAppearance().setBackgroundColor1(BUTTON_BLACK);
 			comp.getAppearanceHovered().setBackgroundColor1(BUTTON_RED);

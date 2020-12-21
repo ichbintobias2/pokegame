@@ -14,7 +14,7 @@ public class NPC extends Creature {
 	private List<String> dialogLines = new ArrayList<String>(); // will be obtained from database later on
 	
 	public NPC() {
-		this.addController(new NpcController(this));
+		// this.addController(new NpcController(this));
 
 		this.onMessage(e -> {
 			getTalkedTo();
