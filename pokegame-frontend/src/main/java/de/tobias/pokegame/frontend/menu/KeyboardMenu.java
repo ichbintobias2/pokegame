@@ -10,15 +10,14 @@ import java.util.function.Consumer;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.gui.Menu;
 import de.gurkenlabs.litiengine.input.Input;
+import de.tobias.pokegame.frontend.enums.SoundControl;
 
 public class KeyboardMenu extends Menu {
 	private final Font MENU_FONT = null;
 	private final Color BUTTON_RED = new Color(140, 16, 16, 200);
 	private final Color BUTTON_BLACK = new Color(0, 0, 0, 200);
 	
-	// public static final String UPDATE = "";
-	
-	public static final int MENU_DELAY = 180;
+	private final int MENU_DELAY = 180;
 
 	private final List<Consumer<Integer>> confirmConsumer;
 	protected int currentFocus = -1;
@@ -54,6 +53,10 @@ public class KeyboardMenu extends Menu {
 			}
 
 			incFocus();
+		});
+		
+		onConfirm(c -> {
+			Game.audio().playSound(SoundControl.MenuConfirm);
 		});
 	}
 
@@ -118,7 +121,7 @@ public class KeyboardMenu extends Menu {
 		lastMenuInput = Game.time().now();
 
 		if (this.isVisible()) {
-			// Game.audio().playSound(UPDATE);
+			Game.audio().playSound(SoundControl.MenuUpdate);
 		}
 	}
 }

@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import de.gurkenlabs.litiengine.Game;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.enums.GameState;
+import de.tobias.pokegame.frontend.enums.SoundControl;
 
 public class PauseMenu extends KeyboardMenu {
 	private static final double x = Game.window().getResolution().getWidth() / 2.0;
@@ -52,8 +53,10 @@ public class PauseMenu extends KeyboardMenu {
 	
 	public void update() {
 		if (GameLogic.getState() == GameState.PAUSED) {
+			Game.audio().playSound(SoundControl.MenuOpen);
 			instance.setVisible(true);
 		} else if (GameLogic.getState() != GameState.PAUSED) {
+			Game.audio().playSound(SoundControl.MenuClose);
 			instance.setVisible(false);
 		}
 	}

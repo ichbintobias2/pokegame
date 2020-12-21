@@ -9,6 +9,7 @@ import de.gurkenlabs.litiengine.gui.GuiComponent;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.entities.NPC;
 import de.tobias.pokegame.frontend.enums.GameState;
+import de.tobias.pokegame.frontend.enums.SoundControl;
 
 public class Dialog extends GuiComponent {
 	// private final BufferedImage DIALOG = Imaging.scale(Resources.images().get("dialog.png"), 5.0);
@@ -41,6 +42,8 @@ public class Dialog extends GuiComponent {
 	}
 	
 	public static void nextLine() {
+		Game.audio().playSound(SoundControl.Dialog);
+		
 		if (GameLogic.getState() == GameState.TALKING) {
 			if (lineNr < npcLines.size() - 1) {
 				lineNr += 1;
@@ -52,6 +55,7 @@ public class Dialog extends GuiComponent {
 	}
 	
 	public static void startDialog() {
+		Game.audio().playSound(SoundControl.Dialog);
 		GameLogic.setState(GameState.TALKING);
 	}
 	

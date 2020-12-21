@@ -7,6 +7,7 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.IUpdateable;
 import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.screens.Screen;
+import de.tobias.pokegame.frontend.enums.SoundControl;
 import de.tobias.pokegame.frontend.menu.MainMenu;
 
 public class MainMenuScreen extends Screen implements IUpdateable {
@@ -55,7 +56,7 @@ public class MainMenuScreen extends Screen implements IUpdateable {
 	@Override
 	public void update() {
 		if (this.lastPlayed == 0) {
-			// Game.audio().playMusic(Resources.sounds().get(MENUMUSIC));
+			Game.audio().playMusic(SoundControl.MenuMusic);
 			this.lastPlayed = Game.loop().getTicks();
 		}
 	}

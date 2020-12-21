@@ -31,7 +31,6 @@ public class MainMenu extends KeyboardMenu {
 	
 	private void startGame() {
 		setEnabled(false);
-		// Game.audio().playSound(CONFIRM);
 		Game.window().getRenderComponent().fadeOut(1500);
 
 		Game.loop().perform(2500, () -> {
