@@ -20,17 +20,17 @@ public class KeyboardMenu extends Menu {
 	private final int MENU_DELAY = 180;
 
 	private final List<Consumer<Integer>> confirmConsumer;
-	protected int currentFocus = -1;
+	private int currentFocus = -1;
 
-	public static long lastMenuInput;
+	private long lastMenuInput;
 
-	public KeyboardMenu(double x, double y, double width, double height, String... items) {
+	protected KeyboardMenu(double x, double y, double width, double height, String... items) {
 		super(x, y, width, height, items);
 		this.confirmConsumer = new CopyOnWriteArrayList<>();
 
 		Input.keyboard().onKeyReleased(e -> {
-			if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE || e.getKeyCode() == KeyEvent.VK_E) {
-				if (this.menuInputIsLocked()) {
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				if (this.isMenuLocked()) {
 					return;
 				}
 
@@ -40,7 +40,7 @@ public class KeyboardMenu extends Menu {
 		});
 
 		Input.keyboard().onKeyPressed(KeyEvent.VK_UP, e -> {
-			if (this.menuInputIsLocked()) {
+			if (this.isMenuLocked()) {
 				return;
 			}
 
@@ -48,7 +48,7 @@ public class KeyboardMenu extends Menu {
 		});
 
 		Input.keyboard().onKeyPressed(KeyEvent.VK_DOWN, e -> {
-			if (this.menuInputIsLocked()) {
+			if (this.isMenuLocked()) {
 				return;
 			}
 
@@ -58,15 +58,6 @@ public class KeyboardMenu extends Menu {
 		onConfirm(c -> {
 			Game.audio().playSound(SoundControl.MenuConfirm);
 		});
-	}
-
-	private boolean menuInputIsLocked() {
-		// disable menu if the game has started
-		if (this.isSuspended() || !this.isVisible() || !this.isEnabled()) {
-			return true;
-		}
-
-		return Game.time().since(lastMenuInput) < MENU_DELAY;
 	}
 
 	@Override
@@ -82,17 +73,18 @@ public class KeyboardMenu extends Menu {
 
 		this.getCellComponents().forEach(comp -> {
 			comp.setFont(MENU_FONT);
-			comp.getAppearance().setForeColor(Color.WHITE);
+
 			comp.getAppearance().setBackgroundColor1(BUTTON_BLACK);
-			comp.getAppearanceHovered().setBackgroundColor1(BUTTON_RED);
 			comp.getAppearance().setTransparentBackground(false);
+			comp.getAppearance().setTextAntialiasing(true);
+			
+			comp.getAppearanceHovered().setBackgroundColor1(BUTTON_RED);
 			comp.getAppearanceHovered().setTransparentBackground(false);
-			// comp.getAppearance().setTextAntialiasing(RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-			// comp.getAppearanceHovered().setTextAntialiasing(RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+			comp.getAppearanceHovered().setTextAntialiasing(true);
 		});
 	}
 
-	public void onConfirm(Consumer<Integer> cons) {
+	protected void onConfirm(Consumer<Integer> cons) {
 		this.confirmConsumer.add(cons);
 	}
 
@@ -101,18 +93,26 @@ public class KeyboardMenu extends Menu {
 			cons.accept(this.currentFocus);
 		}
 	}
+	
+	private boolean isMenuLocked() {
+		if (this.isSuspended() || !this.isVisible() || !this.isEnabled()) {
+			return true;
+		}
 
-	protected void decFocus() {
+		return Game.time().since(lastMenuInput) < MENU_DELAY;
+	}
+
+	private void decFocus() {
 		this.currentFocus = Math.floorMod(--this.currentFocus, this.getCellComponents().size());
 		this.updateFocus();
 	}
 
-	protected void incFocus() {
+	private void incFocus() {
 		this.currentFocus = ++this.currentFocus % this.getCellComponents().size();
 		this.updateFocus();
 	}
 
-	protected void updateFocus() {
+	private void updateFocus() {
 		this.setCurrentSelection(this.currentFocus);
 		for (int i = 0; i < this.getCellComponents().size(); i++) {
 			this.getCellComponents().get(i).setHovered(i == this.currentFocus);
