@@ -6,7 +6,7 @@ import de.tobias.pokegame.frontend.menu.PauseMenu;
 public class IngameScreen extends GameScreen {
 
 	public IngameScreen() {
-		super("INGAME-SCREEN");
+		super("INGAME");
 	}
 
 	@Override

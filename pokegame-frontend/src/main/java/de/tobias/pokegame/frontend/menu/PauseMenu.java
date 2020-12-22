@@ -8,20 +8,23 @@ import de.tobias.pokegame.frontend.enums.GameState;
 import de.tobias.pokegame.frontend.enums.SoundControl;
 
 public class PauseMenu extends KeyboardMenu {
-	private static final double x = Game.window().getResolution().getWidth() / 2.0;
-	private static final double y = Game.window().getResolution().getHeight() * 1 / 2;
-	private static final double width = 450;
-	private static final double height = y / 2;
+	private static final double x = Game.window().getResolution().getWidth() / 1.30;
+	private static final double y = Game.window().getResolution().getHeight() * 0.1;
+	private static final double width = 400;
+	private static final double height = 400;
 	
 	private static PauseMenu instance;
 	
 	private static final String continueText = GameLogic.localize("pause.Continue");
+	private static final String teamText = GameLogic.localize("pause.Team");
+	private static final String playerText = GameLogic.localize("pause.Player");
+	private static final String optionsText = GameLogic.localize("pause.Options");
 	private static final String exitText = GameLogic.localize("pause.Exit");
 	
 	private boolean once = false;
 
 	private PauseMenu() {
-		super(x, y, width, height / 2, continueText, exitText);
+		super(x, y, width, height, continueText, teamText, playerText, optionsText, exitText);
 		
 		onConfirm(c -> {
 			switch (c.intValue()) {
@@ -30,6 +33,15 @@ public class PauseMenu extends KeyboardMenu {
 				instance.setVisible(false);
 				break;
 			case 1:
+				showTeamInfo();
+				break;
+			case 2:
+				showPlayerInfo();
+				break;
+			case 3:
+				showOptionsMenu();
+				break;
+			case 4:
 				System.exit(0);
 				break;
 			}
@@ -62,5 +74,19 @@ public class PauseMenu extends KeyboardMenu {
 			Game.audio().playSound(SoundControl.MenuClose);
 			instance.setVisible(false);
 		}
+	}
+
+	private void showTeamInfo() {
+		
+	}
+	
+	private void showPlayerInfo() {
+		
+	}
+	
+	private void showOptionsMenu() {
+		Game.screens().display("OPTIONS");
+		Game.world().loadEnvironment("options");
+		GameLogic.setState(GameState.OPTIONS);
 	}
 }

@@ -4,6 +4,7 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.frontend.screens.IngameScreen;
 import de.tobias.pokegame.frontend.screens.MainMenuScreen;
+import de.tobias.pokegame.frontend.screens.OptionScreen;
 
 public class PokeGameApplication {
 
@@ -24,12 +25,12 @@ public class PokeGameApplication {
 		PlayerInput.init();
 		GameLogic.init();
 
-		// add the screens that will help you organize the different states of your game
+		// adding all screens that will be used
 		Game.screens().add(new IngameScreen());
 		Game.screens().add(new MainMenuScreen());
+		Game.screens().add(new OptionScreen());
 
-		// load the first level (resources for the map were implicitly loaded from the game file)
-		// Game.world().loadEnvironment("level1");
+		// loading the main menu
 		Game.screens().display("MAIN");
 
 		Game.start();
