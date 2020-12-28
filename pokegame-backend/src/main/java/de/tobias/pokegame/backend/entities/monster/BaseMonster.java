@@ -1,14 +1,14 @@
-package de.tobias.pokegame.backend.entities.pokemon;
+package de.tobias.pokegame.backend.entities.monster;
 
 import java.util.List;
 
 import lombok.Data;
 
 @Data
-public class BasePokemon {
+public class BaseMonster {
 
 	private String name;
-	private int dexNumber;
+	private int registryNumber;
 	
 	private int baseHp;
 	private int baseAttack;

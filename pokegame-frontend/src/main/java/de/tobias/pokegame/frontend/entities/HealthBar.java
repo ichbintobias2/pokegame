@@ -5,17 +5,18 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 
 import de.gurkenlabs.litiengine.Game;
-import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.enums.GameState;
 
 public class HealthBar extends GuiComponent {
+	private Monster monster;
 	private int x;
 	private int y;
 	
-	public HealthBar(int x, int y, Creature monster) {
+	public HealthBar(int x, int y, Monster monster) {
 		super(x, y);
+		this.monster = monster;
 		this.x = x;
 		this.y = y;
 	}
@@ -25,6 +26,10 @@ public class HealthBar extends GuiComponent {
 		if (GameLogic.getState() == GameState.BATTLE) {
 			int w = (int) (Game.window().getResolution().getWidth() / 4);
 			int h = (int) (Game.window().getResolution().getHeight() / 8);
+			
+			int currentHp = monster.getCurrentHp();
+			int maxHp = monster.getMaxHp();
+			double percent = (double) currentHp / (double) maxHp;
 
 			// Draw surrounding box
 			g.setColor(Color.WHITE);
@@ -41,11 +46,11 @@ public class HealthBar extends GuiComponent {
 			g.drawRect(x, y + 30, w, 30);
 			
 			g.setColor(Color.CYAN);
-			g.fillRect(x, y + 30, w, 30); // TODO obv this can only display a full life bar
+			g.fillRect(x, y + 30, (int) (w * percent), 30);
 			
 			// Draw health in numbers
 			g.setColor(Color.BLACK);
-			g.drawString("420 / 420", x, y + 85); // TODO make this dynamic
+			g.drawString(monster.getCurrentHp() +"/"+ monster.getMaxHp(), x, y + 85);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-package de.tobias.pokegame.backend.entities.pokemon;
+package de.tobias.pokegame.backend.entities.monster;
 
 import java.util.List;
 

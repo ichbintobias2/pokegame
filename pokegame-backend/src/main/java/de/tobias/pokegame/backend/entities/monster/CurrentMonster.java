@@ -1,11 +1,11 @@
-package de.tobias.pokegame.backend.entities.pokemon;
+package de.tobias.pokegame.backend.entities.monster;
 
 import java.util.List;
 
 import lombok.Data;
 
 @Data
-public class ActualPokemon extends BasePokemon {
+public class CurrentMonster extends BaseMonster {
 
 	private String nickname;
 	

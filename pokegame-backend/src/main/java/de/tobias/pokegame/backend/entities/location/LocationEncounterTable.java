@@ -6,6 +6,6 @@ import lombok.Data;
 public class LocationEncounterTable {
 
 	private String locationName;
-	private String basePokemonId;
+	private String baseMonsterId;
 	private int encounterRate;
 }
