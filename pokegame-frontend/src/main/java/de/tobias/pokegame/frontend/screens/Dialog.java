@@ -6,6 +6,7 @@ import java.util.List;
 
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
+import de.tobias.pokegame.frontend.BattleControl;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.entities.NPC;
 import de.tobias.pokegame.frontend.enums.GameState;
@@ -46,7 +47,12 @@ public class Dialog extends GuiComponent {
 		
 		if (GameLogic.getState() == GameState.TALKING) {
 			if (lineNr < npcLines.size() - 1) {
-				lineNr += 1;
+				if ("[battle]".equals(npcLines.get(lineNr+1))) {
+					BattleControl.startBattle();
+				}
+				else {
+					lineNr += 1;
+				}
 			} else {
 				GameLogic.setState(GameState.INGAME);
 				lineNr = 0;

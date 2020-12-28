@@ -23,7 +23,7 @@ public class NPC extends Creature {
 		// TODO these will be a substitute until actual values are in the database
 		dialogLines.add("Hello");
 		dialogLines.add("Hi");
-		dialogLines.add("henlo");
+		dialogLines.add("[battle]");
 		dialogLines.add("bye");
 	}
 	

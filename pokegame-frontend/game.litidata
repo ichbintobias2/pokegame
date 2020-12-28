@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <litidata version="1.0">
  <maps>
+  <map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="11" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1" name="battle">
+   <tileset firstgid="1" source="src/main/resources/maps/tileset.tsx"/>
+   <layer id="1" name="Kachelebene 1" width="20" height="11">
+    <data encoding="csv">
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183
+</data>
+   </layer>
+   <objectgroup id="0" name="default" visible="1"/>
+  </map>
   <map version="1.2" tiledversion="1.2.4009" orientation="orthogonal" renderorder="right-down" width="24" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1" name="level1">
    <tileset firstgid="1" source="src/main/resources/maps/tileset.tsx"/>
    <objectgroup id="0" name="new layer" visible="1">
