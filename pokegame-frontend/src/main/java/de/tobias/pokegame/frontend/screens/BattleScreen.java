@@ -10,7 +10,7 @@ public class BattleScreen extends GameScreen {
 
 	@Override
 	protected void initializeComponents() {
-		
+		this.getComponents().add(new Dialog());
 	}
 
 }

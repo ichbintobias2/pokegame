@@ -26,9 +26,9 @@ public class Dialog extends GuiComponent {
 	public void render(Graphics2D g) {
 		super.render(g);
 
-		if (GameLogic.getState() != GameState.TALKING) {
-			return;
-		} else renderDialog(g);
+		if (GameLogic.getState() == GameState.TALKING || GameLogic.getState() == GameState.BATTLE) {
+			renderDialog(g);
+		} else return;
 	}
 
 	private void renderDialog(Graphics2D g) {
@@ -45,7 +45,7 @@ public class Dialog extends GuiComponent {
 	public static void nextLine() {
 		Game.audio().playSound(SoundControl.Dialog);
 		
-		if (GameLogic.getState() == GameState.TALKING) {
+		if (GameLogic.getState() == GameState.TALKING || GameLogic.getState() == GameState.BATTLE) {
 			if (lineNr < npcLines.size() - 1) {
 				if ("[battle]".equals(npcLines.get(lineNr+1))) {
 					BattleControl.startBattle();
@@ -67,5 +67,9 @@ public class Dialog extends GuiComponent {
 	
 	public static void setNpc(NPC npc) {
 		npcLines = npc.getDialogLines();
+	}
+	
+	public static void setNpcLines(List<String> npcLines2) {
+		npcLines = npcLines2;
 	}
 }

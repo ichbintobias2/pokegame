@@ -1,7 +1,11 @@
 package de.tobias.pokegame.frontend;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.gurkenlabs.litiengine.Game;
 import de.tobias.pokegame.frontend.enums.GameState;
+import de.tobias.pokegame.frontend.screens.Dialog;
 
 public class BattleControl {
 
@@ -15,5 +19,11 @@ public class BattleControl {
 			Game.world().loadEnvironment("battle");
 			GameLogic.setState(GameState.BATTLE);
 		});
+		
+		List<String> lines = new ArrayList<String>();
+		lines.add("Trainer wants to battle!");
+		lines.add("Choose your monster!");
+		Dialog.setNpcLines(lines);
+		Dialog.startDialog();
 	}
 }

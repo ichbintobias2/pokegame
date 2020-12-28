@@ -18,7 +18,30 @@
 183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183
 </data>
    </layer>
-   <objectgroup id="0" name="default" visible="1"/>
+   <objectgroup id="0" name="default" visible="1">
+    <object id="1" type="CREATURE" x="16" y="48" width="64" height="64">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="25.6"/>
+      <property name="collisionboxWidth" type="float" value="25.6"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spawnDirection" value="LEFT"/>
+      <property name="spritesheetName" value="placeholder1"/>
+     </properties>
+    </object>
+    <object id="2" type="CREATURE" x="112" y="16" width="64" height="64">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="25.6"/>
+      <property name="collisionboxWidth" type="float" value="25.6"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spawnDirection" value="LEFT"/>
+      <property name="spritesheetName" value="placeholder2"/>
+     </properties>
+    </object>
+   </objectgroup>
   </map>
   <map version="1.2" tiledversion="1.2.4009" orientation="orthogonal" renderorder="right-down" width="24" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1" name="level1">
    <tileset firstgid="1" source="src/main/resources/maps/tileset.tsx"/>
@@ -280,6 +303,12 @@
   </map>
  </maps>
  <spriteSheets>
+  <sprite width="64" height="64" imageformat="PNG" name="placeholder1-idle-left">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABX0lEQVR42u3aWw6EMAgF0O5/0/pvUrhQkJbeSUzmrRyVFnSMMZ7Ll/Hc+iAAAQgwB5ASh/anxwN8A/0+19BaAGivkfeuATgxeBiga/BmgFkSPHkUUZOglv1P3vvQESAFpwXvHUa3OwI8470nUGR4jUaE5wEWAGue0ILKzDtpAOh76GmUlXfgeUAEgGcvZueQZQBtaNS+U11XLAFYk5qEMNvL2aPGEeWw1tJiP4AABCAAAQhQCNCyHN4NIGsdWwF4S28CVAJETk1RgOh1ugGsFZ604ZbuU2RzJBwA7QcgQUgVovRbSzxpANaNtFybQEpstJmyDIB+lgWgnWplM0EpQLQ9tgJQPhWeJTk0b0hdocje4Da1ANIWQ9tpbYqhP64ksRokAAEIQAACFAJU3zBRBrDLHSO/ASBXklsCrN5qcyyA5dBuBeAtSK4eBglAAAIQgAAshghAAAIQgAB1ADcvL+4Nb7JQVsETAAAAAElFTkSuQmCC</image>
+  </sprite>
+  <sprite width="64" height="64" imageformat="PNG" name="placeholder2-idle-left">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABaklEQVR42u2a2w7DIAxD+f+f3t4rkTghgUA8qdLWXWhOqYPdjTHGr/k2fl0fBEAABDAHIAmH9qPXA/gW+n2uQXsCgPYa2dcGwI3FwwBeLd4MYCaCN3cRVQQ19b/57EMzQCpOK97bRsvNAE+/9xSKtNdoiPA6wALAqhNaUZm6kwYA3YdeRlm6A68DIgB4zmK2hiwD0Fqj9pnTvmIJgFXUJAizs5zdNa6ww1qkxTyAAAiAAAiAAA4CeNIOVwOQNUYpAF7rTQAnAUQuTVEA0WO6AVgdnnTglvQpMhwJB4DmAUgRkkOUvmupJw2A9SAt9yYQi42GKcsA0PeyAGiX2rGVoFQgGo+tADi+FJ6JHKobUioUmQ2W8QJILIbGac+YoR13kugGCYAACIAACIAAxolBS/xbZBsALQc4BWIrAK+9bqUBBLB5FpTsAq0BtJ4BLUWwTRusVniJGVBhRVg+E2QkRjdIAARAADsAdN7+K49I2cIlbA4AAAAASUVORK5CYII=</image>
+  </sprite>
   <sprite width="64" height="64" imageformat="PNG" name="player-idle-right">
    <image>iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABo0lEQVR42u2aO26DQBRFZzl06Sy60Nhy5w2kcKQU9gpME2ULKV16ASkoKd27ocwSvAS6JHrSlZgnPmOjJPO5VzoFYwt4RwzMDBjDMAzDMAzD/Fm+HKGAKAs+57nQ7tajxCQkWQFy4sf3SrheW2GqcAchFBDEpa4LnytgRIQ3YpIVYN3cflvALssEHGe93Qr/KSJZAVbhACcIAXNvgrprYf95UQgUEIoAcOtACAUCHwqngHsE6P+5guOgcArwTQAKHjrxewsf2p/uChTgy0hwSsRcIRTgsYDeyRCEzKX8KbLsFOrDzY8CXETox5bmcbkSPk+lgHZs4/GJ/aE9mIURCpgQcPl4FVCYBpMnLaDTJSggiEXRLMsFVwFtU4/S6QoUEEQgAOASPmxWwlAXCL5wCpgQooe4WtDDYiGY2JKyAGu5HNvPTy8C2iECQ96YRFBA3wsUCNAvUPA7BcQqQE9z9SIq2kMa+lKAiwAUpEFX6Bn4RPPRVPICLBEoGBz2b4IW0Fn8pICoBNRVY6EffybiL0aTF2CJMAl+K0wBDMMwDMMwPuQbp0eDPTPSiSYAAAAASUVORK5CYII=</image>
   </sprite>
