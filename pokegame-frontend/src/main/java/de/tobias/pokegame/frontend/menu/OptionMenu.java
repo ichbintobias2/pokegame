@@ -54,6 +54,7 @@ public class OptionMenu extends KeyboardMenu {
 	private void backToPauseScreen() {
 		Game.screens().display("INGAME");
 		Game.world().loadEnvironment("level1");		// TODO this should not be hard coded
+		Game.world().camera().setClampToMap(false);
 		GameLogic.setState(GameState.PAUSED);
 		PauseMenu.instance().update();
 	}

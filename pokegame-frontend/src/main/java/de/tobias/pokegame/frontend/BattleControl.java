@@ -8,7 +8,9 @@ public class BattleControl {
 	public static void startBattle() {
 		Game.window().getRenderComponent().fadeOut(1500);
 
-		Game.loop().perform(2500, () -> {			
+		Game.loop().perform(2500, () -> {
+			Game.world().camera().setClampToMap(true);
+			
 			Game.screens().display("BATTLE");
 			Game.world().loadEnvironment("battle");
 			GameLogic.setState(GameState.BATTLE);

@@ -87,6 +87,7 @@ public class PauseMenu extends KeyboardMenu {
 	private void showOptionsMenu() {
 		Game.screens().display("OPTIONS");
 		Game.world().loadEnvironment("options");
+		Game.world().camera().setClampToMap(true);
 		GameLogic.setState(GameState.OPTIONS);
 	}
 }
