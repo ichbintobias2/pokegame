@@ -3,6 +3,7 @@ package de.tobias.pokegame.frontend.screens;
 import de.gurkenlabs.litiengine.gui.screens.GameScreen;
 import de.tobias.pokegame.frontend.entities.HealthBar;
 import de.tobias.pokegame.frontend.entities.Monster;
+import de.tobias.pokegame.frontend.menu.AttackMenu;
 
 public class BattleScreen extends GameScreen {
 
@@ -20,7 +21,8 @@ public class BattleScreen extends GameScreen {
 		mon1.setSpritesheetName("placeholder1");
 		mon2.setSpritesheetName("placeholder2");
 		
-		this.getComponents().add(new HealthBar(20, 20, mon2));
 		this.getComponents().add(new HealthBar(800, 450, mon1));
+		this.getComponents().add(new HealthBar(20, 20, mon2));
+		this.getComponents().add(new AttackMenu(mon1, mon2));
 	}
 }

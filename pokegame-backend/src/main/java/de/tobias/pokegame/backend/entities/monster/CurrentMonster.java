@@ -15,7 +15,7 @@ public class CurrentMonster extends BaseMonster {
 	
 	private List<String> moves;
 	
-	private int currentHp;
+	private int currentHp = 145;
 	
 	private String heldItem;
 	
@@ -32,4 +32,10 @@ public class CurrentMonster extends BaseMonster {
 	private int evSpAtk;
 	private int evSpDef;
 	private int evSpeed;
+	
+	// TODO placeholders
+	private String attack1 = "Attack 1";
+	private String attack2 = "Attack 2";
+	private String attack3 = "Attack 3";
+	private String attack4 = "Attack 4";
 }

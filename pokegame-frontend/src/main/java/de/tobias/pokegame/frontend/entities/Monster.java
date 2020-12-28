@@ -9,11 +9,15 @@ import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 public class Monster extends Creature {
 	public CurrentMonster data = new CurrentMonster();
 	
-	public int getCurrentHp() {
-		return 145;
+	public CurrentMonster getData() {
+		return data;
 	}
 	
 	public int getMaxHp() {
 		return 420;
+	}
+	
+	public void receiveDamage(int damage) {
+		data.setCurrentHp(data.getCurrentHp() - damage);
 	}
 }
