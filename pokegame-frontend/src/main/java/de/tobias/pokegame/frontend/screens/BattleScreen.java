@@ -23,6 +23,6 @@ public class BattleScreen extends GameScreen {
 		
 		this.getComponents().add(new HealthBar(800, 450, mon1));
 		this.getComponents().add(new HealthBar(20, 20, mon2));
-		this.getComponents().add(new AttackMenu(mon1, mon2));
+		this.getComponents().add(AttackMenu.createInstance(mon1, mon2));
 	}
 }

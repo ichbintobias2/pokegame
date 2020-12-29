@@ -11,6 +11,7 @@ import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.entities.NPC;
 import de.tobias.pokegame.frontend.enums.GameState;
 import de.tobias.pokegame.frontend.enums.SoundControl;
+import de.tobias.pokegame.frontend.menu.AttackMenu;
 
 public class Dialog extends GuiComponent {
 	// private final BufferedImage DIALOG = Imaging.scale(Resources.images().get("dialog.png"), 5.0);
@@ -26,7 +27,7 @@ public class Dialog extends GuiComponent {
 	public void render(Graphics2D g) {
 		super.render(g);
 
-		if (GameLogic.getState() == GameState.TALKING || GameLogic.getState() == GameState.BATTLE) {
+		if (GameLogic.getState() == GameState.TALKING || GameLogic.getState() == GameState.BATTLE  || GameLogic.getState() == GameState.BATTLE2) {
 			renderDialog(g);
 		} else return;
 	}
@@ -47,11 +48,13 @@ public class Dialog extends GuiComponent {
 		
 		if (GameLogic.getState() == GameState.TALKING || GameLogic.getState() == GameState.BATTLE) {
 			if (lineNr < npcLines.size() - 1) {
-				if ("[battle]".equals(npcLines.get(lineNr+1))) {
+				lineNr += 1;
+				
+				if ("[battle]".equals(npcLines.get(lineNr))) {
 					BattleControl.startBattle();
-				}
-				else {
-					lineNr += 1;
+				} else if ("[endbattle]".equals(npcLines.get(lineNr))) {
+					AttackMenu.instance().setEnabled(true);
+					GameLogic.setState(GameState.BATTLE2);
 				}
 			} else {
 				GameLogic.setState(GameState.INGAME);
@@ -69,7 +72,8 @@ public class Dialog extends GuiComponent {
 		npcLines = npc.getDialogLines();
 	}
 	
-	public static void setNpcLines(List<String> npcLines2) {
-		npcLines = npcLines2;
+	public static void addNpcLines(List<String> npcLines2) {
+		npcLines.addAll(lineNr, npcLines2);
+		npcLines.remove("[battle]");
 	}
 }

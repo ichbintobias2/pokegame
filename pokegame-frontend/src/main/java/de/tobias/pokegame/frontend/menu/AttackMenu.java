@@ -1,6 +1,7 @@
 package de.tobias.pokegame.frontend.menu;
 
 import de.gurkenlabs.litiengine.Game;
+import de.tobias.pokegame.frontend.BattleControl;
 import de.tobias.pokegame.frontend.entities.Monster;
 
 public class AttackMenu extends KeyboardMenu {
@@ -9,9 +10,11 @@ public class AttackMenu extends KeyboardMenu {
 	private static final double width = 400;
 	private static final double height = 400;
 	
+	private static AttackMenu instance;
+	
 	private final Monster mon;
 
-	public AttackMenu(Monster mon1, Monster mon2) {
+	private AttackMenu(Monster mon1, Monster mon2) {
 		super(x, y, width, height, mon1.getData().getAttack1(), mon1.getData().getAttack2(),
 				mon1.getData().getAttack3(), mon1.getData().getAttack4());
 		this.mon = mon2;
@@ -34,9 +37,28 @@ public class AttackMenu extends KeyboardMenu {
 		});
 	}
 	
+	public static AttackMenu instance() {
+		return instance;
+	}
+	
+	public static AttackMenu createInstance(Monster mon1, Monster mon2) {
+		if (instance == null) {
+			instance = new AttackMenu(mon1, mon2);
+		}
+
+		return instance;
+	}
+	
 	private void performAttack1() {
 		int damage = 50; // TODO calculate damage
-		mon.receiveDamage(damage);
+		
+		if (mon.getData().getCurrentHp() < damage) {
+			mon.getData().setCurrentHp(0);
+			
+			BattleControl.stopBattle();
+		} else {
+			mon.receiveDamage(damage);
+		}
 	}
 
 	private void performAttack2() {
