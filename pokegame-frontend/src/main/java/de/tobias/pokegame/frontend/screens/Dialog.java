@@ -11,7 +11,7 @@ import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.entities.NPC;
 import de.tobias.pokegame.frontend.enums.GameState;
 import de.tobias.pokegame.frontend.enums.SoundControl;
-import de.tobias.pokegame.frontend.menu.AttackMenu;
+import de.tobias.pokegame.frontend.menu.BattleMenu;
 
 public class Dialog extends GuiComponent {
 	// private final BufferedImage DIALOG = Imaging.scale(Resources.images().get("dialog.png"), 5.0);
@@ -53,8 +53,8 @@ public class Dialog extends GuiComponent {
 				if ("[battle]".equals(npcLines.get(lineNr))) {
 					BattleControl.startBattle();
 				} else if ("[endbattle]".equals(npcLines.get(lineNr))) {
-					AttackMenu.instance().setEnabled(true);
 					GameLogic.setState(GameState.BATTLE2);
+					BattleMenu.instance().setEnabled(true);
 				}
 			} else {
 				GameLogic.setState(GameState.INGAME);

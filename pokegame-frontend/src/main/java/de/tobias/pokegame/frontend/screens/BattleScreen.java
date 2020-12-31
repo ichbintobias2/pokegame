@@ -4,6 +4,7 @@ import de.gurkenlabs.litiengine.gui.screens.GameScreen;
 import de.tobias.pokegame.frontend.entities.HealthBar;
 import de.tobias.pokegame.frontend.entities.Monster;
 import de.tobias.pokegame.frontend.menu.AttackMenu;
+import de.tobias.pokegame.frontend.menu.BattleMenu;
 
 public class BattleScreen extends GameScreen {
 
@@ -24,5 +25,6 @@ public class BattleScreen extends GameScreen {
 		this.getComponents().add(new HealthBar(800, 450, mon1));
 		this.getComponents().add(new HealthBar(20, 20, mon2));
 		this.getComponents().add(AttackMenu.createInstance(mon1, mon2));
+		this.getComponents().add(BattleMenu.instance());
 	}
 }
