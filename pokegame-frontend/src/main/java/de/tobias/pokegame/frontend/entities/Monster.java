@@ -1,23 +1,55 @@
 package de.tobias.pokegame.frontend.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import de.gurkenlabs.litiengine.entities.Creature;
-import de.gurkenlabs.litiengine.entities.EntityInfo;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 
-@EntityInfo(width = 16, height = 16)
-// @AnimationInfo(spritePrefix = "placeholder1")
-public class Monster extends Creature {
-	public CurrentMonster data = new CurrentMonster();
+public abstract class Monster extends Creature {
+	protected CurrentMonster data = new CurrentMonster();
+	protected List<Attack> attacks = new ArrayList<Attack>();
 	
-	public CurrentMonster getData() {
-		return data;
+	public List<Attack> getAttacks() {
+		return attacks;
+	}
+	
+	public Attack getAttack(int slot) {
+		return attacks.get(slot);
 	}
 	
 	public int getMaxHp() {
+		data.getBaseSpeed();
+		data.getDvSpeed();
+		data.getEvSpeed();
+		
+		// TODO create actual calculation
 		return 420;
 	}
 	
+	public int getCurrentHp() {
+		data.getBaseHp();
+		data.getDvHp();
+		data.getEvHp();
+		
+		// TODO create actual calculation
+		return 125;
+	}
+	
+	public void setCurrentHp(int currentHp) {
+		// TODO
+	}
+	
+	public int getCurrentSpeed() {
+		data.getBaseSpeed();
+		data.getDvSpeed();
+		data.getEvSpeed();
+		
+		// TODO create actual calculation
+		return 125;
+	}
+	
 	public void receiveDamage(int damage) {
-		data.setCurrentHp(data.getCurrentHp() - damage);
+		// TODO
 	}
 }

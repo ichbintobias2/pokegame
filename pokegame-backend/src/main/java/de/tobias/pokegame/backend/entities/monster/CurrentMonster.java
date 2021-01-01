@@ -15,8 +15,6 @@ public class CurrentMonster extends BaseMonster {
 	
 	private List<String> moves;
 	
-	private int currentHp = 145;
-	
 	private String heldItem;
 	
 	private int dvHp;

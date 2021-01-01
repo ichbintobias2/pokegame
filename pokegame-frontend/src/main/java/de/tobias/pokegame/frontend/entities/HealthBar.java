@@ -27,7 +27,7 @@ public class HealthBar extends GuiComponent {
 			int w = (int) (Game.window().getResolution().getWidth() / 4);
 			int h = (int) (Game.window().getResolution().getHeight() / 8);
 			
-			int currentHp = monster.getData().getCurrentHp();
+			int currentHp = monster.getCurrentHp();
 			int maxHp = monster.getMaxHp();
 			double percent = (double) currentHp / (double) maxHp;
 
@@ -50,7 +50,7 @@ public class HealthBar extends GuiComponent {
 			
 			// Draw health in numbers
 			g.setColor(Color.BLACK);
-			g.drawString(monster.getData().getCurrentHp() +"/"+ monster.getMaxHp(), x, y + 85);
+			g.drawString(monster.getCurrentHp() +"/"+ monster.getMaxHp(), x, y + 85);
 		}
 	}
 }
