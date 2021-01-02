@@ -15,7 +15,7 @@ public class BattleScreen extends GameScreen {
 
 	@Override
 	protected void initializeComponents() {
-		this.getComponents().add(new Dialog());
+		this.getComponents().add(Dialog.instance());
 		
 		// TODO these are placeholders
 		PlayerMonster mon1 = PlayerMonster.instance();

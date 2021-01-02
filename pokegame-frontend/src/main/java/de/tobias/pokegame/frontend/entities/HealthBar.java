@@ -23,7 +23,7 @@ public class HealthBar extends GuiComponent {
 	
 	@Override
 	public void render(Graphics2D g) {
-		if (GameLogic.getState() == GameState.BATTLE  || GameLogic.getState() == GameState.BATTLE2) {
+		if (GameLogic.getState() == GameState.BATTLE) {
 			int w = (int) (Game.window().getResolution().getWidth() / 4);
 			int h = (int) (Game.window().getResolution().getHeight() / 8);
 			
