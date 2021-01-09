@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.gurkenlabs.litiengine.Game;
+import de.tobias.pokegame.backend.calc.DamageCalc;
 import de.tobias.pokegame.backend.calc.TypeCalc;
 import de.tobias.pokegame.frontend.entities.EnemyMonster;
 import de.tobias.pokegame.frontend.entities.EnemyMonsterController;
@@ -19,6 +20,7 @@ import lombok.Setter;
 public class BattleControl {
 	@Getter @Setter
 	private static boolean isPlayerAtTurn = true;
+	private static String lastPlayerAttack;
 
 	public static void startBattle() {
 		Game.window().getRenderComponent().fadeOut(1500);
@@ -54,11 +56,25 @@ public class BattleControl {
 		});
 	}
 	
+	public static void performPlayerAttack(int i) {
+		lastPlayerAttack = PlayerMonster.instance().getAttacks().get(i);
+		int enemyDefense = EnemyMonster.instance().getCurrentDefense();
+		int damage = new DamageCalc(lastPlayerAttack, enemyDefense).calculateDamage();
+		
+		if (EnemyMonster.instance().getCurrentHp() < damage) {
+			EnemyMonster.instance().setCurrentHp(0);
+			
+			BattleControl.stopBattle(); // TODO should cause switch instead
+		} else {
+			EnemyMonster.instance().receiveDamage(damage);
+		}
+	}
+	
 	public static void passTurn() {  // TODO i18n
 		// weather and other turn based events can be checked here
 		
 		// dialog for own chosen attack
-		String attackName = "Sample"; // TODO get Name from Attack class
+		String attackName = lastPlayerAttack;
 		String monsterName = PlayerMonster.instance().getName();
 		
 		Dialog.instance().addToQueue(""); // Yes this is needed
