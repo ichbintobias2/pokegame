@@ -11,6 +11,7 @@ public abstract class Monster extends Creature {
 	@Getter protected CurrentMonster data = new CurrentMonster();
 	@Getter protected List<Attack> attacks = new ArrayList<Attack>();
 	@Getter protected List<String> types = new ArrayList<String>();
+	@Getter protected String name = new String();
 	
 	public Attack getAttack(int slot) {
 		return attacks.get(slot);

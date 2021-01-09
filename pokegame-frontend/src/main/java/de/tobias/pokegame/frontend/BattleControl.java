@@ -6,6 +6,7 @@ import java.util.List;
 import de.gurkenlabs.litiengine.Game;
 import de.tobias.pokegame.backend.calc.TypeCalc;
 import de.tobias.pokegame.frontend.entities.EnemyMonster;
+import de.tobias.pokegame.frontend.entities.EnemyMonsterController;
 import de.tobias.pokegame.frontend.entities.PlayerMonster;
 import de.tobias.pokegame.frontend.enums.GameState;
 import de.tobias.pokegame.frontend.menu.AttackMenu;
@@ -58,7 +59,7 @@ public class BattleControl {
 		
 		// dialog for own chosen attack
 		String attackName = "Sample"; // TODO get Name from Attack class
-		String monsterName = "Placeholder1"; // TODO get Name from PlayerMonster class
+		String monsterName = PlayerMonster.instance().getName();
 		
 		Dialog.instance().addToQueue(""); // Yes this is needed
 		Dialog.instance().addToQueue(monsterName+" setzt "+attackName+" ein!");
@@ -67,7 +68,7 @@ public class BattleControl {
 		
 		// dialog for enemy attack
 		String enemyAttack = "Sample"; // TODO also from attack class
-		String enemyMonster = "Placeholder2"; // TODO get from EnemyMonster class
+		String enemyMonster = EnemyMonster.instance().getName();
 		
 		Dialog.instance().addToQueue(enemyMonster+" setzt "+enemyAttack+" ein!");
 		String effectString2 = new TypeCalc(null, PlayerMonster.instance().getTypes()).getEffectivenessAsString();
