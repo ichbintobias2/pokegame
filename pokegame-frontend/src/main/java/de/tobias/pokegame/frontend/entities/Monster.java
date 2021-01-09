@@ -5,14 +5,12 @@ import java.util.List;
 
 import de.gurkenlabs.litiengine.entities.Creature;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
+import lombok.Getter;
 
 public abstract class Monster extends Creature {
-	protected CurrentMonster data = new CurrentMonster();
-	protected List<Attack> attacks = new ArrayList<Attack>();
-	
-	public List<Attack> getAttacks() {
-		return attacks;
-	}
+	@Getter protected CurrentMonster data = new CurrentMonster();
+	@Getter protected List<Attack> attacks = new ArrayList<Attack>();
+	@Getter protected List<String> types = new ArrayList<String>();
 	
 	public Attack getAttack(int slot) {
 		return attacks.get(slot);
