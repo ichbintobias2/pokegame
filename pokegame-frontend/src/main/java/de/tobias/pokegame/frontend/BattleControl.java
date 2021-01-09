@@ -70,6 +70,10 @@ public class BattleControl {
 		}
 	}
 	
+	private static void performEnemyAttack(String attackName) {
+		// TODO
+	}
+	
 	public static void passTurn() {  // TODO i18n
 		// weather and other turn based events can be checked here
 		
@@ -83,7 +87,7 @@ public class BattleControl {
 		Dialog.instance().addToQueue(effectString1);
 		
 		// dialog for enemy attack
-		String enemyAttack = "Sample"; // TODO also from attack class
+		String enemyAttack = EnemyMonsterController.instance().decideEnemyAttack();
 		String enemyMonster = EnemyMonster.instance().getName();
 		
 		Dialog.instance().addToQueue(enemyMonster+" setzt "+enemyAttack+" ein!");
