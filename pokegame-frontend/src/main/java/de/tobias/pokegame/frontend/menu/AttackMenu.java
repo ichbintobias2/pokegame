@@ -4,7 +4,6 @@ import java.awt.Graphics2D;
 
 import de.gurkenlabs.litiengine.Game;
 import de.tobias.pokegame.frontend.BattleControl;
-import de.tobias.pokegame.frontend.entities.EnemyMonster;
 import de.tobias.pokegame.frontend.entities.PlayerMonster;
 
 public class AttackMenu extends KeyboardMenu {
@@ -17,29 +16,28 @@ public class AttackMenu extends KeyboardMenu {
 	
 	private boolean once = false;
 
-	private static PlayerMonster mon1 = PlayerMonster.instance();
-	private static EnemyMonster mon = EnemyMonster.instance();
+	private static PlayerMonster mon = PlayerMonster.instance();
 	
 	private AttackMenu() {
-		super(x, y, width, height, mon1.getAttack(0).getName(), mon1.getAttack(1).getName(),
-				mon1.getAttack(2).getName(), mon1.getAttack(3).getName(), "Back");
+		super(x, y, width, height, mon.getAttack(0), mon.getAttack(1),
+				mon.getAttack(2), mon.getAttack(3), "Back");
 		
 		onConfirm(c -> {
 			switch (c.intValue()) {
 			case 0:
-				performAttack1();
+				performAttack(0);
 				BattleControl.passTurn();
 				break;
 			case 1:
-				performAttack2();
+				performAttack(1);
 				BattleControl.passTurn();
 				break;
 			case 2:
-				performAttack3();
+				performAttack(2);
 				BattleControl.passTurn();
 				break;
 			case 3:
-				performAttack4();
+				performAttack(3);
 				BattleControl.passTurn();
 				break;
 			case 4:
@@ -68,28 +66,8 @@ public class AttackMenu extends KeyboardMenu {
 		return instance;
 	}
 	
-	private void performAttack1() {
-		int damage = 50; // TODO calculate damage
-		
-		if (mon.getCurrentHp() < damage) {
-			mon.setCurrentHp(0);
-			
-			BattleControl.stopBattle();
-		} else {
-			mon.receiveDamage(damage);
-		}
-	}
-
-	private void performAttack2() {
-
-	}
-
-	private void performAttack3() {
-
-	}
-
-	private void performAttack4() {
-
+	private void performAttack(int i) {
+		BattleControl.performPlayerAttack(i);
 	}
 	
 	private void backToBattleMenu() {
