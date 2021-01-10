@@ -2,6 +2,7 @@ package de.tobias.pokegame.frontend;
 
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.resources.Resources;
+import de.tobias.pokegame.backend.persistence.PersistenceManager;
 import de.tobias.pokegame.frontend.screens.BattleScreen;
 import de.tobias.pokegame.frontend.screens.IngameScreen;
 import de.tobias.pokegame.frontend.screens.MainMenuScreen;
@@ -25,6 +26,7 @@ public class PokeGameApplication {
 
 		PlayerInput.init();
 		GameLogic.init();
+		PersistenceManager.init();
 
 		// adding all screens that will be used
 		Game.screens().add(new IngameScreen());

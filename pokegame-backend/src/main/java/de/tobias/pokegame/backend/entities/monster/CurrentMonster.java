@@ -1,19 +1,29 @@
 package de.tobias.pokegame.backend.entities.monster;
 
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
+@Entity
 public class CurrentMonster extends BaseMonster {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
+	
 	private String nickname;
 	
 	private String foundAt;
 	private int foundWithLv;
 	private String originalTrainer;
 	
-	private List<String> moves;
+	// private List<String> moves;
 	
 	private String heldItem;
 	
@@ -32,8 +42,8 @@ public class CurrentMonster extends BaseMonster {
 	private int evSpeed;
 	
 	// TODO placeholders
-	private String attack1 = "Attack 1";
-	private String attack2 = "Attack 2";
-	private String attack3 = "Attack 3";
-	private String attack4 = "Attack 4";
+	private String attack1;
+	private String attack2;
+	private String attack3;
+	private String attack4;
 }
