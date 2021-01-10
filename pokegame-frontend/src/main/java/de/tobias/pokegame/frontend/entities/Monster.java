@@ -17,9 +17,9 @@ public abstract class Monster extends Creature {
 	private StatCalc calc;
 	private CurrentMonster db;
 	
-	protected Monster(String monsterName) {
-		this.calc = new StatCalc(monsterName);
-		this.db = PersistenceManager.get(CurrentMonster.class, 1L);
+	protected Monster(long monsterId) {
+		this.db = PersistenceManager.get(CurrentMonster.class, monsterId);
+		this.calc = new StatCalc(db);
 		
 		attacks.add(db.getAttack1());
 		attacks.add(db.getAttack2());
@@ -32,32 +32,8 @@ public abstract class Monster extends Creature {
 		return attacks.get(slot);
 	}
 
-	public int getMaxHp() {
-		return calc.getMaxHp();
-	}
-	
-	public int getCurrentHp() {
-		return calc.getCurrentHp();
-	}
-	
-	public int getCurrentAttack() {
-		return calc.getCurrentAtk();
-	}
-	
-	public int getCurrentDefense() {
-		return calc.getCurrentDef();
-	}
-	
-	public int getCurrentSpAtk() {
-		return calc.getCurrentDef();
-	}
-	
-	public int getCurrentSpDef() {
-		return calc.getCurrentDef();
-	}
-	
-	public int getCurrentSpeed() {
-		return calc.getCurrentDef();
+	public StatCalc getData() {
+		return calc;
 	}
 	
 	public void setCurrentHp(int currentHp) {

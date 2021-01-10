@@ -47,8 +47,8 @@ public class EnemyMonsterController {
 	}
 	
 	private boolean isFasterThanPlayer() {
-		int ownSpeed = EnemyMonster.instance().getCurrentSpeed();
-		int playerSpeed = PlayerMonster.instance().getCurrentSpeed();
+		int ownSpeed = EnemyMonster.instance().getData().getCurrentSpeed();
+		int playerSpeed = PlayerMonster.instance().getData().getCurrentSpeed();
 		
 		if (ownSpeed > playerSpeed) {
 			return true;

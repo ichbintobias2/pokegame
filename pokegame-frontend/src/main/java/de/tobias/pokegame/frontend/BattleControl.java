@@ -58,10 +58,10 @@ public class BattleControl {
 	
 	public static void performPlayerAttack(int i) {
 		lastPlayerAttack = PlayerMonster.instance().getAttacks().get(i);
-		int enemyDefense = EnemyMonster.instance().getCurrentDefense();
+		int enemyDefense = EnemyMonster.instance().getData().getCurrentDef();
 		int damage = new DamageCalc(lastPlayerAttack, enemyDefense).calculateDamage();
 		
-		if (EnemyMonster.instance().getCurrentHp() < damage) {
+		if (EnemyMonster.instance().getData().getCurrentHp() < damage) {
 			EnemyMonster.instance().setCurrentHp(0);
 			
 			BattleControl.stopBattle(); // TODO should cause switch instead
