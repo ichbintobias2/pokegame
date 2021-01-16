@@ -5,8 +5,6 @@ import java.util.List;
 
 import de.gurkenlabs.litiengine.entities.Creature;
 import de.tobias.pokegame.backend.calc.StatCalc;
-import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
-import de.tobias.pokegame.backend.persistence.NitriteManager;
 import lombok.Getter;
 
 public abstract class Monster extends Creature {
@@ -15,11 +13,9 @@ public abstract class Monster extends Creature {
 	@Getter protected String name = new String();
 	
 	private StatCalc calc;
-	private CurrentMonster db;
 	
 	protected Monster(String monsterName) {
-		this.db = NitriteManager.getCurrentMonsterByName(monsterName);
-		this.calc = new StatCalc(db);
+		this.calc = new StatCalc(monsterName);
 	}
 	
 	public String getAttack(int slot) {

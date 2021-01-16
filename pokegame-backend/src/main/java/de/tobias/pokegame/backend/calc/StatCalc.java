@@ -1,12 +1,13 @@
 package de.tobias.pokegame.backend.calc;
 
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
+import de.tobias.pokegame.backend.persistence.NitriteManager;
 
 public class StatCalc {
 	private CurrentMonster monster;
 	
-	public StatCalc(CurrentMonster monster) {
-		this.monster = monster;
+	public StatCalc(String monsterName) {
+		this.monster = NitriteManager.getCurrentMonsterByName(monsterName);
 	}
 	
 	public int getMaxHp() {
