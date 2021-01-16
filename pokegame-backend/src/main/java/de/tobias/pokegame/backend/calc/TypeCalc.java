@@ -42,13 +42,11 @@ public class TypeCalc {
 		
 		if (atkType.getDoubleDamageTo().contains(defenseType) && defType.getDoubleDamageFrom().contains(attackType)) {
 			return Effective.TWICE;
-		} else if (atkType.getNormalDamageTo().contains(defenseType) && defType.getNormalDamageFrom().contains(attackType)) {
-			return Effective.NORMAL;
 		} else if (atkType.getHalfDamageTo().contains(defenseType) && defType.getHalfDamageFrom().contains(attackType)) {
 			return Effective.HALF;
 		} else if (atkType.getNoDamageTo().contains(defenseType) &&  defType.getNoDamageFrom().contains(attackType)) {
 			return Effective.ZERO;
-		} else throw new RuntimeException("Could not determine effectiveness!");
+		} else return Effective.NORMAL;
 	}
 	
 	private Type getTypeInfoFromString(String typeName) {

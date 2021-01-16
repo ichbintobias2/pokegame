@@ -1,0 +1,62 @@
+{
+  "collections" : [ ],
+  "repositories" : [ {
+    "type" : "de.tobias.pokegame.backend.entities.monster.CurrentMonster",
+    "indices" : [ ],
+    "data" : [ ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.monster.Attack",
+    "indices" : [ ],
+    "data" : [ ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.monster.Type",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 12604575659700,
+      "value" : {
+        "name" : "Fire",
+        "doubleDamageTo" : [ "Plant", "Steel", "Ice", "Bug" ],
+        "halfDamageTo" : [ "Fire", "Water", "Rock", "Dragon" ],
+        "noDamageTo" : [ ],
+        "doubleDamageFrom" : [ "Water", "Rock", "Ground" ],
+        "halfDamageFrom" : [ "Fire", "Plant", "Ice", "Bug", "Steel", "Fairy" ],
+        "noDamageFrom" : [ ],
+        "_id" : 12604575659700,
+        "_revision" : 1,
+        "_modified" : 1610809952220
+      }
+    }, {
+      "key" : 12752329773400,
+      "value" : {
+        "name" : "Plant",
+        "doubleDamageTo" : [ "Water", "Ground", "Rock" ],
+        "halfDamageTo" : [ "Fire", "Plant", "Poison", "Flying", "Bug", "Dragon", "Steel" ],
+        "noDamageTo" : [ ],
+        "doubleDamageFrom" : [ "Fire", "Ice", "Poison", "Flying", "Bug" ],
+        "halfDamageFrom" : [ "Water", "Electric", "Plant", "Ground" ],
+        "noDamageFrom" : [ ],
+        "_id" : 12752329773400,
+        "_revision" : 1,
+        "_modified" : 1610810100071
+      }
+    }, {
+      "key" : 12823541338200,
+      "value" : {
+        "name" : "Water",
+        "doubleDamageTo" : [ "Fire", "Ground", "Rock" ],
+        "halfDamageTo" : [ "Water", "Plant", "Dragon" ],
+        "noDamageTo" : [ ],
+        "doubleDamageFrom" : [ "Electric", "Grass" ],
+        "halfDamageFrom" : [ "Fire", "Water", "Ice", "Steel" ],
+        "noDamageFrom" : [ ],
+        "_id" : 12823541338200,
+        "_revision" : 1,
+        "_modified" : 1610810171287
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.monster.BaseMonster",
+    "indices" : [ ],
+    "data" : [ ]
+  } ]
+}

@@ -9,12 +9,10 @@ import lombok.Data;
 public class Type {
 
 	private String name;
-	private List<String> normalDamageTo = new ArrayList<String>();
 	private List<String> doubleDamageTo = new ArrayList<String>();
 	private List<String> halfDamageTo = new ArrayList<String>();
 	private List<String> noDamageTo = new ArrayList<String>();
 	
-	private List<String> normalDamageFrom = new ArrayList<String>();
 	private List<String> doubleDamageFrom = new ArrayList<String>();
 	private List<String> halfDamageFrom = new ArrayList<String>();
 	private List<String> noDamageFrom = new ArrayList<String>();
