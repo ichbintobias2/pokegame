@@ -15,3 +15,7 @@ pokegame-backend/.project
 # Litiengine runtime files
 pokegame-frontend/crash.txt
 pokegame-frontend/game.log
+pokegame-frontend/game.log.*
+
+# Ignoring Nitrite database file
+pokegame-backend/src/main/resources/nitrite.db
