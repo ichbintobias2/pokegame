@@ -1,5 +1,6 @@
 package de.tobias.pokegame.backend.entities.monster;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
@@ -15,7 +16,7 @@ public class CurrentMonster extends BaseMonster {
 	private int foundWithLv;
 	private String originalTrainer;
 	
-	private List<String> attacks;
+	private List<String> attacks = new ArrayList<String>();
 	
 	private String heldItem;
 	

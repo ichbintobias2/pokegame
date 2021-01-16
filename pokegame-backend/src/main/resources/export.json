@@ -7,7 +7,43 @@
   }, {
     "type" : "de.tobias.pokegame.backend.entities.monster.Attack",
     "indices" : [ ],
-    "data" : [ ]
+    "data" : [ {
+      "key" : 13879596337200,
+      "value" : {
+        "name" : "Base Fire",
+        "baseDamage" : 50,
+        "type" : "Fire",
+        "priority" : 0,
+        "sideEffect" : null,
+        "_id" : 13879596337200,
+        "_revision" : 1,
+        "_modified" : 1610811227332
+      }
+    }, {
+      "key" : 13895662035400,
+      "value" : {
+        "name" : "Base Water",
+        "baseDamage" : 50,
+        "type" : "Water",
+        "priority" : 0,
+        "sideEffect" : null,
+        "_id" : 13895662035400,
+        "_revision" : 1,
+        "_modified" : 1610811243402
+      }
+    }, {
+      "key" : 13908143050700,
+      "value" : {
+        "name" : "Base Plant",
+        "baseDamage" : 50,
+        "type" : "Plant",
+        "priority" : 0,
+        "sideEffect" : null,
+        "_id" : 13908143050700,
+        "_revision" : 1,
+        "_modified" : 1610811255883
+      }
+    } ]
   }, {
     "type" : "de.tobias.pokegame.backend.entities.monster.Type",
     "indices" : [ ],
