@@ -1,4 +1,4 @@
-package de.tobias.pokegame.backend.entities.monster;
+package de.tobias.pokegame.backend.calc;
 
 public class Effective {
 	public static double TWICE = 2;

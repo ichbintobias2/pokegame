@@ -2,7 +2,6 @@ package de.tobias.pokegame.backend.calc;
 
 import java.util.List;
 
-import de.tobias.pokegame.backend.entities.monster.Effective;
 import de.tobias.pokegame.backend.entities.monster.Type;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 
