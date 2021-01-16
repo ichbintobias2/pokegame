@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.tobias.pokegame.backend.entities.monster.Effective;
 import de.tobias.pokegame.backend.entities.monster.Type;
+import de.tobias.pokegame.backend.persistence.NitriteManager;
 
 public class TypeCalc {
 	private String attackAsString;
@@ -51,6 +52,6 @@ public class TypeCalc {
 	}
 	
 	private Type getTypeInfoFromString(String typeName) {
-		return new Type(); // TODO placeholder
+		return NitriteManager.getTypeByName(typeName);
 	}
 }

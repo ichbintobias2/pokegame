@@ -10,6 +10,8 @@ public class BaseMonster {
 	private String name;
 	private int registryNumber;
 	
+	private List<String> types;
+	
 	private int baseHp;
 	private int baseAttack;
 	private int baseDefense;

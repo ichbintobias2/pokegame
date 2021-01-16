@@ -1,6 +1,7 @@
 package de.tobias.pokegame.backend.calc;
 
 import de.tobias.pokegame.backend.entities.monster.Attack;
+import de.tobias.pokegame.backend.persistence.NitriteManager;
 
 public class DamageCalc {
 	private Attack playerAtk;
@@ -16,6 +17,6 @@ public class DamageCalc {
 	}
 	
 	private Attack getAttackInfoFromString(String attackName) {
-		return new Attack(); // TODO
+		return NitriteManager.getAttackByName(attackName);
 	}
 }

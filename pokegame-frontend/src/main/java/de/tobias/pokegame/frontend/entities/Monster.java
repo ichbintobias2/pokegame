@@ -6,7 +6,7 @@ import java.util.List;
 import de.gurkenlabs.litiengine.entities.Creature;
 import de.tobias.pokegame.backend.calc.StatCalc;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
-import de.tobias.pokegame.backend.persistence.PersistenceManager;
+import de.tobias.pokegame.backend.persistence.NitriteManager;
 import lombok.Getter;
 
 public abstract class Monster extends Creature {
@@ -17,19 +17,14 @@ public abstract class Monster extends Creature {
 	private StatCalc calc;
 	private CurrentMonster db;
 	
-	protected Monster(long monsterId) {
-		this.db = PersistenceManager.get(CurrentMonster.class, monsterId);
+	protected Monster(String monsterName) {
+		this.db = NitriteManager.getCurrentMonsterByName(monsterName);
 		this.calc = new StatCalc(db);
-		
-		attacks.add(db.getAttack1());
-		attacks.add(db.getAttack2());
-		attacks.add(db.getAttack3());
-		attacks.add(db.getAttack4());
-		types.add("");
 	}
 	
 	public String getAttack(int slot) {
-		return attacks.get(slot);
+		// return attacks.get(slot);
+		return "";
 	}
 
 	public StatCalc getData() {

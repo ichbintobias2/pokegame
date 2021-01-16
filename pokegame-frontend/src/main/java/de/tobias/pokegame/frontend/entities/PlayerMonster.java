@@ -8,7 +8,7 @@ public class PlayerMonster extends Monster {
 	private static PlayerMonster instance;
 	
 	private PlayerMonster() {
-		super(1L);
+		super("playerMonsterTest");
 	}
 	
 	public static PlayerMonster instance() {
