@@ -6,11 +6,11 @@ import de.tobias.pokegame.backend.entities.monster.Type;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 
 public class TypeCalc {
-	private String attackAsString;
+	private String attackName;
 	private List<String> defenseTypings;
 	
-	public TypeCalc(String attackType, List<String> defenseTypings) {
-		this.attackAsString = attackType;
+	public TypeCalc(String attackName, List<String> defenseTypings) {
+		this.attackName = attackName;
 		this.defenseTypings = defenseTypings;
 	}
 
@@ -29,15 +29,20 @@ public class TypeCalc {
 	}
 	
 	private double getFinalMultiplier() {
-		double eff1 = getEffectivenessAsDouble(attackAsString, defenseTypings.get(0));
-		double eff2 = getEffectivenessAsDouble(attackAsString, defenseTypings.get(1));
+		String attackType = NitriteManager.getAttackByName(attackName).getType();
+		double eff1 = getEffectivenessAsDouble(attackType, defenseTypings.get(0));
+		double eff2 = 1;
+		
+		if (defenseTypings.size() == 2) {
+			eff2 = getEffectivenessAsDouble(attackType, defenseTypings.get(1));
+		}
 		
 		return eff1 * eff2;
 	}
 	
 	private double getEffectivenessAsDouble(String attackType, String defenseType) {
-		Type atkType = getTypeInfoFromString(attackType);
-		Type defType = getTypeInfoFromString(defenseType);
+		Type atkType = NitriteManager.getTypeByName(attackType);
+		Type defType = NitriteManager.getTypeByName(defenseType);
 		
 		if (atkType.getDoubleDamageTo().contains(defenseType) && defType.getDoubleDamageFrom().contains(attackType)) {
 			return Effective.TWICE;
@@ -46,9 +51,5 @@ public class TypeCalc {
 		} else if (atkType.getNoDamageTo().contains(defenseType) &&  defType.getNoDamageFrom().contains(attackType)) {
 			return Effective.ZERO;
 		} else return Effective.NORMAL;
-	}
-	
-	private Type getTypeInfoFromString(String typeName) {
-		return NitriteManager.getTypeByName(typeName);
 	}
 }

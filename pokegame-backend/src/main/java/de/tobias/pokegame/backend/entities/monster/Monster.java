@@ -4,11 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
-public class CurrentMonster extends BaseMonster {
+public class Monster {
+	
+	private String name;
+	private int registryNumber;
+	
+	private List<String> types = new ArrayList<String>();
+	
+	private int baseHp;
+	private int baseAttack;
+	private int baseDefense;
+	private int baseSpAtk;
+	private int baseSpDef;
+	private int baseSpeed;
+	
+	private List<String> locations = new ArrayList<String>();
+	
+	private List<String> learnableMoves = new ArrayList<String>();
+	
+	private String givesEv;
 	
 	private String nickname;
 	

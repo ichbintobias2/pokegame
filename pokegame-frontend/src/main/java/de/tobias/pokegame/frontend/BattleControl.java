@@ -21,6 +21,7 @@ public class BattleControl {
 	@Getter @Setter
 	private static boolean isPlayerAtTurn = true;
 	private static String lastPlayerAttack;
+	private static String lastEnemyAttack;
 
 	public static void startBattle() {
 		Game.window().getRenderComponent().fadeOut(1500);
@@ -58,20 +59,40 @@ public class BattleControl {
 	
 	public static void performPlayerAttack(int i) {
 		lastPlayerAttack = PlayerMonster.instance().getAttacks().get(i);
-		int enemyDefense = EnemyMonster.instance().getData().getCurrentDef();
-		int damage = new DamageCalc(lastPlayerAttack, enemyDefense).calculateDamage();
 		
-		if (EnemyMonster.instance().getData().getCurrentHp() < damage) {
-			EnemyMonster.instance().setCurrentHp(0);
+		int playerAttack = PlayerMonster.instance().getData().getCurrentAtk();
+		int enemyDefense = EnemyMonster.instance().getData().getCurrentDef();
+		
+		int damage = new DamageCalc(playerAttack, enemyDefense).calculateDamage(lastPlayerAttack);
+		int currentHp = EnemyMonster.instance().getData().getCurrentHp();
+		
+		if (currentHp <= damage) {
+			EnemyMonster.instance().getData().receiveDamage(currentHp);
 			
 			BattleControl.stopBattle(); // TODO should cause switch instead
 		} else {
-			EnemyMonster.instance().receiveDamage(damage);
+			EnemyMonster.instance().getData().receiveDamage(damage);
+			passTurn();
 		}
 	}
 	
-	private static void performEnemyAttack(String attackName) {
-		// TODO
+	private static void performEnemyAttack(String attackName) { // TODO
+		lastPlayerAttack = attackName;
+		
+		int playerAttack = PlayerMonster.instance().getData().getCurrentAtk();
+		int enemyDefense = EnemyMonster.instance().getData().getCurrentDef();
+		
+		int damage = new DamageCalc(playerAttack, enemyDefense).calculateDamage(lastEnemyAttack);
+		int currentHp = PlayerMonster.instance().getData().getCurrentHp();
+		
+		if (currentHp <= damage) {
+			PlayerMonster.instance().getData().receiveDamage(currentHp);
+			
+			BattleControl.stopBattle(); // TODO should cause switch instead
+		} else {
+			PlayerMonster.instance().getData().receiveDamage(damage);
+			passTurn();
+		}
 	}
 	
 	public static void passTurn() {  // TODO i18n
@@ -83,7 +104,7 @@ public class BattleControl {
 		
 		Dialog.instance().addToQueue(""); // Yes this is needed
 		Dialog.instance().addToQueue(monsterName+" setzt "+attackName+" ein!");
-		String effectString1 = new TypeCalc(null, EnemyMonster.instance().getTypes()).getEffectivenessAsString();
+		String effectString1 = new TypeCalc(lastPlayerAttack, EnemyMonster.instance().getTypes()).getEffectivenessAsString();
 		Dialog.instance().addToQueue(effectString1);
 		
 		// dialog for enemy attack
@@ -91,7 +112,7 @@ public class BattleControl {
 		String enemyMonster = EnemyMonster.instance().getName();
 		
 		Dialog.instance().addToQueue(enemyMonster+" setzt "+enemyAttack+" ein!");
-		String effectString2 = new TypeCalc(null, PlayerMonster.instance().getTypes()).getEffectivenessAsString();
+		String effectString2 = new TypeCalc(lastPlayerAttack, PlayerMonster.instance().getTypes()).getEffectivenessAsString();
 		Dialog.instance().addToQueue(effectString2);
 		Dialog.instance().addToQueue("Was soll "+monsterName+" tun?");
 		Dialog.instance().addToQueue("[ask for input]");

@@ -26,19 +26,15 @@ public class AttackMenu extends KeyboardMenu {
 			switch (c.intValue()) {
 			case 0:
 				performAttack(0);
-				BattleControl.passTurn();
 				break;
 			case 1:
 				performAttack(1);
-				BattleControl.passTurn();
 				break;
 			case 2:
 				performAttack(2);
-				BattleControl.passTurn();
 				break;
 			case 3:
 				performAttack(3);
-				BattleControl.passTurn();
 				break;
 			case 4:
 				backToBattleMenu();

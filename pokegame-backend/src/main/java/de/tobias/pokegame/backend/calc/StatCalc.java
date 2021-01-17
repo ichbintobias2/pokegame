@@ -1,21 +1,21 @@
 package de.tobias.pokegame.backend.calc;
 
-import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
-import de.tobias.pokegame.backend.persistence.NitriteManager;
+import de.tobias.pokegame.backend.entities.monster.Monster;
 
 public class StatCalc {
-	private CurrentMonster monster;
+	private Monster monster;
+	private int damageTaken = 0;
 	
-	public StatCalc(String monsterName) {
-		this.monster = NitriteManager.getCurrentMonsterByName(monsterName);
+	public StatCalc(Monster monster) {
+		this.monster = monster;
 	}
 	
 	public int getMaxHp() {
-		return 0;
+		return 250; // TODO
 	}
 	
 	public int getCurrentHp() {
-		return 0;
+		return getMaxHp() - damageTaken;
 	}
 	
 	public int getCurrentAtk() {
@@ -36,5 +36,9 @@ public class StatCalc {
 	
 	public int getCurrentSpeed() {
 		return 0;
+	}
+	
+	public void receiveDamage(int damage) {
+		damageTaken += damage;
 	}
 }

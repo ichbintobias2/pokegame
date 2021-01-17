@@ -7,15 +7,13 @@ import org.dizitart.no2.tool.Exporter;
 import org.dizitart.no2.tool.Importer;
 
 import de.tobias.pokegame.backend.entities.monster.Attack;
-import de.tobias.pokegame.backend.entities.monster.BaseMonster;
-import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
+import de.tobias.pokegame.backend.entities.monster.Monster;
 import de.tobias.pokegame.backend.entities.monster.Type;
 
 public class NitriteManager {
 	
 	private static Nitrite db;
-	private static ObjectRepository<BaseMonster> baseMonsterRepo;
-	private static ObjectRepository<CurrentMonster> currentMonsterRepo;
+	private static ObjectRepository<Monster> currentMonsterRepo;
 	private static ObjectRepository<Type> typeRepo;
 	private static ObjectRepository<Attack> attackRepo;
 	
@@ -31,8 +29,7 @@ public class NitriteManager {
 			    .filePath(dbPath)
 			    .openOrCreate(dbUser, dbPassword);
 		
-		baseMonsterRepo = db.getRepository(BaseMonster.class);
-		currentMonsterRepo = db.getRepository(CurrentMonster.class);
+		currentMonsterRepo = db.getRepository(Monster.class);
 		typeRepo = db.getRepository(Type.class);
 		attackRepo = db.getRepository(Attack.class);
 	}
@@ -52,19 +49,11 @@ public class NitriteManager {
 		exporter.exportTo(filepath);
 	}
 	
-	public static BaseMonster getBaseMonsterByName(String name) {
-		return baseMonsterRepo.find(ObjectFilters.eq("name", name)).firstOrDefault();
-	}
-	
-	public static void saveBaseMonster(BaseMonster monster) {
-		baseMonsterRepo.insert(monster);
-	}
-	
-	public static CurrentMonster getCurrentMonsterByName(String name) {
+	public static Monster getCurrentMonsterByName(String name) {
 		return currentMonsterRepo.find(ObjectFilters.eq("name", name)).firstOrDefault();
 	}
 	
-	public static void saveCurrentMonster(CurrentMonster monster) {
+	public static void saveCurrentMonster(Monster monster) {
 		currentMonsterRepo.insert(monster);
 	}
 	

@@ -4,16 +4,21 @@ import de.tobias.pokegame.backend.entities.monster.Attack;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 
 public class DamageCalc {
-	private Attack playerAtk;
+	private int playerAtk;
 	private int enemyDef;
 
-	public DamageCalc(String playerAtk, int enemyDef) {
-		this.playerAtk = getAttackInfoFromString(playerAtk);
+	public DamageCalc(int playerAtk, int enemyDef) {
+		this.playerAtk = playerAtk;
 		this.enemyDef = enemyDef;
 	}
 	
-	public int calculateDamage() {
-		return 0;
+	public int calculateDamage(String attackName) {
+		Attack attack = getAttackInfoFromString(attackName);
+		int baseAtkDmg = attack.getBaseDamage();
+		
+		// TODO implement actual calculation
+		
+		return 50;
 	}
 	
 	private Attack getAttackInfoFromString(String attackName) {
