@@ -1,12 +1,12 @@
 package de.tobias.pokegame.backend.calc;
 
-import de.tobias.pokegame.backend.entities.monster.Monster;
+import de.tobias.pokegame.backend.entities.monster.DbMonster;
 
 public class StatCalc {
-	private Monster monster;
+	private DbMonster monster;
 	private int damageTaken = 0;
 	
-	public StatCalc(Monster monster) {
+	public StatCalc(DbMonster monster) {
 		this.monster = monster;
 	}
 	
