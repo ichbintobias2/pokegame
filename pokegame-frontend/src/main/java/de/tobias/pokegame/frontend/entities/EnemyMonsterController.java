@@ -85,7 +85,7 @@ public class EnemyMonsterController {
 
 	private String useBestAttack() {
 		// TODO Auto-generated method stub
-		return "Best Attack";
+		return null;
 	}
 	
 	private String useAdequateBoostMove() {

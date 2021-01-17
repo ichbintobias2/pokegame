@@ -1,7 +1,7 @@
 {
   "collections" : [ ],
   "repositories" : [ {
-    "type" : "de.tobias.pokegame.backend.entities.monster.CurrentMonster",
+    "type" : "de.tobias.pokegame.backend.entities.monster.DbMonster",
     "indices" : [ ],
     "data" : [ {
       "key" : 17067628861100,
@@ -164,9 +164,5 @@
         "_modified" : 1610810171287
       }
     } ]
-  }, {
-    "type" : "de.tobias.pokegame.backend.entities.monster.BaseMonster",
-    "indices" : [ ],
-    "data" : [ ]
   } ]
 }

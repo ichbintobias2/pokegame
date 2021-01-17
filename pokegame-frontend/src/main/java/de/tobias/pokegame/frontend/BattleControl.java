@@ -76,8 +76,15 @@ public class BattleControl {
 		}
 	}
 	
-	private static void performEnemyAttack(String attackName) { // TODO
-		lastPlayerAttack = attackName;
+	public static void performEnemyAttack() {
+		lastEnemyAttack = EnemyMonsterController.instance().decideEnemyAttack();
+		
+		// TODO currently not all decision paths of decideEnemyAttack() are implemented.
+		// The not yet implemented will return null which would cause an exception in DamageCalc.
+		// therefore the attack name will be hardcoded for now
+		if (lastEnemyAttack == null) {
+			lastEnemyAttack = "Base Fire";
+		}
 		
 		int playerAttack = PlayerMonster.instance().getData().getCurrentAtk();
 		int enemyDefense = EnemyMonster.instance().getData().getCurrentDef();
@@ -91,7 +98,6 @@ public class BattleControl {
 			BattleControl.stopBattle(); // TODO should cause switch instead
 		} else {
 			PlayerMonster.instance().getData().receiveDamage(damage);
-			passTurn();
 		}
 	}
 	
@@ -108,10 +114,10 @@ public class BattleControl {
 		Dialog.instance().addToQueue(effectString1);
 		
 		// dialog for enemy attack
-		String enemyAttack = EnemyMonsterController.instance().decideEnemyAttack();
 		String enemyMonster = EnemyMonster.instance().getName();
 		
-		Dialog.instance().addToQueue(enemyMonster+" setzt "+enemyAttack+" ein!");
+		Dialog.instance().addToQueue("[enemy attack]");
+		Dialog.instance().addToQueue(enemyMonster+" setzt "+lastEnemyAttack+" ein!");
 		String effectString2 = new TypeCalc(lastPlayerAttack, PlayerMonster.instance().getTypes()).getEffectivenessAsString();
 		Dialog.instance().addToQueue(effectString2);
 		Dialog.instance().addToQueue("Was soll "+monsterName+" tun?");

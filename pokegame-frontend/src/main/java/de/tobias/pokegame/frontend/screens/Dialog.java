@@ -64,6 +64,9 @@ public class Dialog extends GuiComponent {
 					enable(false);
 					queue.remove(1);
 					BattleMenu.instance().setEnabled(true);
+				} else if ("[enemy attack]".equals(queue.get(1))) {
+					BattleControl.performEnemyAttack();
+					queue.remove(1);
 				}
 				
 				queue.remove(0);
