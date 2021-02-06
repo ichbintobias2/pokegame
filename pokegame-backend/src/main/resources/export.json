@@ -19,6 +19,8 @@
         "learnableMoves" : [ ],
         "givesEv" : null,
         "nickname" : null,
+        "level" : 1,
+        "nature": "Default",
         "foundAt" : "level1",
         "foundWithLv" : 1,
         "originalTrainer" : "Tobias",
@@ -38,7 +40,7 @@
         "evSpeed" : 0,
         "_id" : 17067628861100,
         "_revision" : 1,
-        "_modified" : 1610830290994
+        "_modified" : 1610885707335
       }
     }, {
       "key" : 17122005563300,
@@ -56,6 +58,8 @@
         "learnableMoves" : [ ],
         "givesEv" : null,
         "nickname" : null,
+        "level" : 1,
+        "nature": "Default",
         "foundAt" : "level1",
         "foundWithLv" : 1,
         "originalTrainer" : "Enemy",
@@ -75,7 +79,7 @@
         "evSpeed" : 0,
         "_id" : 17122005563300,
         "_revision" : 1,
-        "_modified" : 1610830345369
+        "_modified" : 1610885707350
       }
     } ]
   }, {
@@ -91,7 +95,7 @@
         "sideEffect" : null,
         "_id" : 13879596337200,
         "_revision" : 1,
-        "_modified" : 1610811227332
+        "_modified" : 1610885707351
       }
     }, {
       "key" : 13895662035400,
@@ -103,7 +107,7 @@
         "sideEffect" : null,
         "_id" : 13895662035400,
         "_revision" : 1,
-        "_modified" : 1610811243402
+        "_modified" : 1610885707352
       }
     }, {
       "key" : 13908143050700,
@@ -115,7 +119,21 @@
         "sideEffect" : null,
         "_id" : 13908143050700,
         "_revision" : 1,
-        "_modified" : 1610811255883
+        "_modified" : 1610885707352
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.monster.Nature",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 13879596337300,
+      "value" : {
+        "name" : "Default",
+        "attack": 0.0,
+        "defense": 0.0,
+        "spAtk": 0.0,
+        "spDef": 0.0,
+        "speed": 0.0
       }
     } ]
   }, {
@@ -133,7 +151,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12604575659700,
         "_revision" : 1,
-        "_modified" : 1610809952220
+        "_modified" : 1610885707352
       }
     }, {
       "key" : 12752329773400,
@@ -147,7 +165,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12752329773400,
         "_revision" : 1,
-        "_modified" : 1610810100071
+        "_modified" : 1610885707353
       }
     }, {
       "key" : 12823541338200,
@@ -161,7 +179,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12823541338200,
         "_revision" : 1,
-        "_modified" : 1610810171287
+        "_modified" : 1610885707353
       }
     } ]
   } ]

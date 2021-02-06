@@ -28,6 +28,10 @@ public class DbMonster {
 	
 	private String nickname;
 	
+	private int level;
+	
+	private String nature;
+	
 	private String foundAt;
 	private int foundWithLv;
 	private String originalTrainer;

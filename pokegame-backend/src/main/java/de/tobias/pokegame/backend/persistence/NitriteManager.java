@@ -8,6 +8,7 @@ import org.dizitart.no2.tool.Importer;
 
 import de.tobias.pokegame.backend.entities.monster.Attack;
 import de.tobias.pokegame.backend.entities.monster.DbMonster;
+import de.tobias.pokegame.backend.entities.monster.Nature;
 import de.tobias.pokegame.backend.entities.monster.Type;
 
 public class NitriteManager {
@@ -16,6 +17,7 @@ public class NitriteManager {
 	private static ObjectRepository<DbMonster> dbMonsterRepo;
 	private static ObjectRepository<Type> typeRepo;
 	private static ObjectRepository<Attack> attackRepo;
+	private static ObjectRepository<Nature> natureRepo;
 	
 	private static String dbPath = "../pokegame-backend/src/main/resources/nitrite.db";
 	private static String filepath = "../pokegame-backend/src/main/resources/export.json";
@@ -32,6 +34,7 @@ public class NitriteManager {
 		dbMonsterRepo = db.getRepository(DbMonster.class);
 		typeRepo = db.getRepository(Type.class);
 		attackRepo = db.getRepository(Attack.class);
+		natureRepo = db.getRepository(Nature.class);
 	}
 	
 	public static void closeDb() {
@@ -71,5 +74,13 @@ public class NitriteManager {
 	
 	public static void saveAttack(Attack attack) {
 		attackRepo.insert(attack);
+	}
+	
+	public static Nature getNatureByName(String name) {
+		return natureRepo.find(ObjectFilters.eq("name", name)).firstOrDefault();
+	}
+	
+	public static void saveNature(Nature nature) {
+		natureRepo.insert(nature);
 	}
 }
