@@ -20,7 +20,7 @@
         "givesEv" : null,
         "nickname" : null,
         "level" : 50,
-        "nature": "Default",
+        "nature" : "Default",
         "foundAt" : "level1",
         "foundWithLv" : 1,
         "originalTrainer" : "Tobias",
@@ -40,7 +40,7 @@
         "evSpeed" : 0,
         "_id" : 17067628861100,
         "_revision" : 1,
-        "_modified" : 1610885707335
+        "_modified" : 1612631384643
       }
     }, {
       "key" : 17122005563300,
@@ -59,7 +59,7 @@
         "givesEv" : null,
         "nickname" : null,
         "level" : 50,
-        "nature": "Default",
+        "nature" : "Default",
         "foundAt" : "level1",
         "foundWithLv" : 1,
         "originalTrainer" : "Enemy",
@@ -79,7 +79,7 @@
         "evSpeed" : 0,
         "_id" : 17122005563300,
         "_revision" : 1,
-        "_modified" : 1610885707350
+        "_modified" : 1612631384660
       }
     } ]
   }, {
@@ -95,7 +95,7 @@
         "sideEffect" : null,
         "_id" : 13879596337200,
         "_revision" : 1,
-        "_modified" : 1610885707351
+        "_modified" : 1612631384662
       }
     }, {
       "key" : 13895662035400,
@@ -107,7 +107,7 @@
         "sideEffect" : null,
         "_id" : 13895662035400,
         "_revision" : 1,
-        "_modified" : 1610885707352
+        "_modified" : 1612631384663
       }
     }, {
       "key" : 13908143050700,
@@ -119,7 +119,7 @@
         "sideEffect" : null,
         "_id" : 13908143050700,
         "_revision" : 1,
-        "_modified" : 1610885707352
+        "_modified" : 1612631384663
       }
     } ]
   }, {
@@ -129,11 +129,14 @@
       "key" : 13879596337300,
       "value" : {
         "name" : "Default",
-        "attack": 1.0,
-        "defense": 1.0,
-        "spAtk": 1.0,
-        "spDef": 1.0,
-        "speed": 1.0
+        "attack" : 1.0,
+        "defense" : 1.0,
+        "spAtk" : 1.0,
+        "spDef" : 1.0,
+        "speed" : 1.0,
+        "_id" : 13879596337300,
+        "_revision" : 1,
+        "_modified" : 1612631384664
       }
     } ]
   }, {
@@ -151,7 +154,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12604575659700,
         "_revision" : 1,
-        "_modified" : 1610885707352
+        "_modified" : 1612631384665
       }
     }, {
       "key" : 12752329773400,
@@ -165,7 +168,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12752329773400,
         "_revision" : 1,
-        "_modified" : 1610885707353
+        "_modified" : 1612631384666
       }
     }, {
       "key" : 12823541338200,
@@ -179,7 +182,22 @@
         "noDamageFrom" : [ ],
         "_id" : 12823541338200,
         "_revision" : 1,
-        "_modified" : 1610885707353
+        "_modified" : 1612631384667
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.npc.DbNPC",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 15397724409500,
+      "value" : {
+        "name" : "npc1",
+        "wantsToBattle" : true,
+        "team" : [ ],
+        "dialogLines" : [ "Hello", "Hi", "[battle]" ],
+        "_id" : 15397724409500,
+        "_revision" : 1,
+        "_modified" : 1612634575104
       }
     } ]
   } ]

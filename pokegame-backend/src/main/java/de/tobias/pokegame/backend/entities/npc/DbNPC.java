@@ -6,10 +6,10 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class NPC {
+public class DbNPC {
 
-	private String text;
+	private String name;
 	private boolean wantsToBattle;
-	
 	private List<String> team = new ArrayList<String>();
+	private List<String> dialogLines = new ArrayList<String>();
 }

@@ -7,29 +7,31 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.AnimationInfo;
 import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.entities.EntityInfo;
+import de.tobias.pokegame.backend.entities.npc.DbNPC;
+import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.enums.GameState;
 import de.tobias.pokegame.frontend.screens.Dialog;
+import lombok.Getter;
 
 @EntityInfo(width = 16, height = 16)
 @AnimationInfo(spritePrefix = "player")
 public class NPC extends Creature {
-	private List<String> dialogLines = new ArrayList<String>(); // will be obtained from database later on
+	@Getter private List<String> dialogLines = new ArrayList<String>();
 	private int cooldown = 500;
 	private long since = 0;
 	
 	public NPC() {
 		// this.addController(new NpcController(this));
-
+		
+		String name = "npc1"; // TODO get this dynamically from game.litidata file
+		DbNPC db = NitriteManager.getNpcByName(name);
+		
 		this.onMessage(e -> {
 			getTalkedTo();
 		});
 		
-		// TODO these will be a substitute until actual values are in the database
-		dialogLines.add("Hello");
-		dialogLines.add("Hi");
-		dialogLines.add("[battle]");
-		// TODO dialogLines.add("bye");
+		dialogLines.addAll(db.getDialogLines());
 	}
 	
 	private void getTalkedTo() {
@@ -40,9 +42,5 @@ public class NPC extends Creature {
 			GameLogic.setState(GameState.TALKING);
 			since = Game.time().now();
 		}
-	}
-	
-	public List<String> getDialogLines() {
-		return dialogLines;
 	}
 }
