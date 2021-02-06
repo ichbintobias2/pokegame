@@ -6,22 +6,20 @@ import de.tobias.pokegame.backend.persistence.NitriteManager;
 public class DamageCalc {
 	private int playerAtk;
 	private int enemyDef;
+	private int attackerLevel;
 
-	public DamageCalc(int playerAtk, int enemyDef) {
+	public DamageCalc(int playerAtk, int enemyDef, int attackerLevel) {
 		this.playerAtk = playerAtk;
 		this.enemyDef = enemyDef;
+		this.attackerLevel = attackerLevel;
 	}
 	
 	public int calculateDamage(String attackName) {
-		Attack attack = getAttackInfoFromString(attackName);
+		Attack attack = NitriteManager.getAttackByName(attackName);
 		int baseAtkDmg = attack.getBaseDamage();
 		
-		// TODO implement actual calculation
+		double baseDamage = Math.floor(Math.floor(Math.floor(2 * attackerLevel / 5 + 2) * baseAtkDmg * playerAtk / enemyDef) / 50) + 2;
 		
-		return 50;
-	}
-	
-	private Attack getAttackInfoFromString(String attackName) {
-		return NitriteManager.getAttackByName(attackName);
+		return (int) baseDamage;
 	}
 }

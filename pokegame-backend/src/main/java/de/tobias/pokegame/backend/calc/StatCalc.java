@@ -16,10 +16,14 @@ public class StatCalc {
 	}
 	
 	public int getMaxHp() {
-		double hp1 = monster.getBaseHp() + monster.getDvHp() + (Math.sqrt(monster.getEvHp() / 4)) * monster.getLevel();
-		double hp2 = (hp1 + monster.getLevel() + 10) / 100;
+		int b = monster.getBaseHp();
+		int i = monster.getDvHp();
+		int e = monster.getEvHp();
+		int l = monster.getLevel();
 		
-		return (int) hp2;
+		double value = Math.floor((2 * b + i + e) * l / 100 + l + 10);
+		
+		return (int) value;
 	}
 	
 	public int getCurrentHp() {
@@ -56,9 +60,8 @@ public class StatCalc {
 	}
 	
 	private int calculateFromBase(int base, int dv, int ev, int level, double nature) {
-		int res1 = 2* base + dv + (ev / 4) * level;
-		int res2 = (res1 + 5) / 100;
+		double value = Math.floor(Math.floor((2 * base + dv + ev) * level / 100 + 5) * nature);
 		
-		return (int) (res2 * nature);
+		return (int) value;
 	}
 }

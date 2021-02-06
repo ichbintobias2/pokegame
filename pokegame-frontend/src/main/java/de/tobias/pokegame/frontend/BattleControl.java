@@ -51,7 +51,7 @@ public class BattleControl {
 			
 			Game.screens().display("INGAME");
 			Game.world().loadEnvironment("level1"); // TODO do not hardcode
-			// Dialog.instance().setVisible(false);
+			Dialog.instance().enable(true);
 			GameLogic.setState(GameState.TALKING);
 			PauseMenu.instance().update();
 		});
@@ -62,8 +62,9 @@ public class BattleControl {
 		
 		int playerAttack = PlayerMonster.instance().getData().getCurrentAtk();
 		int enemyDefense = EnemyMonster.instance().getData().getCurrentDef();
+		int monsterLevel = PlayerMonster.instance().getLevel();
 		
-		int damage = new DamageCalc(playerAttack, enemyDefense).calculateDamage(lastPlayerAttack);
+		int damage = new DamageCalc(playerAttack, enemyDefense, monsterLevel).calculateDamage(lastPlayerAttack);
 		int currentHp = EnemyMonster.instance().getData().getCurrentHp();
 		
 		if (currentHp <= damage) {
@@ -81,15 +82,16 @@ public class BattleControl {
 		
 		// TODO currently not all decision paths of decideEnemyAttack() are implemented.
 		// The not yet implemented will return null which would cause an exception in DamageCalc.
-		// therefore the attack name will be hardcoded for now
+		// therefore the attack name will be hard coded for now
 		if (lastEnemyAttack == null) {
 			lastEnemyAttack = "Base Fire";
 		}
 		
-		int playerAttack = PlayerMonster.instance().getData().getCurrentAtk();
-		int enemyDefense = EnemyMonster.instance().getData().getCurrentDef();
+		int enemyAttack = EnemyMonster.instance().getData().getCurrentAtk();
+		int playerDefense = PlayerMonster.instance().getData().getCurrentDef();
+		int monsterLevel = EnemyMonster.instance().getLevel();
 		
-		int damage = new DamageCalc(playerAttack, enemyDefense).calculateDamage(lastEnemyAttack);
+		int damage = new DamageCalc(enemyAttack, playerDefense, monsterLevel).calculateDamage(lastEnemyAttack);
 		int currentHp = PlayerMonster.instance().getData().getCurrentHp();
 		
 		if (currentHp <= damage) {

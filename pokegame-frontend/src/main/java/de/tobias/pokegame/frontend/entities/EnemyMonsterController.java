@@ -38,7 +38,7 @@ public class EnemyMonsterController {
 			}
 		}
 		
-		return "";
+		return null;
 	}
 
 	private boolean doesSwitchMakeSense() {

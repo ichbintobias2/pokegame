@@ -33,4 +33,8 @@ public abstract class Monster extends Creature {
 	public StatCalc getData() {
 		return calc;
 	}
+	
+	public int getLevel() {
+		return db.getLevel();
+	}
 }
