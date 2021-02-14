@@ -4,11 +4,12 @@ import de.gurkenlabs.litiengine.gui.screens.GameScreen;
 import de.tobias.pokegame.frontend.entities.EnemyMonster;
 import de.tobias.pokegame.frontend.entities.HealthBar;
 import de.tobias.pokegame.frontend.entities.PlayerMonster;
+import de.tobias.pokegame.frontend.entities.Type;
 import de.tobias.pokegame.frontend.menu.AttackMenu;
 import de.tobias.pokegame.frontend.menu.BattleMenu;
 
 public class BattleScreen extends GameScreen {
-
+	
 	public BattleScreen() {
 		super("BATTLE");
 	}
@@ -26,6 +27,7 @@ public class BattleScreen extends GameScreen {
 		
 		this.getComponents().add(new HealthBar(800, 450, mon1));
 		this.getComponents().add(new HealthBar(20, 20, mon2));
+		this.getComponents().add(new Type("Water", 810, 470));
 		this.getComponents().add(AttackMenu.instance());
 		this.getComponents().add(BattleMenu.instance());
 	}
