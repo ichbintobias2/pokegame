@@ -1,25 +1,28 @@
 package de.tobias.pokegame.backend.calc;
 
-import de.tobias.pokegame.backend.entities.monster.DbMonster;
+import de.tobias.pokegame.backend.entities.monster.BaseMonster;
+import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 import de.tobias.pokegame.backend.entities.monster.Nature;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 
 public class StatCalc {
-	private DbMonster monster;
+	private BaseMonster bMonster;
+	private CurrentMonster cMonster;
 	private int damageTaken = 0;
 	
 	Nature natureObject;
 	
-	public StatCalc(DbMonster monster) {
-		this.monster = monster;
-		natureObject = NitriteManager.getNatureByName(monster.getNature());
+	public StatCalc(CurrentMonster cm) {
+		this.cMonster = cm;
+		this.bMonster = NitriteManager.getBaseMonsterByRegistryNr(cm.getRegistryNumber());
+		natureObject = NitriteManager.getNatureByName(cm.getNature());
 	}
 	
 	public int getMaxHp() {
-		int b = monster.getBaseHp();
-		int i = monster.getDvHp();
-		int e = monster.getEvHp();
-		int l = monster.getLevel();
+		int b = bMonster.getBaseHp();
+		int i = cMonster.getDvHp();
+		int e = cMonster.getEvHp();
+		int l = cMonster.getLevel();
 		
 		double value = Math.floor((2 * b + i + e) * l / 100 + l + 10);
 		
@@ -32,27 +35,27 @@ public class StatCalc {
 	
 	public int getCurrentAtk() {
 		double nature = natureObject.getAttack();
-		return calculateFromBase(monster.getBaseAttack(), monster.getDvAttack(), monster.getEvAttack(), monster.getLevel(), nature);
+		return calculateFromBase(bMonster.getBaseAttack(), cMonster.getDvAttack(), cMonster.getEvAttack(), cMonster.getLevel(), nature);
 	}
 	
 	public int getCurrentDef() {
 		double nature = natureObject.getDefense();
-		return calculateFromBase(monster.getBaseDefense(), monster.getDvDefense(), monster.getEvDefense(), monster.getLevel(), nature);
+		return calculateFromBase(bMonster.getBaseDefense(), cMonster.getDvDefense(), cMonster.getEvDefense(), cMonster.getLevel(), nature);
 	}
 	
 	public int getCurrentSpAtk() {
 		double nature = natureObject.getSpAtk();
-		return calculateFromBase(monster.getBaseSpAtk(), monster.getDvSpAtk(), monster.getEvSpAtk(), monster.getLevel(), nature);
+		return calculateFromBase(bMonster.getBaseSpAtk(), cMonster.getDvSpAtk(), cMonster.getEvSpAtk(), cMonster.getLevel(), nature);
 	}
 	
 	public int getCurrentSpDef() {
 		double nature = natureObject.getSpDef();
-		return calculateFromBase(monster.getBaseSpDef(), monster.getDvSpDef(), monster.getEvSpDef(), monster.getLevel(), nature);
+		return calculateFromBase(bMonster.getBaseSpDef(), cMonster.getDvSpDef(), cMonster.getEvSpDef(), cMonster.getLevel(), nature);
 	}
 	
 	public int getCurrentSpeed() {
 		double nature = natureObject.getSpeed();
-		return calculateFromBase(monster.getBaseSpeed(), monster.getDvSpeed(), monster.getEvSpeed(), monster.getLevel(), nature);
+		return calculateFromBase(bMonster.getBaseSpeed(), cMonster.getDvSpeed(), cMonster.getEvSpeed(), cMonster.getLevel(), nature);
 	}	
 	
 	public void receiveDamage(int damage) {

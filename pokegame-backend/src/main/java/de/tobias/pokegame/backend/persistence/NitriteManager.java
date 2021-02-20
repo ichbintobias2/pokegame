@@ -7,7 +7,8 @@ import org.dizitart.no2.tool.Exporter;
 import org.dizitart.no2.tool.Importer;
 
 import de.tobias.pokegame.backend.entities.monster.Attack;
-import de.tobias.pokegame.backend.entities.monster.DbMonster;
+import de.tobias.pokegame.backend.entities.monster.BaseMonster;
+import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 import de.tobias.pokegame.backend.entities.monster.Nature;
 import de.tobias.pokegame.backend.entities.monster.Type;
 import de.tobias.pokegame.backend.entities.npc.DbNPC;
@@ -15,7 +16,8 @@ import de.tobias.pokegame.backend.entities.npc.DbNPC;
 public class NitriteManager {
 	
 	private static Nitrite db;
-	private static ObjectRepository<DbMonster> dbMonsterRepo;
+	private static ObjectRepository<BaseMonster> baseMonsterRepo;
+	private static ObjectRepository<CurrentMonster> currentMonsterRepo;
 	private static ObjectRepository<Type> typeRepo;
 	private static ObjectRepository<Attack> attackRepo;
 	private static ObjectRepository<Nature> natureRepo;
@@ -33,7 +35,8 @@ public class NitriteManager {
 			    .filePath(dbPath)
 			    .openOrCreate(dbUser, dbPassword);
 		
-		dbMonsterRepo = db.getRepository(DbMonster.class);
+		baseMonsterRepo = db.getRepository(BaseMonster.class);
+		currentMonsterRepo = db.getRepository(CurrentMonster.class);
 		typeRepo = db.getRepository(Type.class);
 		attackRepo = db.getRepository(Attack.class);
 		natureRepo = db.getRepository(Nature.class);
@@ -55,12 +58,24 @@ public class NitriteManager {
 		exporter.exportTo(filepath);
 	}
 	
-	public static DbMonster getDbMonsterByName(String name) {
-		return dbMonsterRepo.find(ObjectFilters.eq("name", name)).firstOrDefault();
+	public static BaseMonster getBaseMonsterByName(String name) {
+		return baseMonsterRepo.find(ObjectFilters.eq("name", name)).firstOrDefault();
 	}
 	
-	public static void saveDbMonster(DbMonster monster) {
-		dbMonsterRepo.insert(monster);
+	public static BaseMonster getBaseMonsterByRegistryNr(int nr) {
+		return baseMonsterRepo.find(ObjectFilters.eq("registryNumber", nr)).firstOrDefault();
+	}
+	
+	public static void saveDbMonster(BaseMonster monster) {
+		baseMonsterRepo.insert(monster);
+	}
+	
+	public static CurrentMonster getCurrentMonsterByName(String name) {
+		return currentMonsterRepo.find(ObjectFilters.eq("name", name)).firstOrDefault();
+	}
+	
+	public static void saveCurrentMonster(CurrentMonster monster) {
+		currentMonsterRepo.insert(monster);
 	}
 	
 	public static Type getTypeByName(String name) {

@@ -10,13 +10,13 @@ import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.enums.GameState;
 
 public class HealthBar extends GuiComponent {
-	private Monster monster;
 	private int x;
 	private int y;
+	private boolean isPlayer;
 	
-	public HealthBar(int x, int y, Monster monster) {
+	public HealthBar(int x, int y, boolean isPlayer) {
 		super(x, y);
-		this.monster = monster;
+		this.isPlayer = isPlayer;
 		this.x = x;
 		this.y = y;
 	}
@@ -27,8 +27,14 @@ public class HealthBar extends GuiComponent {
 			int w = (int) (Game.window().getResolution().getWidth() / 4);
 			int h = (int) (Game.window().getResolution().getHeight() / 8);
 			
-			int currentHp = monster.getData().getCurrentHp();
-			int maxHp = monster.getData().getMaxHp();
+			Monster monster;
+			if (isPlayer)
+				monster = PlayerMonster.instance();
+			else 
+				monster = EnemyMonster.instance();
+			
+			int currentHp = monster.getStats().getCurrentHp();
+			int maxHp = monster.getStats().getMaxHp();
 			double percent = (double) currentHp / (double) maxHp;
 
 			// Draw surrounding box
@@ -50,7 +56,7 @@ public class HealthBar extends GuiComponent {
 			
 			// Draw health in numbers
 			g.setColor(Color.BLACK);
-			g.drawString(monster.getData().getCurrentHp() +"/"+ monster.getData().getMaxHp(), x, y + 85);
+			g.drawString(monster.getStats().getCurrentHp() +"/"+ monster.getStats().getMaxHp(), x, y + 85);
 		}
 	}
 }

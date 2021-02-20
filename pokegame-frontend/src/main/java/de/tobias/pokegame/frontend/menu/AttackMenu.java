@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import de.gurkenlabs.litiengine.Game;
 import de.tobias.pokegame.frontend.BattleControl;
 import de.tobias.pokegame.frontend.entities.PlayerMonster;
+import de.tobias.pokegame.frontend.screens.BattleScreen;
 
 public class AttackMenu extends KeyboardMenu {
 	private static final double x = Game.window().getResolution().getWidth() / 1.4;
@@ -15,10 +16,12 @@ public class AttackMenu extends KeyboardMenu {
 	private static AttackMenu instance;
 	
 	private boolean once = false;
-
-	private static PlayerMonster mon = PlayerMonster.instance();
 	
 	private AttackMenu() {
+		super(x, y, width, height);
+	}
+	
+	private AttackMenu(PlayerMonster mon) {
 		super(x, y, width, height, mon.getAttack(0), mon.getAttack(1),
 				mon.getAttack(2), mon.getAttack(3), "Back");
 		
@@ -60,6 +63,12 @@ public class AttackMenu extends KeyboardMenu {
 		}
 		
 		return instance;
+	}
+	
+	public void set(PlayerMonster mon) {
+		BattleScreen.removeFromScreen(AttackMenu.instance());
+		instance = new AttackMenu(mon);
+		BattleScreen.addToScreen(AttackMenu.instance());
 	}
 	
 	private void performAttack(int i) {

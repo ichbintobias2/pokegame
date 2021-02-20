@@ -6,6 +6,7 @@ import java.util.List;
 import de.gurkenlabs.litiengine.Game;
 import de.tobias.pokegame.backend.calc.DamageCalc;
 import de.tobias.pokegame.backend.calc.TypeCalc;
+import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.frontend.entities.EnemyMonster;
 import de.tobias.pokegame.frontend.entities.EnemyMonsterController;
 import de.tobias.pokegame.frontend.entities.PlayerMonster;
@@ -25,7 +26,14 @@ public class BattleControl {
 
 	public static void startBattle() {
 		Game.window().getRenderComponent().fadeOut(1500);
-
+		
+		// TODO when the battle is starting you will have to determine which monsters will be
+		// sent into battle by the participants
+		// PlayerMonster.instance().set(Player.instance().getGamestate().getPlayerTeam().get(0));
+		PlayerMonster.instance().set(NitriteManager.getCurrentMonsterByName("placeholder"));
+		EnemyMonster.instance().set(NitriteManager.getCurrentMonsterByName("placeholder"));
+		AttackMenu.instance().set(PlayerMonster.instance());
+		
 		Game.loop().perform(2500, () -> {
 			Game.world().camera().setClampToMap(true);
 			
@@ -58,21 +66,21 @@ public class BattleControl {
 	}
 	
 	public static void performPlayerAttack(int i) {
-		lastPlayerAttack = PlayerMonster.instance().getAttacks().get(i);
+		lastPlayerAttack = PlayerMonster.instance().getCm().getAttacks().get(i);
 		
-		int playerAttack = PlayerMonster.instance().getData().getCurrentAtk();
-		int enemyDefense = EnemyMonster.instance().getData().getCurrentDef();
-		int monsterLevel = PlayerMonster.instance().getLevel();
+		int playerAttack = PlayerMonster.instance().getStats().getCurrentAtk();
+		int enemyDefense = EnemyMonster.instance().getStats().getCurrentDef();
+		int monsterLevel = PlayerMonster.instance().getCm().getLevel();
 		
 		int damage = new DamageCalc(playerAttack, enemyDefense, monsterLevel).calculateDamage(lastPlayerAttack);
-		int currentHp = EnemyMonster.instance().getData().getCurrentHp();
+		int currentHp = EnemyMonster.instance().getStats().getCurrentHp();
 		
 		if (currentHp <= damage) {
-			EnemyMonster.instance().getData().receiveDamage(currentHp);
+			EnemyMonster.instance().getStats().receiveDamage(currentHp);
 			
 			BattleControl.stopBattle(); // TODO should cause switch instead
 		} else {
-			EnemyMonster.instance().getData().receiveDamage(damage);
+			EnemyMonster.instance().getStats().receiveDamage(damage);
 			passTurn();
 		}
 	}
@@ -87,19 +95,19 @@ public class BattleControl {
 			lastEnemyAttack = "Base Fire";
 		}
 		
-		int enemyAttack = EnemyMonster.instance().getData().getCurrentAtk();
-		int playerDefense = PlayerMonster.instance().getData().getCurrentDef();
-		int monsterLevel = EnemyMonster.instance().getLevel();
+		int enemyAttack = EnemyMonster.instance().getStats().getCurrentAtk();
+		int playerDefense = PlayerMonster.instance().getStats().getCurrentDef();
+		int monsterLevel = EnemyMonster.instance().getCm().getLevel();
 		
 		int damage = new DamageCalc(enemyAttack, playerDefense, monsterLevel).calculateDamage(lastEnemyAttack);
-		int currentHp = PlayerMonster.instance().getData().getCurrentHp();
+		int currentHp = PlayerMonster.instance().getStats().getCurrentHp();
 		
 		if (currentHp <= damage) {
-			PlayerMonster.instance().getData().receiveDamage(currentHp);
+			PlayerMonster.instance().getStats().receiveDamage(currentHp);
 			
 			BattleControl.stopBattle(); // TODO should cause switch instead
 		} else {
-			PlayerMonster.instance().getData().receiveDamage(damage);
+			PlayerMonster.instance().getStats().receiveDamage(damage);
 		}
 	}
 	
@@ -112,7 +120,7 @@ public class BattleControl {
 		
 		Dialog.instance().addToQueue(""); // Yes this is needed
 		Dialog.instance().addToQueue(monsterName+" setzt "+attackName+" ein!");
-		String effectString1 = new TypeCalc(lastPlayerAttack, EnemyMonster.instance().getTypes()).getEffectivenessAsString();
+		String effectString1 = new TypeCalc(lastPlayerAttack, EnemyMonster.instance().getCm().getTypes()).getEffectivenessAsString();
 		Dialog.instance().addToQueue(effectString1);
 		
 		// dialog for enemy attack
@@ -120,7 +128,7 @@ public class BattleControl {
 		
 		Dialog.instance().addToQueue("[enemy attack]");
 		Dialog.instance().addToQueue(enemyMonster+" setzt "+lastEnemyAttack+" ein!");
-		String effectString2 = new TypeCalc(lastPlayerAttack, PlayerMonster.instance().getTypes()).getEffectivenessAsString();
+		String effectString2 = new TypeCalc(lastPlayerAttack, PlayerMonster.instance().getCm().getTypes()).getEffectivenessAsString();
 		Dialog.instance().addToQueue(effectString2);
 		Dialog.instance().addToQueue("Was soll "+monsterName+" tun?");
 		Dialog.instance().addToQueue("[ask for input]");

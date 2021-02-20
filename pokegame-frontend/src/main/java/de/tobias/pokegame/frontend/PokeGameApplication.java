@@ -23,11 +23,11 @@ public class PokeGameApplication {
 		Game.graphics().setBaseRenderScale(4.001f);
 
 		Resources.load("game.litidata");
-
+		
+		NitriteManager.init();
 		PlayerInput.init();
 		GameLogic.init();
-		NitriteManager.init();
-
+		
 		// adding all screens that will be used
 		Game.screens().add(new IngameScreen());
 		Game.screens().add(new MainMenuScreen());

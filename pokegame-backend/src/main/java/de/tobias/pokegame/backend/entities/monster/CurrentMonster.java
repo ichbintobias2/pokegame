@@ -3,42 +3,32 @@ package de.tobias.pokegame.backend.entities.monster;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-public class DbMonster {
+@NoArgsConstructor
+@AllArgsConstructor
+public class CurrentMonster {
 	
-	private String name;
 	private int registryNumber;
+	private String name;
 	
+	// TODO should not be in here but is currently needed
 	private List<String> types = new ArrayList<String>();
-	
-	private int baseHp;
-	private int baseAttack;
-	private int baseDefense;
-	private int baseSpAtk;
-	private int baseSpDef;
-	private int baseSpeed;
-	
-	private List<String> locations = new ArrayList<String>();
-	
-	private List<String> learnableMoves = new ArrayList<String>();
-	
-	private String givesEv;
-	
-	private String nickname;
 	
 	private int level;
 	
 	private String nature;
 	
-	private String foundAt;
-	private int foundWithLv;
-	private String originalTrainer;
-	
 	private List<String> attacks = new ArrayList<String>();
 	
 	private String heldItem;
+	
+	private String foundAt;
+	private int foundWithLv;
+	private String originalTrainer;
 	
 	private int dvHp;
 	private int dvAttack;

@@ -1,85 +1,40 @@
 {
   "collections" : [ ],
   "repositories" : [ {
-    "type" : "de.tobias.pokegame.backend.entities.monster.DbMonster",
+    "type" : "de.tobias.pokegame.backend.entities.location.LocationEncounterTable",
+    "indices" : [ ],
+    "data" : [ ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.monster.CurrentMonster",
     "indices" : [ ],
     "data" : [ {
-      "key" : 17067628861100,
+      "key" : 6358983984900,
       "value" : {
-        "name" : "playerMonsterTest",
         "registryNumber" : 0,
+        "name" : "placeholder",
         "types" : [ "Water" ],
-        "baseHp" : 100,
-        "baseAttack" : 50,
-        "baseDefense" : 50,
-        "baseSpAtk" : 50,
-        "baseSpDef" : 50,
-        "baseSpeed" : 50,
-        "locations" : [ ],
-        "learnableMoves" : [ ],
-        "givesEv" : null,
-        "nickname" : null,
         "level" : 50,
         "nature" : "Default",
-        "foundAt" : "level1",
-        "foundWithLv" : 1,
-        "originalTrainer" : "Tobias",
-        "attacks" : [ "Base Plant", "Base Fire", "Base Water", null ],
+        "attacks" : [ "Base Fire", "Base Water", "Base Plant", "" ],
         "heldItem" : null,
-        "dvHp" : 31,
-        "dvAttack" : 31,
-        "dvDefense" : 31,
-        "dvSpAtk" : 31,
-        "dvSpDef" : 31,
-        "dvSpeed" : 31,
+        "foundAt" : null,
+        "foundWithLv" : 0,
+        "originalTrainer" : null,
+        "dvHp" : 0,
+        "dvAttack" : 0,
+        "dvDefense" : 0,
+        "dvSpAtk" : 0,
+        "dvSpDef" : 0,
+        "dvSpeed" : 0,
         "evHp" : 0,
         "evAttack" : 0,
         "evDefense" : 0,
         "evSpAtk" : 0,
         "evSpDef" : 0,
         "evSpeed" : 0,
-        "_id" : 17067628861100,
+        "_id" : 6358983984900,
         "_revision" : 1,
-        "_modified" : 1612631384643
-      }
-    }, {
-      "key" : 17122005563300,
-      "value" : {
-        "name" : "enemyMonsterTest",
-        "registryNumber" : 0,
-        "types" : [ "Fire" ],
-        "baseHp" : 100,
-        "baseAttack" : 50,
-        "baseDefense" : 50,
-        "baseSpAtk" : 50,
-        "baseSpDef" : 50,
-        "baseSpeed" : 50,
-        "locations" : [ ],
-        "learnableMoves" : [ ],
-        "givesEv" : null,
-        "nickname" : null,
-        "level" : 50,
-        "nature" : "Default",
-        "foundAt" : "level1",
-        "foundWithLv" : 1,
-        "originalTrainer" : "Enemy",
-        "attacks" : [ "Base Plant", "Base Fire", "Base Water", null ],
-        "heldItem" : null,
-        "dvHp" : 31,
-        "dvAttack" : 31,
-        "dvDefense" : 31,
-        "dvSpAtk" : 31,
-        "dvSpDef" : 31,
-        "dvSpeed" : 31,
-        "evHp" : 0,
-        "evAttack" : 0,
-        "evDefense" : 0,
-        "evSpAtk" : 0,
-        "evSpDef" : 0,
-        "evSpeed" : 0,
-        "_id" : 17122005563300,
-        "_revision" : 1,
-        "_modified" : 1612631384660
+        "_modified" : 1613333413678
       }
     } ]
   }, {
@@ -95,7 +50,7 @@
         "sideEffect" : null,
         "_id" : 13879596337200,
         "_revision" : 1,
-        "_modified" : 1612631384662
+        "_modified" : 1613333413696
       }
     }, {
       "key" : 13895662035400,
@@ -107,7 +62,7 @@
         "sideEffect" : null,
         "_id" : 13895662035400,
         "_revision" : 1,
-        "_modified" : 1612631384663
+        "_modified" : 1613333413697
       }
     }, {
       "key" : 13908143050700,
@@ -119,7 +74,26 @@
         "sideEffect" : null,
         "_id" : 13908143050700,
         "_revision" : 1,
-        "_modified" : 1612631384663
+        "_modified" : 1613333413697
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.player.Gamestate",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 1422009629800,
+      "value" : {
+        "playerLocationMap" : null,
+        "playerLocationX" : null,
+        "playerLocationY" : null,
+        "totalTimePlayed" : null,
+        "totalSeen" : 0,
+        "totalCaught" : 0,
+        "earnedBadges" : 0,
+        "playerTeam" : [ ],
+        "_id" : 1422009629800,
+        "_revision" : 1,
+        "_modified" : 1613333413699
       }
     } ]
   }, {
@@ -136,7 +110,7 @@
         "speed" : 1.0,
         "_id" : 13879596337300,
         "_revision" : 1,
-        "_modified" : 1612631384664
+        "_modified" : 1613333413700
       }
     } ]
   }, {
@@ -154,7 +128,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12604575659700,
         "_revision" : 1,
-        "_modified" : 1612631384665
+        "_modified" : 1613333413703
       }
     }, {
       "key" : 12752329773400,
@@ -168,7 +142,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12752329773400,
         "_revision" : 1,
-        "_modified" : 1612631384666
+        "_modified" : 1613333413704
       }
     }, {
       "key" : 12823541338200,
@@ -182,7 +156,30 @@
         "noDamageFrom" : [ ],
         "_id" : 12823541338200,
         "_revision" : 1,
-        "_modified" : 1612631384667
+        "_modified" : 1613333413704
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.monster.BaseMonster",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 6478813301400,
+      "value" : {
+        "registryNumber" : 0,
+        "name" : "Placeholder",
+        "types" : [ "Water" ],
+        "baseHp" : 100,
+        "baseAttack" : 100,
+        "baseDefense" : 100,
+        "baseSpAtk" : 100,
+        "baseSpDef" : 100,
+        "baseSpeed" : 100,
+        "locations" : [ ],
+        "learnableMoves" : [ ],
+        "givesEv" : null,
+        "_id" : 6478813301400,
+        "_revision" : 1,
+        "_modified" : 1613333464095
       }
     } ]
   }, {
@@ -197,7 +194,7 @@
         "dialogLines" : [ "Hello", "Hi", "[battle]" ],
         "_id" : 15397724409500,
         "_revision" : 1,
-        "_modified" : 1612634575104
+        "_modified" : 1613333413707
       }
     } ]
   } ]
