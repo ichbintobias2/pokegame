@@ -85,16 +85,7 @@ public class BattleControl {
 		}
 	}
 	
-	public static void performEnemyAttack() {
-		lastEnemyAttack = EnemyMonsterController.instance().decideEnemyAttack();
-		
-		// TODO currently not all decision paths of decideEnemyAttack() are implemented.
-		// The not yet implemented will return null which would cause an exception in DamageCalc.
-		// therefore the attack name will be hard coded for now
-		if (lastEnemyAttack == null) {
-			lastEnemyAttack = "Base Fire";
-		}
-		
+	public static void performEnemyAttack() {		
 		int enemyAttack = EnemyMonster.instance().getStats().getCurrentAtk();
 		int playerDefense = PlayerMonster.instance().getStats().getCurrentDef();
 		int monsterLevel = EnemyMonster.instance().getCm().getLevel();
@@ -116,7 +107,7 @@ public class BattleControl {
 		
 		// dialog for own chosen attack
 		String attackName = lastPlayerAttack;
-		String monsterName = PlayerMonster.instance().getName();
+		String monsterName = PlayerMonster.instance().getCm().getName();
 		
 		Dialog.instance().addToQueue(""); // Yes this is needed
 		Dialog.instance().addToQueue(monsterName+" setzt "+attackName+" ein!");
@@ -124,10 +115,19 @@ public class BattleControl {
 		Dialog.instance().addToQueue(effectString1);
 		
 		// dialog for enemy attack
-		String enemyMonster = EnemyMonster.instance().getName();
+		String enemyMonster = EnemyMonster.instance().getCm().getName();
+		
+		lastEnemyAttack = EnemyMonsterController.instance().decideEnemyAttack();
+		
+		// TODO currently not all decision paths of decideEnemyAttack() are implemented.
+		// The not yet implemented will return null which would cause an exception in DamageCalc.
+		// therefore the attack name will be hard coded for now
+		if (lastEnemyAttack == null) {
+			lastEnemyAttack = "Base Fire";
+		}
 		
 		Dialog.instance().addToQueue("[enemy attack]");
-		Dialog.instance().addToQueue(enemyMonster+" setzt "+lastEnemyAttack+" ein!");
+		Dialog.instance().addToQueue(enemyMonster+" (Gegner) setzt "+lastEnemyAttack+" ein!");
 		String effectString2 = new TypeCalc(lastPlayerAttack, PlayerMonster.instance().getCm().getTypes()).getEffectivenessAsString();
 		Dialog.instance().addToQueue(effectString2);
 		Dialog.instance().addToQueue("Was soll "+monsterName+" tun?");
