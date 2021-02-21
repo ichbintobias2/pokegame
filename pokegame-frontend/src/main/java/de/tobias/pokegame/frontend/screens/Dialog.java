@@ -55,7 +55,7 @@ public class Dialog extends GuiComponent {
 		Game.audio().playSound(SoundControl.Dialog);
 		
 		if (enabled) {
-			if (queue.size() > 0) {
+			if (queue.size() > 1) {
 				if ("[battle]".equals(queue.get(1))) {
 					setVisible(false);
 					queue.remove(1);
@@ -75,6 +75,7 @@ public class Dialog extends GuiComponent {
 				GameLogic.setState(GameState.INGAME);
 				enable(false);
 				setVisible(false);
+				queue.remove(0);
 			}
 		} 
 	}

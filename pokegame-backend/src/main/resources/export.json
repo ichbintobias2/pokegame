@@ -15,7 +15,7 @@
         "types" : [ "Water" ],
         "level" : 50,
         "nature" : "Default",
-        "attacks" : [ "Base Fire", "Base Water", "Base Plant", "" ],
+        "attacks" : [ "Base Fire", "Base Water", "Base Plant", null ],
         "heldItem" : null,
         "foundAt" : null,
         "foundWithLv" : 0,
@@ -34,7 +34,7 @@
         "evSpeed" : 0,
         "_id" : 6358983984900,
         "_revision" : 1,
-        "_modified" : 1613333413678
+        "_modified" : 1613839077238
       }
     } ]
   }, {
@@ -50,7 +50,7 @@
         "sideEffect" : null,
         "_id" : 13879596337200,
         "_revision" : 1,
-        "_modified" : 1613333413696
+        "_modified" : 1613839077255
       }
     }, {
       "key" : 13895662035400,
@@ -62,7 +62,7 @@
         "sideEffect" : null,
         "_id" : 13895662035400,
         "_revision" : 1,
-        "_modified" : 1613333413697
+        "_modified" : 1613839077256
       }
     }, {
       "key" : 13908143050700,
@@ -74,7 +74,7 @@
         "sideEffect" : null,
         "_id" : 13908143050700,
         "_revision" : 1,
-        "_modified" : 1613333413697
+        "_modified" : 1613839077256
       }
     } ]
   }, {
@@ -93,7 +93,7 @@
         "playerTeam" : [ ],
         "_id" : 1422009629800,
         "_revision" : 1,
-        "_modified" : 1613333413699
+        "_modified" : 1613839077258
       }
     } ]
   }, {
@@ -110,7 +110,7 @@
         "speed" : 1.0,
         "_id" : 13879596337300,
         "_revision" : 1,
-        "_modified" : 1613333413700
+        "_modified" : 1613839077259
       }
     } ]
   }, {
@@ -128,7 +128,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12604575659700,
         "_revision" : 1,
-        "_modified" : 1613333413703
+        "_modified" : 1613839077260
       }
     }, {
       "key" : 12752329773400,
@@ -142,7 +142,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12752329773400,
         "_revision" : 1,
-        "_modified" : 1613333413704
+        "_modified" : 1613839077261
       }
     }, {
       "key" : 12823541338200,
@@ -156,7 +156,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12823541338200,
         "_revision" : 1,
-        "_modified" : 1613333413704
+        "_modified" : 1613839077261
       }
     } ]
   }, {
@@ -179,13 +179,24 @@
         "givesEv" : null,
         "_id" : 6478813301400,
         "_revision" : 1,
-        "_modified" : 1613333464095
+        "_modified" : 1613839077262
       }
     } ]
   }, {
     "type" : "de.tobias.pokegame.backend.entities.npc.DbNPC",
     "indices" : [ ],
     "data" : [ {
+      "key" : 14411939525500,
+      "value" : {
+        "name" : "npc2",
+        "wantsToBattle" : false,
+        "team" : [ ],
+        "dialogLines" : [ "I'm a placeholder!" ],
+        "_id" : 14411939525500,
+        "_revision" : 1,
+        "_modified" : 1613918757756
+      }
+    }, {
       "key" : 15397724409500,
       "value" : {
         "name" : "npc1",
@@ -194,7 +205,7 @@
         "dialogLines" : [ "Hello", "Hi", "[battle]" ],
         "_id" : 15397724409500,
         "_revision" : 1,
-        "_modified" : 1613333413707
+        "_modified" : 1613839077263
       }
     } ]
   } ]
