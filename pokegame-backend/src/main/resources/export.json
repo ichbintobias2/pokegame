@@ -1,0 +1,212 @@
+{
+  "collections" : [ ],
+  "repositories" : [ {
+    "type" : "de.tobias.pokegame.backend.entities.location.LocationEncounterTable",
+    "indices" : [ ],
+    "data" : [ ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.monster.CurrentMonster",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 6358983984900,
+      "value" : {
+        "registryNumber" : 0,
+        "name" : "placeholder",
+        "types" : [ "Water" ],
+        "level" : 50,
+        "nature" : "Default",
+        "attacks" : [ "Base Fire", "Base Water", "Base Plant", null ],
+        "heldItem" : null,
+        "foundAt" : null,
+        "foundWithLv" : 0,
+        "originalTrainer" : null,
+        "dvHp" : 0,
+        "dvAttack" : 0,
+        "dvDefense" : 0,
+        "dvSpAtk" : 0,
+        "dvSpDef" : 0,
+        "dvSpeed" : 0,
+        "evHp" : 0,
+        "evAttack" : 0,
+        "evDefense" : 0,
+        "evSpAtk" : 0,
+        "evSpDef" : 0,
+        "evSpeed" : 0,
+        "_id" : 6358983984900,
+        "_revision" : 1,
+        "_modified" : 1613839077238
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.monster.Attack",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 13879596337200,
+      "value" : {
+        "name" : "Base Fire",
+        "baseDamage" : 50,
+        "type" : "Fire",
+        "priority" : 0,
+        "sideEffect" : null,
+        "_id" : 13879596337200,
+        "_revision" : 1,
+        "_modified" : 1613839077255
+      }
+    }, {
+      "key" : 13895662035400,
+      "value" : {
+        "name" : "Base Water",
+        "baseDamage" : 50,
+        "type" : "Water",
+        "priority" : 0,
+        "sideEffect" : null,
+        "_id" : 13895662035400,
+        "_revision" : 1,
+        "_modified" : 1613839077256
+      }
+    }, {
+      "key" : 13908143050700,
+      "value" : {
+        "name" : "Base Plant",
+        "baseDamage" : 50,
+        "type" : "Plant",
+        "priority" : 0,
+        "sideEffect" : null,
+        "_id" : 13908143050700,
+        "_revision" : 1,
+        "_modified" : 1613839077256
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.player.Gamestate",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 1422009629800,
+      "value" : {
+        "playerLocationMap" : null,
+        "playerLocationX" : null,
+        "playerLocationY" : null,
+        "totalTimePlayed" : null,
+        "totalSeen" : 0,
+        "totalCaught" : 0,
+        "earnedBadges" : 0,
+        "playerTeam" : [ ],
+        "_id" : 1422009629800,
+        "_revision" : 1,
+        "_modified" : 1613839077258
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.monster.Nature",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 13879596337300,
+      "value" : {
+        "name" : "Default",
+        "attack" : 1.0,
+        "defense" : 1.0,
+        "spAtk" : 1.0,
+        "spDef" : 1.0,
+        "speed" : 1.0,
+        "_id" : 13879596337300,
+        "_revision" : 1,
+        "_modified" : 1613839077259
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.monster.Type",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 12604575659700,
+      "value" : {
+        "name" : "Fire",
+        "doubleDamageTo" : [ "Plant", "Steel", "Ice", "Bug" ],
+        "halfDamageTo" : [ "Fire", "Water", "Rock", "Dragon" ],
+        "noDamageTo" : [ ],
+        "doubleDamageFrom" : [ "Water", "Rock", "Ground" ],
+        "halfDamageFrom" : [ "Fire", "Plant", "Ice", "Bug", "Steel", "Fairy" ],
+        "noDamageFrom" : [ ],
+        "_id" : 12604575659700,
+        "_revision" : 1,
+        "_modified" : 1613839077260
+      }
+    }, {
+      "key" : 12752329773400,
+      "value" : {
+        "name" : "Plant",
+        "doubleDamageTo" : [ "Water", "Ground", "Rock" ],
+        "halfDamageTo" : [ "Fire", "Plant", "Poison", "Flying", "Bug", "Dragon", "Steel" ],
+        "noDamageTo" : [ ],
+        "doubleDamageFrom" : [ "Fire", "Ice", "Poison", "Flying", "Bug" ],
+        "halfDamageFrom" : [ "Water", "Electric", "Plant", "Ground" ],
+        "noDamageFrom" : [ ],
+        "_id" : 12752329773400,
+        "_revision" : 1,
+        "_modified" : 1613839077261
+      }
+    }, {
+      "key" : 12823541338200,
+      "value" : {
+        "name" : "Water",
+        "doubleDamageTo" : [ "Fire", "Ground", "Rock" ],
+        "halfDamageTo" : [ "Water", "Plant", "Dragon" ],
+        "noDamageTo" : [ ],
+        "doubleDamageFrom" : [ "Electric", "Plant" ],
+        "halfDamageFrom" : [ "Fire", "Water", "Ice", "Steel" ],
+        "noDamageFrom" : [ ],
+        "_id" : 12823541338200,
+        "_revision" : 1,
+        "_modified" : 1613839077261
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.monster.BaseMonster",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 6478813301400,
+      "value" : {
+        "registryNumber" : 0,
+        "name" : "Placeholder",
+        "types" : [ "Water" ],
+        "baseHp" : 100,
+        "baseAttack" : 100,
+        "baseDefense" : 100,
+        "baseSpAtk" : 100,
+        "baseSpDef" : 100,
+        "baseSpeed" : 100,
+        "locations" : [ ],
+        "learnableMoves" : [ ],
+        "givesEv" : null,
+        "_id" : 6478813301400,
+        "_revision" : 1,
+        "_modified" : 1613839077262
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.npc.DbNPC",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 14411939525500,
+      "value" : {
+        "name" : "npc2",
+        "wantsToBattle" : false,
+        "team" : [ ],
+        "dialogLines" : [ "I'm a placeholder!" ],
+        "_id" : 14411939525500,
+        "_revision" : 1,
+        "_modified" : 1613918757756
+      }
+    }, {
+      "key" : 15397724409500,
+      "value" : {
+        "name" : "npc1",
+        "wantsToBattle" : true,
+        "team" : [ ],
+        "dialogLines" : [ "Hello", "Hi", "[battle]" ],
+        "_id" : 15397724409500,
+        "_revision" : 1,
+        "_modified" : 1613839077263
+      }
+    } ]
+  } ]
+}

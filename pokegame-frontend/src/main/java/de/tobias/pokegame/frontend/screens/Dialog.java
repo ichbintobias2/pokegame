@@ -2,64 +2,99 @@ package de.tobias.pokegame.frontend.screens;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.List;
 
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
+import de.tobias.pokegame.frontend.BattleControl;
 import de.tobias.pokegame.frontend.GameLogic;
-import de.tobias.pokegame.frontend.entities.NPC;
 import de.tobias.pokegame.frontend.enums.GameState;
 import de.tobias.pokegame.frontend.enums.SoundControl;
+import de.tobias.pokegame.frontend.menu.BattleMenu;
 
 public class Dialog extends GuiComponent {
-	// private final BufferedImage DIALOG = Imaging.scale(Resources.images().get("dialog.png"), 5.0);
 	private final int PADDING = 10;
-	private static int lineNr = 0;
-	private static List<String> npcLines;
+	private List<String> queue = new ArrayList<String>();
+	private String currentLine = "";
+	
+	private static Dialog instance;
+	
+	private boolean render = false;
+	private boolean enabled = false;
 
-	protected Dialog() {
+	private Dialog() {
 		super(0, 0, Game.window().getResolution().getWidth(), Game.window().getResolution().getHeight());
+	}
+	
+	public static Dialog instance() {
+		if (instance == null) {
+			instance = new Dialog();
+		}
+		
+		return instance;
 	}
 
 	@Override
 	public void render(Graphics2D g) {
 		super.render(g);
 
-		if (GameLogic.getState() != GameState.TALKING) {
-			return;
-		} else renderDialog(g);
-	}
-
-	private void renderDialog(Graphics2D g) {
-		int w = (int) (Game.window().getResolution().getWidth() - (PADDING * 2));
-		int h = (int) (Game.window().getResolution().getHeight() / 5);
-		
-		int x = PADDING;
-		int y = (int) (Game.window().getResolution().getHeight() - h - PADDING);
-		
-		g.draw(new Rectangle(x, y, w, h));
-		g.drawString(npcLines.get(lineNr), x, y + 10);
+		if (render) {
+			int w = (int) (Game.window().getResolution().getWidth() - (PADDING * 2));
+			int h = (int) (Game.window().getResolution().getHeight() / 5);
+			
+			int x = PADDING;
+			int y = (int) (Game.window().getResolution().getHeight() - h - PADDING);
+			
+			g.draw(new Rectangle(x, y, w, h));
+			g.drawString(currentLine, x, y + 10);
+		}
 	}
 	
-	public static void nextLine() {
+	public void nextLine() {
 		Game.audio().playSound(SoundControl.Dialog);
 		
-		if (GameLogic.getState() == GameState.TALKING) {
-			if (lineNr < npcLines.size() - 1) {
-				lineNr += 1;
+		if (enabled) {
+			if (queue.size() > 1) {
+				if ("[battle]".equals(queue.get(1))) {
+					setVisible(false);
+					queue.remove(1);
+					BattleControl.startBattle();
+				} else if ("[ask for input]".equals(queue.get(1))) {
+					enable(false);
+					queue.remove(1);
+					BattleMenu.instance().setEnabled(true);
+				} else if ("[enemy attack]".equals(queue.get(1))) {
+					BattleControl.performEnemyAttack();
+					queue.remove(1);
+				}
+				
+				queue.remove(0);
+				if (queue.size() != 0) currentLine = queue.get(0);
 			} else {
 				GameLogic.setState(GameState.INGAME);
-				lineNr = 0;
+				enable(false);
+				setVisible(false);
+				queue.remove(0);
 			}
 		} 
 	}
 	
-	public static void startDialog() {
-		Game.audio().playSound(SoundControl.Dialog);
-		GameLogic.setState(GameState.TALKING);
+	public void addToQueue(String line) {
+		queue.add(line);
 	}
 	
-	public static void setNpc(NPC npc) {
-		npcLines = npc.getDialogLines();
+	public void addToQueue(List<String> lines) {
+		queue.addAll(lines);
+	}
+	
+	@Override
+	public void setVisible(boolean visible) {
+		currentLine = queue.get(0);
+		render = visible;
+	}
+	
+	public void enable(boolean enable) {
+		enabled = enable;
 	}
 }

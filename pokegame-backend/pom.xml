@@ -17,5 +17,11 @@
 			<version>1.18.16</version>
 			<optional>true</optional>
 		</dependency>
+		
+		<dependency>
+    		<groupId>org.dizitart</groupId>
+    		<artifactId>nitrite</artifactId>
+    		<version>3.4.3</version>
+		</dependency>
 	</dependencies>
 </project>

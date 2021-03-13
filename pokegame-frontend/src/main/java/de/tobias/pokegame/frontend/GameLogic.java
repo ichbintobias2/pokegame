@@ -34,7 +34,7 @@ public class GameLogic {
 		// PropMapObjectLoader.registerCustomPropType(HealthPot.class);
 
 		Camera camera = new PositionLockCamera(Player.instance());
-		camera.setClampToMap(false);
+		camera.setClampToMap(true);
 		Game.world().setCamera(camera);
 
 		Game.world().onLoaded(e -> {

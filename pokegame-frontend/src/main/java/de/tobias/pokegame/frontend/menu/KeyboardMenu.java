@@ -22,7 +22,7 @@ public class KeyboardMenu extends Menu {
 	private final List<Consumer<Integer>> confirmConsumer;
 	private int currentFocus = -1;
 
-	private long lastMenuInput;
+	private static long lastMenuInput;
 
 	protected KeyboardMenu(double x, double y, double width, double height, String... items) {
 		super(x, y, width, height, items);

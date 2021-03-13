@@ -36,6 +36,8 @@ public class MainMenu extends KeyboardMenu {
 		Game.window().getRenderComponent().fadeOut(1500);
 
 		Game.loop().perform(2500, () -> {
+			Game.world().camera().setClampToMap(false);
+			
 			Game.screens().display("INGAME");
 			Game.world().loadEnvironment(GameLogic.START_LEVEL);
 			GameLogic.setState(GameState.INGAME);

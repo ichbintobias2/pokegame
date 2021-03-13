@@ -8,6 +8,6 @@ import lombok.Data;
 public class LocationEncounterTable {
 
 	private String locationName;
-	private List<Integer> baseMonsterId;
-	private List<Integer> encounterRate;
+	private String baseMonsterId;
+	private int encounterRate;
 }

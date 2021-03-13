@@ -3,9 +3,9 @@ package de.tobias.pokegame.backend.entities.player;
 import lombok.Data;
 
 @Data
-public class Pokedex {
+public class Registry {
 
-	private String pokemonId;
+	private String monsterId;
 	private boolean seen;
 	private boolean caught;
 }

@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <litidata version="1.0">
  <maps>
+  <map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="11" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1" name="battle">
+   <tileset firstgid="1" source="src/main/resources/maps/tileset.tsx"/>
+   <layer id="1" name="Kachelebene 1" width="20" height="11">
+    <data encoding="csv">
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183
+</data>
+   </layer>
+   <objectgroup id="0" name="default" visible="1">
+    <object id="1" type="CREATURE" x="16" y="48" width="64" height="64">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="25.6"/>
+      <property name="collisionboxWidth" type="float" value="25.6"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spawnDirection" value="LEFT"/>
+      <property name="spritesheetName" value="placeholder1"/>
+     </properties>
+    </object>
+    <object id="2" type="CREATURE" x="112" y="16" width="64" height="64">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="25.6"/>
+      <property name="collisionboxWidth" type="float" value="25.6"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spawnDirection" value="LEFT"/>
+      <property name="spritesheetName" value="placeholder2"/>
+     </properties>
+    </object>
+   </objectgroup>
+  </map>
   <map version="1.2" tiledversion="1.2.4009" orientation="orthogonal" renderorder="right-down" width="24" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1" name="level1">
    <tileset firstgid="1" source="src/main/resources/maps/tileset.tsx"/>
    <objectgroup id="0" name="new layer" visible="1">
@@ -38,6 +80,12 @@
     <object id="13" type="COLLISIONBOX" x="208" y="224" width="32" height="16">
      <properties>
       <property name="collisionType" value="STATIC"/>
+     </properties>
+    </object>
+    <object id="8" name="npc2" type="CREATURE" x="112" y="192" width="16" height="16">
+     <properties>
+      <property name="spawnDirection" value="LEFT"/>
+      <property name="spritesheetName" value="npc_placeholder"/>
      </properties>
     </object>
    </objectgroup>
@@ -195,20 +243,21 @@
     <object id="2" name="spawn" type="SPAWNPOINT" x="64" y="304" width="16" height="16"/>
    </objectgroup>
   </map>
-  <map version="1.2" tiledversion="1.2.4009" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1" name="mainmenu">
+  <map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="11" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1" name="mainmenu">
    <tileset firstgid="1" source="src/main/resources/maps/tileset.tsx"/>
-   <layer id="1" name="Kachelebene 1" width="10" height="10">
+   <layer id="1" name="Kachelebene 1" width="20" height="11">
     <data encoding="csv">
-183,183,183,183,183,183,183,183,183,183,
-183,1184,1185,1186,1187,1188,183,183,183,183,
-183,1275,1276,1277,1278,1279,183,3198,3198,3198,
-183,1366,1367,1368,1369,1370,183,183,3198,183,
-183,1457,1458,1459,1460,1461,183,183,3198,183,
-183,1548,1549,1550,1551,1552,183,183,3198,183,
-183,1639,1640,1641,1642,1643,183,183,3198,183,
-183,1730,1731,1732,1733,1734,183,183,3198,183,
-183,183,183,183,183,183,183,183,183,183,
-183,183,183,183,183,183,183,183,183,183
+183,183,183,183,183,183,183,183,183,183,183,1196,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,1196,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,1196,183,1742,1743,1744,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,1196,183,1833,1834,1835,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,1196,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,642,183,183,183,1287,1288,1288,1288,1288,1288,1288,1288,1288,
+183,183,458,183,183,183,183,733,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,549,183,183,183,183,824,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,553,554,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183
 </data>
    </layer>
    <objectgroup id="0" name="default" visible="1"/>
@@ -354,6 +403,16 @@
   </map>
  </maps>
  <spriteSheets>
+  <sprite width="16" height="16" imageformat="PNG" name="npc_placeholder-walk-left">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAEAAAAAQCAYAAACm53kpAAAA8UlEQVR42u2V2w3DMAhFMxcDMQ/TsAzDuDxi49Spon60jVSsSjGPYDi+Ubf252srAAWgAKxLxH7vrat3lrjZchMAjA0AGyI0IHEb+c1KV+8scdbz+D4AohdtCqhJt5kCCqpvb5p2m9WT+x0iBkiSuGGPd3s6gwC0ruVz5o06eiZpLsmXFUAxXAw+35ZKlWKI/nSv703GFM3OEHWTuTZgQk3/nHdW5ycKOMrVmkPm0TzrrfFI6Y1LqOMJQOYeAaQ/887r3AUAUUiWu8zJB2L/PPRpcV4VYFL2XIc4xUcNaFsc8qJO/Q0WgAJQAApAAfj0egDf9U+9SB9jlAAAAABJRU5ErkJggg==</image>
+   <keyframes>200,200,200,200</keyframes>
+  </sprite>
+  <sprite width="64" height="64" imageformat="PNG" name="placeholder1-idle-left">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABX0lEQVR42u3aWw6EMAgF0O5/0/pvUrhQkJbeSUzmrRyVFnSMMZ7Ll/Hc+iAAAQgwB5ASh/anxwN8A/0+19BaAGivkfeuATgxeBiga/BmgFkSPHkUUZOglv1P3vvQESAFpwXvHUa3OwI8470nUGR4jUaE5wEWAGue0ILKzDtpAOh76GmUlXfgeUAEgGcvZueQZQBtaNS+U11XLAFYk5qEMNvL2aPGEeWw1tJiP4AABCAAAQhQCNCyHN4NIGsdWwF4S28CVAJETk1RgOh1ugGsFZ604ZbuU2RzJBwA7QcgQUgVovRbSzxpANaNtFybQEpstJmyDIB+lgWgnWplM0EpQLQ9tgJQPhWeJTk0b0hdocje4Da1ANIWQ9tpbYqhP64ksRokAAEIQAACFAJU3zBRBrDLHSO/ASBXklsCrN5qcyyA5dBuBeAtSK4eBglAAAIQgAAshghAAAIQgAB1ADcvL+4Nb7JQVsETAAAAAElFTkSuQmCC</image>
+  </sprite>
+  <sprite width="64" height="64" imageformat="PNG" name="placeholder2-idle-left">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABaklEQVR42u2a2w7DIAxD+f+f3t4rkTghgUA8qdLWXWhOqYPdjTHGr/k2fl0fBEAABDAHIAmH9qPXA/gW+n2uQXsCgPYa2dcGwI3FwwBeLd4MYCaCN3cRVQQ19b/57EMzQCpOK97bRsvNAE+/9xSKtNdoiPA6wALAqhNaUZm6kwYA3YdeRlm6A68DIgB4zmK2hiwD0Fqj9pnTvmIJgFXUJAizs5zdNa6ww1qkxTyAAAiAAAiAAA4CeNIOVwOQNUYpAF7rTQAnAUQuTVEA0WO6AVgdnnTglvQpMhwJB4DmAUgRkkOUvmupJw2A9SAt9yYQi42GKcsA0PeyAGiX2rGVoFQgGo+tADi+FJ6JHKobUioUmQ2W8QJILIbGac+YoR13kugGCYAACIAACIAAxolBS/xbZBsALQc4BWIrAK+9bqUBBLB5FpTsAq0BtJ4BLUWwTRusVniJGVBhRVg+E2QkRjdIAARAADsAdN7+K49I2cIlbA4AAAAASUVORK5CYII=</image>
+  </sprite>
   <sprite width="64" height="64" imageformat="PNG" name="player-idle-right">
    <image>iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABo0lEQVR42u2aO26DQBRFZzl06Sy60Nhy5w2kcKQU9gpME2ULKV16ASkoKd27ocwSvAS6JHrSlZgnPmOjJPO5VzoFYwt4RwzMDBjDMAzDMAzD/Fm+HKGAKAs+57nQ7tajxCQkWQFy4sf3SrheW2GqcAchFBDEpa4LnytgRIQ3YpIVYN3cflvALssEHGe93Qr/KSJZAVbhACcIAXNvgrprYf95UQgUEIoAcOtACAUCHwqngHsE6P+5guOgcArwTQAKHjrxewsf2p/uChTgy0hwSsRcIRTgsYDeyRCEzKX8KbLsFOrDzY8CXETox5bmcbkSPk+lgHZs4/GJ/aE9mIURCpgQcPl4FVCYBpMnLaDTJSggiEXRLMsFVwFtU4/S6QoUEEQgAOASPmxWwlAXCL5wCpgQooe4WtDDYiGY2JKyAGu5HNvPTy8C2iECQ96YRFBA3wsUCNAvUPA7BcQqQE9z9SIq2kMa+lKAiwAUpEFX6Bn4RPPRVPICLBEoGBz2b4IW0Fn8pICoBNRVY6EffybiL0aTF2CJMAl+K0wBDMMwDMMwPuQbp0eDPTPSiSYAAAAASUVORK5CYII=</image>
   </sprite>

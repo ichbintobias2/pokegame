@@ -13,6 +13,6 @@ public final class PlayerInput {
 		
 		Input.keyboard().onKeyReleased(KeyEvent.VK_ESCAPE, e -> GameLogic.showPauseMenu());
 		
-		Input.keyboard().onKeyReleased(KeyEvent.VK_ENTER, e -> Dialog.nextLine());
+		Input.keyboard().onKeyReleased(KeyEvent.VK_ENTER, e -> Dialog.instance().nextLine());
 	}
 }
