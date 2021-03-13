@@ -45,11 +45,11 @@ public class TypeCalc {
 		Type defType = NitriteManager.getTypeByName(defenseType);
 		
 		if (atkType.getDoubleDamageTo().contains(defenseType) && defType.getDoubleDamageFrom().contains(attackType)) {
-			return Effective.TWICE;
+			return Effectiveness.TWICE;
 		} else if (atkType.getHalfDamageTo().contains(defenseType) && defType.getHalfDamageFrom().contains(attackType)) {
-			return Effective.HALF;
+			return Effectiveness.HALF;
 		} else if (atkType.getNoDamageTo().contains(defenseType) &&  defType.getNoDamageFrom().contains(attackType)) {
-			return Effective.ZERO;
-		} else return Effective.NORMAL;
+			return Effectiveness.ZERO;
+		} else return Effectiveness.NORMAL;
 	}
 }
