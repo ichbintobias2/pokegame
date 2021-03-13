@@ -58,8 +58,8 @@ public class StatCalc {
 		return calculateFromBase(bMonster.getBaseSpeed(), cMonster.getDvSpeed(), cMonster.getEvSpeed(), cMonster.getLevel(), nature);
 	}	
 	
-	public void receiveDamage(int damage) {
-		damageTaken += damage;
+	public void receiveDamage(double damage) {
+		damageTaken += (int) damage;
 	}
 	
 	private int calculateFromBase(int base, int dv, int ev, int level, double nature) {

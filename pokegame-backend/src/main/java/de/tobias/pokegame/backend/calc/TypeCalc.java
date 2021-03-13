@@ -15,20 +15,20 @@ public class TypeCalc {
 	}
 
 	public String getEffectivenessAsString() {
-		double finalMultiplier = getFinalMultiplier();
+		double typeMultiplier = getTypeMultiplier();
 		
-		if (finalMultiplier == 2 || finalMultiplier == 4) {
+		if (typeMultiplier == 2 || typeMultiplier == 4) {
 			return "Es ist sehr effektiv!";
-		} else if (finalMultiplier == 1) {
+		} else if (typeMultiplier == 1) {
 			return "Es verursachte normalen Schaden!";
-		} else if (finalMultiplier == 0.5 || finalMultiplier == 0.25) {
+		} else if (typeMultiplier == 0.5 || typeMultiplier == 0.25) {
 			return "Es ist nicht sehr effektiv...";
-		} else if (finalMultiplier == 0) {
+		} else if (typeMultiplier == 0) {
 			return "Es hatte keine Wirkung...";
 		} else throw new RuntimeException("Could not determine effectiveness!");
 	}
 	
-	private double getFinalMultiplier() {
+	public double getTypeMultiplier() {
 		String attackType = NitriteManager.getAttackByName(attackName).getType();
 		double eff1 = getEffectivenessAsDouble(attackType, defenseTypings.get(0));
 		double eff2 = 1;

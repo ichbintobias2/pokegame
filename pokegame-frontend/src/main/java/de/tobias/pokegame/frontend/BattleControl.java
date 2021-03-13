@@ -71,16 +71,18 @@ public class BattleControl {
 		int playerAttack = PlayerMonster.instance().getStats().getCurrentAtk();
 		int enemyDefense = EnemyMonster.instance().getStats().getCurrentDef();
 		int monsterLevel = PlayerMonster.instance().getCm().getLevel();
-		
-		int damage = new DamageCalc(playerAttack, enemyDefense, monsterLevel).calculateDamage(lastPlayerAttack);
 		int currentHp = EnemyMonster.instance().getStats().getCurrentHp();
 		
-		if (currentHp <= damage) {
+		int baseDamage = new DamageCalc(playerAttack, enemyDefense, monsterLevel).calculateDamage(lastPlayerAttack);
+		double typeMultiplicator = new TypeCalc(lastPlayerAttack, EnemyMonster.instance().getCm().getTypes()).getTypeMultiplier();
+		double finalDamage = baseDamage * typeMultiplicator;
+		
+		if (currentHp <= finalDamage) {
 			EnemyMonster.instance().getStats().receiveDamage(currentHp);
 			
 			BattleControl.stopBattle(); // TODO should cause switch instead
 		} else {
-			EnemyMonster.instance().getStats().receiveDamage(damage);
+			EnemyMonster.instance().getStats().receiveDamage(finalDamage);
 			passTurn();
 		}
 	}
@@ -89,16 +91,18 @@ public class BattleControl {
 		int enemyAttack = EnemyMonster.instance().getStats().getCurrentAtk();
 		int playerDefense = PlayerMonster.instance().getStats().getCurrentDef();
 		int monsterLevel = EnemyMonster.instance().getCm().getLevel();
-		
-		int damage = new DamageCalc(enemyAttack, playerDefense, monsterLevel).calculateDamage(lastEnemyAttack);
 		int currentHp = PlayerMonster.instance().getStats().getCurrentHp();
 		
-		if (currentHp <= damage) {
+		int baseDamage = new DamageCalc(enemyAttack, playerDefense, monsterLevel).calculateDamage(lastEnemyAttack);
+		double typeMultiplicator = new TypeCalc(lastEnemyAttack, PlayerMonster.instance().getCm().getTypes()).getTypeMultiplier();
+		double finalDamage = baseDamage * typeMultiplicator;
+		
+		if (currentHp <= finalDamage) {
 			PlayerMonster.instance().getStats().receiveDamage(currentHp);
 			
 			BattleControl.stopBattle(); // TODO should cause switch instead
 		} else {
-			PlayerMonster.instance().getStats().receiveDamage(damage);
+			PlayerMonster.instance().getStats().receiveDamage(finalDamage);
 		}
 	}
 	
@@ -128,7 +132,7 @@ public class BattleControl {
 		
 		Dialog.instance().addToQueue("[enemy attack]");
 		Dialog.instance().addToQueue(enemyMonster+" (Gegner) setzt "+lastEnemyAttack+" ein!");
-		String effectString2 = new TypeCalc(lastPlayerAttack, PlayerMonster.instance().getCm().getTypes()).getEffectivenessAsString();
+		String effectString2 = new TypeCalc(lastEnemyAttack, PlayerMonster.instance().getCm().getTypes()).getEffectivenessAsString();
 		Dialog.instance().addToQueue(effectString2);
 		Dialog.instance().addToQueue("Was soll "+monsterName+" tun?");
 		Dialog.instance().addToQueue("[ask for input]");
