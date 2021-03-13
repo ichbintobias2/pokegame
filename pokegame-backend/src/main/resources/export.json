@@ -151,7 +151,7 @@
         "doubleDamageTo" : [ "Fire", "Ground", "Rock" ],
         "halfDamageTo" : [ "Water", "Plant", "Dragon" ],
         "noDamageTo" : [ ],
-        "doubleDamageFrom" : [ "Electric", "Grass" ],
+        "doubleDamageFrom" : [ "Electric", "Plant" ],
         "halfDamageFrom" : [ "Fire", "Water", "Ice", "Steel" ],
         "noDamageFrom" : [ ],
         "_id" : 12823541338200,
