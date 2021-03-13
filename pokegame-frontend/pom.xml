@@ -10,5 +10,17 @@
   		<artifactId>litiengine</artifactId>
   		<version>0.5.0</version>
 	</dependency>
+	
+	<dependency>
+  		<groupId>de.tobias.pokegame</groupId>
+		<artifactId>pokegame-backend</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>ch.qos.logback</groupId>
+    	<artifactId>logback-classic</artifactId>
+    	<version>1.2.3</version>
+	</dependency>
   </dependencies>
 </project>

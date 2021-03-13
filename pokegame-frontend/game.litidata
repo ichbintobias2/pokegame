@@ -4,7 +4,38 @@
   <map version="1.2" tiledversion="1.2.4009" orientation="orthogonal" renderorder="right-down" width="24" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1" name="level1">
    <tileset firstgid="1" source="src/main/resources/maps/tileset.tsx"/>
    <objectgroup id="0" name="new layer" visible="1">
-    <object id="7" type="COLLISIONBOX" x="176" y="160" width="80" height="80">
+    <object id="8" name="npc2" type="CREATURE" x="112" y="192" width="16" height="16">
+     <properties>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionType" value="STATIC"/>
+      <property name="collisionboxHeight" value="16.0"/>
+      <property name="collisionboxWidth" value="16.0"/>
+      <property name="spawnDirection" value="LEFT"/>
+      <property name="spritesheetName" value="npc_placeholder"/>
+     </properties>
+    </object>
+    <object id="9" name="trigger" type="TRIGGER" x="192" y="224" width="16" height="16">
+     <properties>
+      <property name="triggerActivation" value="COLLISION"/>
+      <property name="whereto" value="route1"/>
+     </properties>
+    </object>
+    <object id="10" type="COLLISIONBOX" x="176" y="160" width="16" height="80">
+     <properties>
+      <property name="collisionType" value="STATIC"/>
+     </properties>
+    </object>
+    <object id="11" type="COLLISIONBOX" x="192" y="160" width="48" height="16">
+     <properties>
+      <property name="collisionType" value="STATIC"/>
+     </properties>
+    </object>
+    <object id="12" type="COLLISIONBOX" x="240" y="160" width="16" height="80">
+     <properties>
+      <property name="collisionType" value="STATIC"/>
+     </properties>
+    </object>
+    <object id="13" type="COLLISIONBOX" x="208" y="224" width="32" height="16">
      <properties>
       <property name="collisionType" value="STATIC"/>
      </properties>
@@ -257,6 +288,69 @@
 </data>
    </layer>
    <objectgroup id="0" name="default" visible="1"/>
+  </map>
+  <map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="9" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="1" name="route1">
+   <tileset firstgid="1" source="src/main/resources/maps/tileset.tsx"/>
+   <layer id="1" name="Boden" width="9" height="10">
+    <data encoding="csv">
+183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183,
+183,183,183,183,183,183,183,183,183
+</data>
+   </layer>
+   <layer id="2" name="Bäume" width="9" height="10">
+    <data encoding="csv">
+918,919,0,0,0,0,0,916,917,
+1009,1010,0,0,0,0,0,1007,1008,
+918,919,0,0,0,0,0,916,917,
+1009,1010,0,0,0,0,0,1007,1008,
+918,919,0,0,0,0,0,916,917,
+1009,1010,0,0,0,0,0,1007,1008,
+918,919,0,0,0,0,0,916,917,
+1009,1010,0,0,0,0,0,1007,1008,
+918,919,0,0,0,0,0,916,917,
+1009,1010,0,0,0,0,0,1007,1008
+</data>
+   </layer>
+   <layer id="3" name="Gras" width="9" height="10">
+    <data encoding="csv">
+0,0,0,0,0,0,0,0,0,
+0,0,4215,4216,4217,0,0,0,0,
+0,0,4306,4307,4308,0,0,0,0,
+0,0,4397,4398,4399,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,4215,4216,4217,0,0,
+0,0,0,0,4306,4307,4308,0,0,
+0,0,0,0,4397,4398,4399,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0
+</data>
+   </layer>
+   <objectgroup id="0" name="default" visible="1">
+    <object id="1" name="spawn" type="SPAWNPOINT" x="32" y="144" width="16" height="16">
+     <properties>
+      <property name="spawnDirection" value="UP"/>
+      <property name="spawnPivot" value="DIMENSION_CENTER"/>
+     </properties>
+    </object>
+    <object id="2" type="COLLISIONBOX" x="128" y="0" width="16" height="160">
+     <properties>
+      <property name="collisionType" value="STATIC"/>
+     </properties>
+    </object>
+    <object id="3" type="COLLISIONBOX" x="0" y="0" width="16" height="160">
+     <properties>
+      <property name="collisionType" value="STATIC"/>
+     </properties>
+    </object>
+   </objectgroup>
   </map>
  </maps>
  <spriteSheets>
