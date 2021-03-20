@@ -3,7 +3,17 @@
   "repositories" : [ {
     "type" : "de.tobias.pokegame.backend.entities.location.LocationEncounterTable",
     "indices" : [ ],
-    "data" : [ ]
+    "data" : [ {
+      "key" : 12338403208200,
+      "value" : {
+        "locationName" : "route1",
+        "baseMonsterIds" : [ 0 ],
+        "encounterRates" : [ 100 ],
+        "_id" : 12338403208200,
+        "_revision" : 1,
+        "_modified" : 1615675145911
+      }
+    } ]
   }, {
     "type" : "de.tobias.pokegame.backend.entities.monster.CurrentMonster",
     "indices" : [ ],
@@ -34,7 +44,7 @@
         "evSpeed" : 0,
         "_id" : 6358983984900,
         "_revision" : 1,
-        "_modified" : 1613839077238
+        "_modified" : 1615657506232
       }
     } ]
   }, {
@@ -50,7 +60,7 @@
         "sideEffect" : null,
         "_id" : 13879596337200,
         "_revision" : 1,
-        "_modified" : 1613839077255
+        "_modified" : 1615657506256
       }
     }, {
       "key" : 13895662035400,
@@ -62,7 +72,7 @@
         "sideEffect" : null,
         "_id" : 13895662035400,
         "_revision" : 1,
-        "_modified" : 1613839077256
+        "_modified" : 1615657506257
       }
     }, {
       "key" : 13908143050700,
@@ -74,7 +84,7 @@
         "sideEffect" : null,
         "_id" : 13908143050700,
         "_revision" : 1,
-        "_modified" : 1613839077256
+        "_modified" : 1615657506257
       }
     } ]
   }, {
@@ -93,7 +103,7 @@
         "playerTeam" : [ ],
         "_id" : 1422009629800,
         "_revision" : 1,
-        "_modified" : 1613839077258
+        "_modified" : 1615657506259
       }
     } ]
   }, {
@@ -110,7 +120,7 @@
         "speed" : 1.0,
         "_id" : 13879596337300,
         "_revision" : 1,
-        "_modified" : 1613839077259
+        "_modified" : 1615657506260
       }
     } ]
   }, {
@@ -128,7 +138,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12604575659700,
         "_revision" : 1,
-        "_modified" : 1613839077260
+        "_modified" : 1615657506261
       }
     }, {
       "key" : 12752329773400,
@@ -142,7 +152,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12752329773400,
         "_revision" : 1,
-        "_modified" : 1613839077261
+        "_modified" : 1615657506262
       }
     }, {
       "key" : 12823541338200,
@@ -156,7 +166,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12823541338200,
         "_revision" : 1,
-        "_modified" : 1613839077261
+        "_modified" : 1615657506263
       }
     } ]
   }, {
@@ -179,7 +189,7 @@
         "givesEv" : null,
         "_id" : 6478813301400,
         "_revision" : 1,
-        "_modified" : 1613839077262
+        "_modified" : 1615657506264
       }
     } ]
   }, {
@@ -194,7 +204,7 @@
         "dialogLines" : [ "I'm a placeholder!" ],
         "_id" : 14411939525500,
         "_revision" : 1,
-        "_modified" : 1613918757756
+        "_modified" : 1615657506264
       }
     }, {
       "key" : 15397724409500,
@@ -205,7 +215,7 @@
         "dialogLines" : [ "Hello", "Hi", "[battle]" ],
         "_id" : 15397724409500,
         "_revision" : 1,
-        "_modified" : 1613839077263
+        "_modified" : 1615657506266
       }
     } ]
   } ]

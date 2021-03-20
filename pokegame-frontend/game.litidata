@@ -399,6 +399,12 @@
       <property name="collisionType" value="STATIC"/>
      </properties>
     </object>
+    <object id="4" type="TRIGGER" x="64" y="80" width="48" height="48">
+     <properties>
+      <property name="grass" value="true"/>
+      <property name="triggerActivation" value="INTERACT"/>
+     </properties>
+    </object>
    </objectgroup>
   </map>
  </maps>

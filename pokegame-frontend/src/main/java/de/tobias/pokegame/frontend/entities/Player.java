@@ -10,9 +10,12 @@ import de.gurkenlabs.litiengine.entities.Entity;
 import de.gurkenlabs.litiengine.entities.EntityInfo;
 import de.gurkenlabs.litiengine.entities.IEntity;
 import de.gurkenlabs.litiengine.entities.MovementInfo;
+import de.gurkenlabs.litiengine.entities.Trigger;
 import de.gurkenlabs.litiengine.input.KeyboardEntityController;
 import de.gurkenlabs.litiengine.physics.IMovementController;
 import de.gurkenlabs.litiengine.util.geom.GeometricUtilities;
+import de.tobias.pokegame.backend.wild.EncounterCheck;
+import de.tobias.pokegame.frontend.BattleControl;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.enums.GameState;
 
@@ -20,7 +23,10 @@ import de.tobias.pokegame.frontend.enums.GameState;
 @MovementInfo(velocity = 70)
 @CollisionInfo(collisionBoxWidth = 16, collisionBoxHeight = 16, collision = true)
 public class Player extends Creature implements IUpdateable {
+	
 	private static Player instance;
+	
+	private boolean cooldown = false;
 
 	private Player() {
 		super("src\\main\\resources\\sprites\\player");
@@ -33,7 +39,8 @@ public class Player extends Creature implements IUpdateable {
 	    
 		this.setController(IMovementController.class, movementController);
 		this.getController(IMovementController.class).onMovementCheck(e -> {
-		      return GameLogic.getState() == GameState.INGAME;
+			checkTallGrass();
+			return GameLogic.getState() == GameState.INGAME;
 		});
 	}
 
@@ -59,6 +66,20 @@ public class Player extends Creature implements IUpdateable {
 				.findEntities(GeometricUtilities.extrude(Player.instance().getBoundingBox(), 2))) {
 			if (entity instanceof Entity) {
 				entity.sendMessage(Player.instance(), Entity.ANY_MESSAGE);
+			}
+		}
+	}
+	
+	private void checkTallGrass() {
+		for (IEntity entity : Game.world().environment().findEntities(GeometricUtilities.extrude(Player.instance().getBoundingBox(), 2))) {
+			if (entity instanceof Trigger && entity.getProperties().getBoolValue("grass")) {
+				if (EncounterCheck.isEncountered() && !cooldown) {
+					int id = EncounterCheck.getEncounter("route1"); // TODO
+					BattleControl.startWildBattle(id);
+					
+					// The idea is that this method should only trigger one battle and then wait until it is concluded
+					cooldown = true;
+				}
 			}
 		}
 	}

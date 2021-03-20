@@ -6,6 +6,7 @@ import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.dizitart.no2.tool.Exporter;
 import org.dizitart.no2.tool.Importer;
 
+import de.tobias.pokegame.backend.entities.location.LocationEncounterTable;
 import de.tobias.pokegame.backend.entities.monster.Attack;
 import de.tobias.pokegame.backend.entities.monster.BaseMonster;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
@@ -22,6 +23,7 @@ public class NitriteManager {
 	private static ObjectRepository<Attack> attackRepo;
 	private static ObjectRepository<Nature> natureRepo;
 	private static ObjectRepository<DbNPC> npcRepo;
+	private static ObjectRepository<LocationEncounterTable> letRepo;
 	
 	private static String dbPath = "../pokegame-backend/src/main/resources/nitrite.db";
 	private static String filepath = "../pokegame-backend/src/main/resources/export.json";
@@ -41,6 +43,7 @@ public class NitriteManager {
 		attackRepo = db.getRepository(Attack.class);
 		natureRepo = db.getRepository(Nature.class);
 		npcRepo = db.getRepository(DbNPC.class);
+		letRepo = db.getRepository(LocationEncounterTable.class);
 	}
 	
 	public static void closeDb() {
@@ -108,5 +111,13 @@ public class NitriteManager {
 	
 	public static void saveNpc(DbNPC npc) {
 		npcRepo.insert(npc);
+	}
+	
+	public static LocationEncounterTable getLetByLocationName(String locationName) {
+		return letRepo.find(ObjectFilters.eq("locationName", locationName)).firstOrDefault();
+	}
+	
+	public static void saveLet(LocationEncounterTable let) {
+		letRepo.insert(let);
 	}
 }
