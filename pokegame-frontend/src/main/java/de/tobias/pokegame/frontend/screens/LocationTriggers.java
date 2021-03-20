@@ -3,6 +3,7 @@ package de.tobias.pokegame.frontend.screens;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.graphics.PositionLockCamera;
 import de.tobias.pokegame.frontend.entities.Player;
+import de.tobias.pokegame.frontend.menu.LocationSign;
 
 public class LocationTriggers {
 	
@@ -13,6 +14,8 @@ public class LocationTriggers {
 			Game.world().loadEnvironment(whereto);
 			Player.instance().setLocation(Game.world().environment().getSpawnpoint("spawn").getLocation());
 			Game.world().setCamera(new PositionLockCamera(Player.instance()));
+			
+			LocationSign.instance().setVisibleWithText(whereto);
 		});
 	}
 }
