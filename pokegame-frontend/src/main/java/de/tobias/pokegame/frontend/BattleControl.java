@@ -6,7 +6,9 @@ import java.util.List;
 import de.gurkenlabs.litiengine.Game;
 import de.tobias.pokegame.backend.calc.DamageCalc;
 import de.tobias.pokegame.backend.calc.TypeCalc;
+import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
+import de.tobias.pokegame.backend.wild.MonsterGenerator;
 import de.tobias.pokegame.frontend.entities.EnemyMonster;
 import de.tobias.pokegame.frontend.entities.EnemyMonsterController;
 import de.tobias.pokegame.frontend.entities.PlayerMonster;
@@ -23,15 +25,45 @@ public class BattleControl {
 	private static boolean isPlayerAtTurn = true;
 	private static String lastPlayerAttack;
 	private static String lastEnemyAttack;
-
-	public static void startBattle() {
-		Game.window().getRenderComponent().fadeOut(1500);
+	
+	public static void startWildBattle(int registryNumber) {
+		CurrentMonster encounter = MonsterGenerator.generateMonster(registryNumber);
+		EnemyMonster.instance().set(encounter);
 		
-		// TODO when the battle is starting you will have to determine which monsters will be
-		// sent into battle by the participants
 		// PlayerMonster.instance().set(Player.instance().getGamestate().getPlayerTeam().get(0));
 		PlayerMonster.instance().set(NitriteManager.getCurrentMonsterByName("placeholder"));
+		
+		// Adding dialogue
+		List<String> lines = new ArrayList<String>();
+		lines.add("A wild" + encounter.getName() + " appears!");
+		lines.add("Choose your attack!");
+		lines.add("[ask for input]");
+		Dialog.instance().addToQueue(lines);
+		
+		startBattle();
+	}
+	
+	public static void startTrainerBattle(String trainerName) {
+		// TODO when the battle is starting you will have to determine which monsters will be
+		// sent into battle by the opposing trainer
 		EnemyMonster.instance().set(NitriteManager.getCurrentMonsterByName("placeholder"));
+		
+		// PlayerMonster.instance().set(Player.instance().getGamestate().getPlayerTeam().get(0));
+		PlayerMonster.instance().set(NitriteManager.getCurrentMonsterByName("placeholder"));
+		
+		// Adding dialogue
+		List<String> lines = new ArrayList<String>();
+		lines.add("Trainer wants to battle!");
+		lines.add("Choose your attack!");
+		lines.add("[ask for input]");
+		Dialog.instance().addToQueue(lines);
+		
+		startBattle();
+	}
+	
+	private static void startBattle() {
+		Game.window().getRenderComponent().fadeOut(1500);
+		
 		AttackMenu.instance().set(PlayerMonster.instance());
 		
 		Game.loop().perform(2500, () -> {
@@ -40,14 +72,10 @@ public class BattleControl {
 			Game.screens().display("BATTLE");
 			Game.world().loadEnvironment("battle");
 			Dialog.instance().setVisible(true);
+			Dialog.instance().enable(true);
 			GameLogic.setState(GameState.BATTLE);
 		});
 		
-		List<String> lines = new ArrayList<String>();
-		lines.add("Trainer wants to battle!");
-		lines.add("Choose your attack!");
-		lines.add("[ask for input]");
-		Dialog.instance().addToQueue(lines);
 		AttackMenu.instance().setEnabled(false);
 	}
 	

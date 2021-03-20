@@ -59,7 +59,7 @@ public class Dialog extends GuiComponent {
 				if ("[battle]".equals(queue.get(1))) {
 					setVisible(false);
 					queue.remove(1);
-					BattleControl.startBattle();
+					BattleControl.startTrainerBattle(""); // TODO trainer name dynamically
 				} else if ("[ask for input]".equals(queue.get(1))) {
 					enable(false);
 					queue.remove(1);
