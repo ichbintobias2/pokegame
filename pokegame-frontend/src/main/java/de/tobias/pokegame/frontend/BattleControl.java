@@ -12,6 +12,7 @@ import de.tobias.pokegame.backend.wild.MonsterGenerator;
 import de.tobias.pokegame.frontend.entities.EnemyMonster;
 import de.tobias.pokegame.frontend.entities.EnemyMonsterController;
 import de.tobias.pokegame.frontend.entities.PlayerMonster;
+import de.tobias.pokegame.frontend.entities.Savegame;
 import de.tobias.pokegame.frontend.enums.GameState;
 import de.tobias.pokegame.frontend.menu.AttackMenu;
 import de.tobias.pokegame.frontend.menu.BattleMenu;
@@ -30,9 +31,6 @@ public class BattleControl {
 		CurrentMonster encounter = MonsterGenerator.generateMonster(registryNumber);
 		EnemyMonster.instance().set(encounter);
 		
-		// PlayerMonster.instance().set(Player.instance().getGamestate().getPlayerTeam().get(0));
-		PlayerMonster.instance().set(NitriteManager.getCurrentMonsterByName("placeholder"));
-		
 		// Adding dialogue
 		List<String> lines = new ArrayList<String>();
 		lines.add("A wild" + encounter.getName() + " appears!");
@@ -48,9 +46,6 @@ public class BattleControl {
 		// sent into battle by the opposing trainer
 		EnemyMonster.instance().set(NitriteManager.getCurrentMonsterByName("placeholder"));
 		
-		// PlayerMonster.instance().set(Player.instance().getGamestate().getPlayerTeam().get(0));
-		PlayerMonster.instance().set(NitriteManager.getCurrentMonsterByName("placeholder"));
-		
 		// Adding dialogue
 		List<String> lines = new ArrayList<String>();
 		lines.add("Trainer wants to battle!");
@@ -63,6 +58,9 @@ public class BattleControl {
 	
 	private static void startBattle() {
 		Game.window().getRenderComponent().fadeOut(1500);
+		
+		CurrentMonster firstFromTeam = Savegame.getPlayerTeam().get(0);
+		PlayerMonster.instance().set(firstFromTeam);
 		
 		AttackMenu.instance().set(PlayerMonster.instance());
 		

@@ -3,6 +3,8 @@ package de.tobias.pokegame.backend.entities.monster;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dizitart.no2.objects.Id;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CurrentMonster {
+	
+	@Id
+	private long id;
 	
 	private int registryNumber;
 	private String name;

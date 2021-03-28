@@ -10,7 +10,7 @@ import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 public class MonsterGenerator {
 
 	public static CurrentMonster generateMonster(int registryNumber) {
-		String name = ""; // get from DbMonster by registryNumber
+		String name = ""; // TODO get name from DbMonster by registryNumber
 		int level = 5;
 		List<String> types = Arrays.asList("Fire");
 		
@@ -22,19 +22,20 @@ public class MonsterGenerator {
 		int dvSpDef = random.nextInt(32);
 		int dvSpeed = random.nextInt(32);
 		
-		return new CurrentMonster(registryNumber, name, types, level, getRandomNature(), getRandomAttacks(), getHeldItem(), null, level, null, dvHp, dvAttack, dvDefense, dvSpAtk, dvSpDef, dvSpeed, 0, 0, 0, 0, 0, 0);
+		// TODO hardcoded id
+		return new CurrentMonster(0, registryNumber, name, types, level, getRandomNature(), getRandomAttacks(), getHeldItem(), null, level, null, dvHp, dvAttack, dvDefense, dvSpAtk, dvSpDef, dvSpeed, 0, 0, 0, 0, 0, 0);
 	}
-
+	
 	private static String getHeldItem() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	private static List<String> getRandomAttacks() {
 		// TODO Auto-generated method stub
 		return new ArrayList<String>();
 	}
-
+	
 	private static String getRandomNature() {
 		// TODO Auto-generated method stub
 		return "Default";

@@ -16,7 +16,13 @@
     } ]
   }, {
     "type" : "de.tobias.pokegame.backend.entities.monster.CurrentMonster",
-    "indices" : [ ],
+    "indices" : [ {
+      "index" : {
+        "indexType" : "Unique",
+        "field" : "id",
+        "collectionName" : "de.tobias.pokegame.backend.entities.monster.CurrentMonster"
+      }
+    } ],
     "data" : [ {
       "key" : 6358983984900,
       "value" : {
@@ -100,10 +106,25 @@
         "totalSeen" : 0,
         "totalCaught" : 0,
         "earnedBadges" : 0,
-        "playerTeam" : [ ],
+        "playerTeam" : [ 6358983984900 ],
         "_id" : 1422009629800,
         "_revision" : 1,
         "_modified" : 1615657506259
+      }
+    }, {
+      "key" : 13159828923300,
+      "value" : {
+        "playerLocationMap" : null,
+        "playerLocationX" : null,
+        "playerLocationY" : null,
+        "totalTimePlayed" : null,
+        "totalSeen" : 0,
+        "totalCaught" : 0,
+        "earnedBadges" : 0,
+        "playerTeam" : [ ],
+        "_id" : 13159828923300,
+        "_revision" : 1,
+        "_modified" : 1616263825919
       }
     } ]
   }, {

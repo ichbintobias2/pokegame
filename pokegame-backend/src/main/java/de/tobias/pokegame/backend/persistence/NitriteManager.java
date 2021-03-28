@@ -13,6 +13,7 @@ import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 import de.tobias.pokegame.backend.entities.monster.Nature;
 import de.tobias.pokegame.backend.entities.monster.Type;
 import de.tobias.pokegame.backend.entities.npc.DbNPC;
+import de.tobias.pokegame.backend.entities.player.Gamestate;
 
 public class NitriteManager {
 	
@@ -24,6 +25,7 @@ public class NitriteManager {
 	private static ObjectRepository<Nature> natureRepo;
 	private static ObjectRepository<DbNPC> npcRepo;
 	private static ObjectRepository<LocationEncounterTable> letRepo;
+	private static ObjectRepository<Gamestate> gsRepo;
 	
 	private static String dbPath = "../pokegame-backend/src/main/resources/nitrite.db";
 	private static String filepath = "../pokegame-backend/src/main/resources/export.json";
@@ -44,6 +46,7 @@ public class NitriteManager {
 		natureRepo = db.getRepository(Nature.class);
 		npcRepo = db.getRepository(DbNPC.class);
 		letRepo = db.getRepository(LocationEncounterTable.class);
+		gsRepo = db.getRepository(Gamestate.class);
 	}
 	
 	public static void closeDb() {
@@ -75,6 +78,10 @@ public class NitriteManager {
 	
 	public static CurrentMonster getCurrentMonsterByName(String name) {
 		return currentMonsterRepo.find(ObjectFilters.eq("name", name)).firstOrDefault();
+	}
+	
+	public static CurrentMonster getCurrentMonsterById(long id) {
+		return currentMonsterRepo.find(ObjectFilters.eq("_id", id)).firstOrDefault();
 	}
 	
 	public static void saveCurrentMonster(CurrentMonster monster) {
@@ -119,5 +126,13 @@ public class NitriteManager {
 	
 	public static void saveLet(LocationEncounterTable let) {
 		letRepo.insert(let);
+	}
+	
+	public static Gamestate loadGamestate() {
+		return gsRepo.find().firstOrDefault();
+	}
+	
+	public static void saveGamestate(Gamestate gs) {
+		gsRepo.insert(gs);
 	}
 }
