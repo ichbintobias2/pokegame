@@ -1,20 +1,25 @@
 package de.tobias.pokegame.frontend.screens;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.gurkenlabs.litiengine.Game;
+import de.gurkenlabs.litiengine.graphics.ImageRenderer;
+import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
+import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.frontend.BattleControl;
 import de.tobias.pokegame.frontend.GameLogic;
+import de.tobias.pokegame.frontend.enums.Fonts;
 import de.tobias.pokegame.frontend.enums.GameState;
 import de.tobias.pokegame.frontend.enums.SoundControl;
 import de.tobias.pokegame.frontend.menu.BattleMenu;
 
 public class Dialog extends GuiComponent {
-	private final int PADDING = 10;
+	
 	private List<String> queue = new ArrayList<String>();
 	private String currentLine = "";
 	
@@ -22,9 +27,15 @@ public class Dialog extends GuiComponent {
 	
 	private boolean render = false;
 	private boolean enabled = false;
-
+	
+	private double scaleFactor = Game.window().getHeight() / 240;
+	private BufferedImage dialogImage = Resources.images().get("src/main/resources/sprites/dialog/dialog1.png");
+	
+	private double x = (Game.window().getWidth() / 2.0) - ((dialogImage.getWidth() * scaleFactor) / 2.0);
+	private double y =  Game.window().getHeight() * 0.75;
+	
 	private Dialog() {
-		super(0, 0, Game.window().getResolution().getWidth(), Game.window().getResolution().getHeight());
+		super(0, 0);
 	}
 	
 	public static Dialog instance() {
@@ -34,20 +45,16 @@ public class Dialog extends GuiComponent {
 		
 		return instance;
 	}
-
+	
 	@Override
 	public void render(Graphics2D g) {
 		super.render(g);
-
+		
 		if (render) {
-			int w = (int) (Game.window().getResolution().getWidth() - (PADDING * 2));
-			int h = (int) (Game.window().getResolution().getHeight() / 5);
-			
-			int x = PADDING;
-			int y = (int) (Game.window().getResolution().getHeight() - h - PADDING);
-			
-			g.draw(new Rectangle(x, y, w, h));
-			g.drawString(currentLine, x, y + 10);
+			ImageRenderer.renderScaled(g, dialogImage, x, y, scaleFactor);
+			g.setFont(Fonts.PIXEL_EMULATOR.deriveFont(18f));
+			g.setColor(Color.BLACK);
+			TextRenderer.renderWithLinebreaks(g, currentLine, x + 30, y + 30, (dialogImage.getWidth() * scaleFactor) - 35);
 		}
 	}
 	
