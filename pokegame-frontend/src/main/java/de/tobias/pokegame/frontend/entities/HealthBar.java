@@ -8,35 +8,40 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.enums.GameState;
+import lombok.Getter;
+import lombok.Setter;
 
 public class HealthBar extends GuiComponent {
+	
 	private int x;
 	private int y;
-	private boolean isPlayer;
 	
-	public HealthBar(int x, int y, boolean isPlayer) {
+	@Getter @Setter
+	private Monster monster;
+	
+	public HealthBar(int x, int y, Monster monster) {
 		super(x, y);
-		this.isPlayer = isPlayer;
+		this.x = x;
+		this.y = y;
+		this.monster = monster;
+	}
+	
+	public HealthBar(int x, int y) {
+		super(x, y);
 		this.x = x;
 		this.y = y;
 	}
 	
 	@Override
 	public void render(Graphics2D g) {
-		if (GameLogic.getState() == GameState.BATTLE) {
+		if (GameLogic.getState() == GameState.BATTLE && monster != null) {
 			int w = (int) (Game.window().getResolution().getWidth() / 4);
 			int h = (int) (Game.window().getResolution().getHeight() / 8);
-			
-			Monster monster;
-			if (isPlayer)
-				monster = PlayerMonster.instance();
-			else 
-				monster = EnemyMonster.instance();
 			
 			int currentHp = monster.getStats().getCurrentHp();
 			int maxHp = monster.getStats().getMaxHp();
 			double percent = (double) currentHp / (double) maxHp;
-
+			
 			// Draw surrounding box
 			g.setColor(Color.WHITE);
 			g.fillRect(x, y, w, h);

@@ -33,18 +33,19 @@ public class Savegame {
 		playerTeam = new ArrayList<CurrentMonster>();
 		
 		for (Long monsterId : teamIds) {
-			playerTeam.add(NitriteManager.getCurrentMonsterById(monsterId));
+			CurrentMonster dbEntry = NitriteManager.getCurrentMonsterById(monsterId);
+			playerTeam.add(dbEntry);
 		}
 	}
 	
-	public static void saveGame() {
+	/* public static void saveGame() {
 		List<Long> teamIds = new ArrayList<Long>();
 		
-		for (CurrentMonster monster : playerTeam) {
-			teamIds.add(monster.getId());
+		for (Monster monster : playerTeam) {
+			teamIds.add(monster.getn);
 		}
 		
 		Gamestate newGamestate = new Gamestate(currentLocation, null, null, null, 0, 0, 0, teamIds);
 		NitriteManager.saveGamestate(newGamestate);
-	}
+	} */
 }
