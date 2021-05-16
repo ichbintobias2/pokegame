@@ -1,12 +1,16 @@
 package de.tobias.pokegame.frontend.entities;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 import de.gurkenlabs.litiengine.Game;
+import de.gurkenlabs.litiengine.graphics.ImageRenderer;
+import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
+import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.frontend.GameLogic;
+import de.tobias.pokegame.frontend.enums.Fonts;
 import de.tobias.pokegame.frontend.enums.GameState;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +19,9 @@ public class HealthBar extends GuiComponent {
 	
 	private int x;
 	private int y;
+	
+	private BufferedImage healthBox = Resources.images().get("src/main/resources/sprites/battle/healthbar1.png");
+	private int scaleFactor = Game.window().getHeight() / 240;
 	
 	@Getter @Setter
 	private Monster monster;
@@ -26,42 +33,30 @@ public class HealthBar extends GuiComponent {
 		this.monster = monster;
 	}
 	
-	public HealthBar(int x, int y) {
-		super(x, y);
-		this.x = x;
-		this.y = y;
-	}
-	
 	@Override
 	public void render(Graphics2D g) {
 		if (GameLogic.getState() == GameState.BATTLE && monster != null) {
-			int w = (int) (Game.window().getResolution().getWidth() / 4);
-			int h = (int) (Game.window().getResolution().getHeight() / 8);
-			
 			int currentHp = monster.getStats().getCurrentHp();
 			int maxHp = monster.getStats().getMaxHp();
 			double percent = (double) currentHp / (double) maxHp;
 			
 			// Draw surrounding box
-			g.setColor(Color.WHITE);
-			g.fillRect(x, y, w, h);
-			
-			g.setColor(Color.BLACK);
-			g.drawRect(x, y, w, h);
+			ImageRenderer.renderScaled(g, healthBox, x, y, scaleFactor);
 			
 			// Draw monster name
-			g.setFont(new Font("", Font.PLAIN, 24));
-			g.drawString("Placeholder1", x + 20, y + 20);
+			g.setFont(Fonts.PIXEL_EMULATOR);
+			g.setColor(Color.black);
+			TextRenderer.render(g, monster.getData().getName(), x + (7 * scaleFactor), y + (10 * scaleFactor));
 			
 			// Draw actual health bar
-			g.drawRect(x, y + 30, w, 30);
-			
+			int w = 52 * scaleFactor;
 			g.setColor(Color.CYAN);
-			g.fillRect(x, y + 30, (int) (w * percent), 30);
+			g.fillRect(x + (17 * scaleFactor), y + (15 * scaleFactor), (int) (w * percent), (4 * scaleFactor));
 			
 			// Draw health in numbers
 			g.setColor(Color.BLACK);
-			g.drawString(monster.getStats().getCurrentHp() +"/"+ monster.getStats().getMaxHp(), x, y + 85);
+			g.setFont(Fonts.PIXEL_EMULATOR.deriveFont(Fonts.textSize - 2f)); // make health a bit smaller than the name
+			TextRenderer.render(g, monster.getStats().getCurrentHp() +"/"+ monster.getStats().getMaxHp(), x + (7 * scaleFactor), y + (26 * scaleFactor));
 		}
 	}
 }

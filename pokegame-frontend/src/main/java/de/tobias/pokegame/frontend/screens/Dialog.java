@@ -52,7 +52,7 @@ public class Dialog extends GuiComponent {
 		
 		if (render) {
 			ImageRenderer.renderScaled(g, dialogImage, x, y, scaleFactor);
-			g.setFont(Fonts.PIXEL_EMULATOR.deriveFont(18f));
+			g.setFont(Fonts.PIXEL_EMULATOR);
 			g.setColor(Color.BLACK);
 			TextRenderer.renderWithLinebreaks(g, currentLine, x + 30, y + 30, (dialogImage.getWidth() * scaleFactor) - 35);
 		}

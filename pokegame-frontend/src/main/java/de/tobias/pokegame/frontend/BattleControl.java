@@ -10,12 +10,14 @@ import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.backend.wild.MonsterGenerator;
 import de.tobias.pokegame.frontend.entities.EnemyMonsterController;
+import de.tobias.pokegame.frontend.entities.HealthBar;
 import de.tobias.pokegame.frontend.entities.Monster;
 import de.tobias.pokegame.frontend.entities.Savegame;
 import de.tobias.pokegame.frontend.enums.GameState;
 import de.tobias.pokegame.frontend.menu.AttackMenu;
 import de.tobias.pokegame.frontend.menu.BattleMenu;
 import de.tobias.pokegame.frontend.menu.PauseMenu;
+import de.tobias.pokegame.frontend.screens.BattleScreen;
 import de.tobias.pokegame.frontend.screens.Dialog;
 import lombok.Getter;
 import lombok.Setter;
@@ -79,6 +81,13 @@ public class BattleControl {
 		
 		playerMonster = new Monster(40, 50, Savegame.getPlayerTeam().get(0));
 		Game.world().getEnvironment("battle").add(playerMonster);
+		
+		// TODO this is a messy approach, it works but surely could be less complicated
+		HealthBar hbPlayer = new HealthBar(800, 700, playerMonster);
+		HealthBar hbEnemy = new HealthBar(40, 25, enemyMonster);
+		
+		BattleScreen.addToScreen(hbPlayer);
+		BattleScreen.addToScreen(hbEnemy);
 		
 		AttackMenu.instance().set(playerMonster);
 		
