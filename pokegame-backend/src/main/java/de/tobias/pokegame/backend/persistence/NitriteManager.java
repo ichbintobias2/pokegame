@@ -55,13 +55,13 @@ public class NitriteManager {
 	}
 	
 	public static void importDb() {
-		Importer importer = Importer.of(db);
-		importer.importFrom(filepath);
+		if (db.listRepositories().isEmpty()) {
+			Importer.of(db).importFrom(filepath);
+		}
 	}
 	
 	public static void exportDb() {
-		Exporter exporter = Exporter.of(db);
-		exporter.exportTo(filepath);
+		Exporter.of(db).exportTo(filepath);
 	}
 	
 	public static BaseMonster getBaseMonsterByName(String name) {

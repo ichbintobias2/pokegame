@@ -28,6 +28,9 @@ public class PokeGameApplication {
 		PlayerInput.init();
 		GameLogic.init();
 		
+		// import database if currently empty
+		NitriteManager.importDb();
+		
 		// adding all screens that will be used
 		Game.screens().add(new IngameScreen());
 		Game.screens().add(new MainMenuScreen());
