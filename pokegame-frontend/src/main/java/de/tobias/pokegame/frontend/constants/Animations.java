@@ -1,6 +1,6 @@
-package de.tobias.pokegame.frontend.enums;
+package de.tobias.pokegame.frontend.constants;
 
-public class Animations {
+public abstract class Animations {
 	
 	public static final String BASE_PLAYER = "-player";
 	public static final String BASE_OPPONENT = "-opponent";

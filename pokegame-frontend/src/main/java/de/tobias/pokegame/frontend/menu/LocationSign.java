@@ -6,7 +6,7 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
 
 public class LocationSign extends GuiComponent {
-
+	
 	private static LocationSign instance;
 	
 	private long timestamp;
@@ -20,14 +20,14 @@ public class LocationSign extends GuiComponent {
 		if (instance == null) {
 			instance = new LocationSign();
 		}
-
+		
 		return instance;
 	}
 	
 	@Override
 	public void render(Graphics2D g) {
 		if (Game.time().since(timestamp) < timestamp +3000) {
-			// do things here
+			// TODO add image and render locationText on it
 		}
 	}
 	

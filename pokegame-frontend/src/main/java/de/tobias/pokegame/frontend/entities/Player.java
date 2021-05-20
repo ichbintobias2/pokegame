@@ -17,7 +17,7 @@ import de.gurkenlabs.litiengine.util.geom.GeometricUtilities;
 import de.tobias.pokegame.backend.wild.EncounterCheck;
 import de.tobias.pokegame.frontend.BattleControl;
 import de.tobias.pokegame.frontend.GameLogic;
-import de.tobias.pokegame.frontend.enums.GameState;
+import de.tobias.pokegame.frontend.constants.GameState;
 
 @EntityInfo(width = 16, height = 16)
 @MovementInfo(velocity = 70)
@@ -27,10 +27,10 @@ public class Player extends Creature implements IUpdateable {
 	private static Player instance;
 	
 	private boolean cooldown = false;
-
+	
 	private Player() {
 		super("src\\main\\resources\\sprites\\player");
-
+		
 		KeyboardEntityController<Player> movementController = new KeyboardEntityController<>(this);
 	    movementController.addUpKey(KeyEvent.VK_UP);
 	    movementController.addDownKey(KeyEvent.VK_DOWN);
@@ -43,25 +43,25 @@ public class Player extends Creature implements IUpdateable {
 			return GameLogic.getState() == GameState.INGAME;
 		});
 	}
-
+	
 	public static Player instance() {
 		if (instance == null) {
 			instance = new Player();
 		}
-
+		
 		return instance;
 	}
 
 	@Override
 	public void update() {
-
+		
 	}
 	
 	public void talkToNPC() {
 		if (GameLogic.getState() != GameState.INGAME) {
 			return;
 		}
-
+		
 		for (IEntity entity : Game.world().environment()
 				.findEntities(GeometricUtilities.extrude(Player.instance().getBoundingBox(), 2))) {
 			if (entity instanceof Entity) {

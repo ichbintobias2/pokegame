@@ -6,7 +6,7 @@ import de.tobias.pokegame.backend.entities.location.LocationEncounterTable;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 
 public class EncounterCheck {
-
+	
 	public static boolean isEncountered() {
 		int localEncounterPercentage = 50;
 		

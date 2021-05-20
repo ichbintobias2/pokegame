@@ -9,9 +9,9 @@ import de.gurkenlabs.litiengine.entities.Spawnpoint;
 import de.gurkenlabs.litiengine.environment.CreatureMapObjectLoader;
 import de.gurkenlabs.litiengine.graphics.Camera;
 import de.gurkenlabs.litiengine.graphics.PositionLockCamera;
+import de.tobias.pokegame.frontend.constants.GameState;
 import de.tobias.pokegame.frontend.entities.NPC;
 import de.tobias.pokegame.frontend.entities.Player;
-import de.tobias.pokegame.frontend.enums.GameState;
 import de.tobias.pokegame.frontend.menu.PauseMenu;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,29 +25,29 @@ public class GameLogic {
 	
 	@Getter @Setter
 	private static Locale locale = Locale.getDefault();
-
+	
 	public static void init() {
 		// Register Objects here
 		CreatureMapObjectLoader.registerCustomCreatureType(NPC.class);
-
+		
 		// Register Props here
 		// PropMapObjectLoader.registerCustomPropType(HealthPot.class);
-
+		
 		Camera camera = new PositionLockCamera(Player.instance());
 		camera.setClampToMap(true);
 		Game.world().setCamera(camera);
-
+		
 		Game.world().onLoaded(e -> {
 			if (e.getMap().getName().equals("title")) {
 				return;
 			}
-
+			
 			for (Prop prop : Game.world().environment().getProps()) {
 				prop.setIndestructible(true);
 			}
-
+			
 			Game.loop().perform(500, () -> Game.window().getRenderComponent().fadeIn(500));
-
+			
 			// spawn the player instance on the spawn point with the name "spawn"
 			Spawnpoint enter = e.getSpawnpoint("spawn");
 			

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Gamestate {
-
+	
 	private String playerLocationMap;
 	private String playerLocationX;
 	private String playerLocationY;

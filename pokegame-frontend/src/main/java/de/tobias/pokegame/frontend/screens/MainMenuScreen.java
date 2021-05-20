@@ -8,23 +8,25 @@ import de.gurkenlabs.litiengine.IUpdateable;
 import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.screens.Screen;
 import de.tobias.pokegame.frontend.GameLogic;
-import de.tobias.pokegame.frontend.enums.SoundControl;
+import de.tobias.pokegame.frontend.constants.Fonts;
+import de.tobias.pokegame.frontend.constants.SoundControl;
 import de.tobias.pokegame.frontend.menu.MainMenu;
 
 public class MainMenuScreen extends Screen implements IUpdateable {
+	
 	private static final String COPYRIGHT = GameLogic.localize("CopyrightNote");
-
+	
 	public long lastPlayed;
-
+	
 	public MainMenuScreen() {
 		super("MAIN");
 	}
-
+	
 	@Override
 	protected void initializeComponents() {		
 		this.getComponents().add(new MainMenu());
 	}
-
+	
 	@Override
 	public void prepare() {
 		super.prepare();
@@ -34,26 +36,28 @@ public class MainMenuScreen extends Screen implements IUpdateable {
 		Game.graphics().setBaseRenderScale(6f * Game.window().getResolutionScale());
 		Game.world().loadEnvironment("mainmenu");
 	}
-
+	
 	@Override
 	public void render(final Graphics2D g) {
 		Game.world().environment().render(g);
 		
-		final double stringWidth = g.getFontMetrics().stringWidth(COPYRIGHT);
+		double stringWidth = g.getFontMetrics().stringWidth(COPYRIGHT);
+		double centerX = Game.window().getResolution().getWidth() / 2.0;
+		
 	    g.setColor(Color.WHITE);
-	    final double centerX = Game.window().getResolution().getWidth() / 2.0;
-	    TextRenderer.renderWithOutline(g, COPYRIGHT, centerX - stringWidth / 2, Game.window().getResolution().getHeight() * 19 / 20, Color.BLACK);
+	    g.setFont(Fonts.PIXEL_EMULATOR);
+	    TextRenderer.renderWithOutline(g, COPYRIGHT, centerX - (stringWidth / 2), Game.window().getResolution().getHeight() * 19 / 20, Color.BLACK);
 		
 		super.render(g);
 	}
-
+	
 	@Override
 	public void suspend() {
 		super.suspend();
 		Game.loop().detach(this);
 		Game.audio().stopMusic();
 	}
-
+	
 	@Override
 	public void update() {
 		if (this.lastPlayed == 0) {

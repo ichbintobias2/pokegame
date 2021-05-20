@@ -6,7 +6,7 @@ import de.gurkenlabs.litiengine.graphics.animation.Animation;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.backend.calc.StatCalc;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
-import de.tobias.pokegame.frontend.enums.Animations;
+import de.tobias.pokegame.frontend.constants.Animations;
 
 @EntityInfo(width = 64, height = 64)
 public class Monster extends Creature {

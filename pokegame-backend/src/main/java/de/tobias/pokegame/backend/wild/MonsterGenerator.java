@@ -8,7 +8,7 @@ import java.util.Random;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 
 public class MonsterGenerator {
-
+	
 	public static CurrentMonster generateMonster(int registryNumber) {
 		String name = ""; // TODO get name from DbMonster by registryNumber
 		int level = 5;

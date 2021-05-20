@@ -4,12 +4,14 @@ import java.awt.Graphics2D;
 
 import de.gurkenlabs.litiengine.Game;
 import de.tobias.pokegame.frontend.GameLogic;
-import de.tobias.pokegame.frontend.enums.GameState;
-import de.tobias.pokegame.frontend.enums.SoundControl;
+import de.tobias.pokegame.frontend.constants.GameState;
+import de.tobias.pokegame.frontend.constants.SoundControl;
 
 public class PauseMenu extends KeyboardMenu {
+	
 	private static final double x = Game.window().getResolution().getWidth() / 1.30;
 	private static final double y = Game.window().getResolution().getHeight() * 0.1;
+	
 	private static final double width = 400;
 	private static final double height = 400;
 	
@@ -22,7 +24,7 @@ public class PauseMenu extends KeyboardMenu {
 	private static final String exitText = GameLogic.localize("pause.Exit");
 	
 	private boolean once = false;
-
+	
 	private PauseMenu() {
 		super(x, y, width, height, continueText, teamText, playerText, optionsText, exitText);
 		
@@ -52,7 +54,7 @@ public class PauseMenu extends KeyboardMenu {
 		if (instance == null) {
 			instance = new PauseMenu();
 		}
-
+		
 		return instance;
 	}
 	

@@ -13,9 +13,9 @@ import de.gurkenlabs.litiengine.gui.GuiComponent;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.frontend.BattleControl;
 import de.tobias.pokegame.frontend.GameLogic;
-import de.tobias.pokegame.frontend.enums.Fonts;
-import de.tobias.pokegame.frontend.enums.GameState;
-import de.tobias.pokegame.frontend.enums.SoundControl;
+import de.tobias.pokegame.frontend.constants.Fonts;
+import de.tobias.pokegame.frontend.constants.GameState;
+import de.tobias.pokegame.frontend.constants.SoundControl;
 import de.tobias.pokegame.frontend.menu.BattleMenu;
 
 public class Dialog extends GuiComponent {

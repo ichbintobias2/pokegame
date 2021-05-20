@@ -6,6 +6,7 @@ import de.tobias.pokegame.backend.entities.monster.Type;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 
 public class TypeCalc {
+	
 	private String attackName;
 	private List<String> defenseTypings;
 	
@@ -13,7 +14,7 @@ public class TypeCalc {
 		this.attackName = attackName;
 		this.defenseTypings = defenseTypings;
 	}
-
+	
 	public String getEffectivenessAsString() {
 		double typeMultiplier = getTypeMultiplier();
 		
@@ -25,7 +26,9 @@ public class TypeCalc {
 			return "Es ist nicht sehr effektiv...";
 		} else if (typeMultiplier == 0) {
 			return "Es hatte keine Wirkung...";
-		} else throw new RuntimeException("Could not determine effectiveness!");
+		} else {
+			throw new RuntimeException("Could not determine effectiveness!");
+		}
 	}
 	
 	public double getTypeMultiplier() {
@@ -50,6 +53,8 @@ public class TypeCalc {
 			return Effectiveness.HALF;
 		} else if (atkType.getNoDamageTo().contains(defenseType) &&  defType.getNoDamageFrom().contains(attackType)) {
 			return Effectiveness.ZERO;
-		} else return Effectiveness.NORMAL;
+		} else {
+			return Effectiveness.NORMAL;
+		}
 	}
 }

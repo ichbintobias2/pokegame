@@ -10,12 +10,13 @@ import de.gurkenlabs.litiengine.entities.EntityInfo;
 import de.tobias.pokegame.backend.entities.npc.DbNPC;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.frontend.GameLogic;
-import de.tobias.pokegame.frontend.enums.GameState;
+import de.tobias.pokegame.frontend.constants.GameState;
 import de.tobias.pokegame.frontend.screens.Dialog;
 
 @EntityInfo(width = 16, height = 16)
 @AnimationInfo(spritePrefix = { "player", "npc_placeholder" })
 public class NPC extends Creature {
+	
 	private List<String> dialogLines = new ArrayList<String>();
 	private int cooldown = 500;
 	private long since = 0;
@@ -36,8 +37,6 @@ public class NPC extends Creature {
 		this.onMessage(e -> {
 			getTalkedTo();
 		});
-		
-		// this.addController(new NpcController(this));
 	}
 	
 	private void getTalkedTo() {

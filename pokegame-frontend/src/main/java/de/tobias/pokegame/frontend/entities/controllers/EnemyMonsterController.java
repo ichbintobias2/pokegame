@@ -1,8 +1,9 @@
-package de.tobias.pokegame.frontend.entities;
+package de.tobias.pokegame.frontend.entities.controllers;
 
 import java.util.Random;
 
 import de.tobias.pokegame.frontend.BattleControl;
+import de.tobias.pokegame.frontend.entities.Monster;
 
 public class EnemyMonsterController {
 	

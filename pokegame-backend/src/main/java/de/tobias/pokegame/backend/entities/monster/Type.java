@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class Type {
-
+	
 	private String name;
 	private List<String> doubleDamageTo = new ArrayList<String>();
 	private List<String> halfDamageTo = new ArrayList<String>();

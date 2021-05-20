@@ -10,8 +10,8 @@ import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.frontend.GameLogic;
-import de.tobias.pokegame.frontend.enums.Fonts;
-import de.tobias.pokegame.frontend.enums.GameState;
+import de.tobias.pokegame.frontend.constants.Fonts;
+import de.tobias.pokegame.frontend.constants.GameState;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -55,7 +55,7 @@ public class HealthBar extends GuiComponent {
 			
 			// Draw health in numbers
 			g.setColor(Color.BLACK);
-			g.setFont(Fonts.PIXEL_EMULATOR.deriveFont(Fonts.textSize - 2f)); // make health a bit smaller than the name
+			g.setFont(Fonts.PIXEL_EMULATOR.deriveFont(Fonts.TEXT_SIZE - 2f)); // make health a bit smaller than the name
 			TextRenderer.render(g, monster.getStats().getCurrentHp() +"/"+ monster.getStats().getMaxHp(), x + (7 * scaleFactor), y + (26 * scaleFactor));
 		}
 	}

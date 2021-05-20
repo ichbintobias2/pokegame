@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Nature {
-
+	
 	private String name;
 	private double attack;
 	private double defense;

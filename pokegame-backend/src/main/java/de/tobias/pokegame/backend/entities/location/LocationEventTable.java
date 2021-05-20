@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class LocationEventTable {
-
+	
 	private String locationName;
 	private String eventName;
 	private boolean eventHappened;

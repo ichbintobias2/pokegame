@@ -6,11 +6,12 @@ import de.tobias.pokegame.backend.entities.monster.Nature;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 
 public class StatCalc {
+	
 	private BaseMonster bMonster;
 	private CurrentMonster cMonster;
 	private int damageTaken = 0;
 	
-	Nature natureObject;
+	private Nature natureObject;
 	
 	public StatCalc(CurrentMonster cm) {
 		this.cMonster = cm;

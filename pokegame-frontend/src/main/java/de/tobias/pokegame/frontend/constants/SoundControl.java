@@ -1,9 +1,9 @@
-package de.tobias.pokegame.frontend.enums;
+package de.tobias.pokegame.frontend.constants;
 
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.gurkenlabs.litiengine.sound.Sound;
 
-public class SoundControl {
+public abstract class SoundControl {
 	/*
 	 * TODO this is a placeholder string which should be replaced when the correct sounds
 	 * are added.

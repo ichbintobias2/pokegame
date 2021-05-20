@@ -6,11 +6,11 @@ import de.tobias.pokegame.frontend.menu.LocationSign;
 import de.tobias.pokegame.frontend.menu.PauseMenu;
 
 public class IngameScreen extends GameScreen {
-
+	
 	public IngameScreen() {
 		super("INGAME");
 	}
-
+	
 	@Override
 	protected void initializeComponents() {
 		this.getComponents().add(PauseMenu.instance());

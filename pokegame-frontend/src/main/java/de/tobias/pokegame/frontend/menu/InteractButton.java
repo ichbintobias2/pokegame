@@ -8,8 +8,8 @@ import de.gurkenlabs.litiengine.entities.Trigger;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
 import de.gurkenlabs.litiengine.util.geom.GeometricUtilities;
 import de.tobias.pokegame.frontend.GameLogic;
+import de.tobias.pokegame.frontend.constants.GameState;
 import de.tobias.pokegame.frontend.entities.Player;
-import de.tobias.pokegame.frontend.enums.GameState;
 import de.tobias.pokegame.frontend.screens.LocationTriggers;
 
 public class InteractButton extends GuiComponent {

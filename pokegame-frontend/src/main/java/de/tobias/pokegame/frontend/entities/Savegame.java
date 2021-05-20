@@ -38,14 +38,14 @@ public class Savegame {
 		}
 	}
 	
-	/* public static void saveGame() {
+	public static void saveGame() {
 		List<Long> teamIds = new ArrayList<Long>();
 		
-		for (Monster monster : playerTeam) {
-			teamIds.add(monster.getn);
+		for (CurrentMonster monster : playerTeam) {
+			teamIds.add(monster.getId());
 		}
 		
 		Gamestate newGamestate = new Gamestate(currentLocation, null, null, null, 0, 0, 0, teamIds);
 		NitriteManager.saveGamestate(newGamestate);
-	} */
+	}
 }

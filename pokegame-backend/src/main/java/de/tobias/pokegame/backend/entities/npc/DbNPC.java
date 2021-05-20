@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class DbNPC {
-
+	
 	private String name;
 	private boolean wantsToBattle;
 	private List<String> team = new ArrayList<String>();
