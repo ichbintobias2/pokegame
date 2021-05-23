@@ -35,9 +35,11 @@ public class NitriteManager {
 	
 	public static void init() {
 		db = Nitrite.builder()
-			    .compressed()
-			    .filePath(dbPath)
-			    .openOrCreate(dbUser, dbPassword);
+				.compressed()
+				.filePath(dbPath)
+				.openOrCreate(dbUser, dbPassword);
+		
+		importDb();
 		
 		baseMonsterRepo = db.getRepository(BaseMonster.class);
 		currentMonsterRepo = db.getRepository(CurrentMonster.class);
