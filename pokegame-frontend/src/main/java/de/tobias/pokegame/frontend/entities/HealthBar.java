@@ -8,10 +8,10 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.graphics.ImageRenderer;
 import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
-import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.constants.Fonts;
 import de.tobias.pokegame.frontend.constants.GameState;
+import de.tobias.pokegame.frontend.constants.Images;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +20,7 @@ public class HealthBar extends GuiComponent {
 	private int x;
 	private int y;
 	
-	private BufferedImage healthBox = Resources.images().get("src/main/resources/sprites/battle/healthbar1.png");
+	private BufferedImage healthBox = Images.HEALTH_BAR_1;
 	private int scaleFactor = Game.window().getHeight() / 240;
 	
 	@Getter @Setter

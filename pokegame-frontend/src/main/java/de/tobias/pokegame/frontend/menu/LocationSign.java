@@ -8,14 +8,14 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.graphics.ImageRenderer;
 import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
-import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.frontend.constants.Fonts;
+import de.tobias.pokegame.frontend.constants.Images;
 
 public class LocationSign extends GuiComponent {
 	
 	private static LocationSign instance;
 	
-	private BufferedImage signImage = Resources.images().get("src/main/resources/sprites/locationsign/locationsign1.png");
+	private BufferedImage signImage = Images.SIGN_1;
 	private double scaleFactor = Game.window().getHeight() / 240;
 	
 	private long timestamp;

@@ -10,11 +10,11 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.graphics.ImageRenderer;
 import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
-import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.frontend.BattleControl;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.constants.Fonts;
 import de.tobias.pokegame.frontend.constants.GameState;
+import de.tobias.pokegame.frontend.constants.Images;
 import de.tobias.pokegame.frontend.constants.SoundControl;
 import de.tobias.pokegame.frontend.menu.BattleMenu;
 
@@ -29,7 +29,7 @@ public class Dialog extends GuiComponent {
 	private boolean enabled = false;
 	
 	private double scaleFactor = Game.window().getHeight() / 240;
-	private BufferedImage dialogImage = Resources.images().get("src/main/resources/sprites/dialog/dialog1.png");
+	private BufferedImage dialogImage = Images.DIALOG_1;
 	
 	private double x = (Game.window().getWidth() / 2.0) - ((dialogImage.getWidth() * scaleFactor) / 2.0);
 	private double y =  Game.window().getHeight() * 0.75;

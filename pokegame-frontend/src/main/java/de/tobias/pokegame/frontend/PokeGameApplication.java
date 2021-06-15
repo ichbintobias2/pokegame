@@ -3,6 +3,7 @@ package de.tobias.pokegame.frontend;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
+import de.tobias.pokegame.frontend.constants.Images;
 import de.tobias.pokegame.frontend.screens.BattleScreen;
 import de.tobias.pokegame.frontend.screens.IngameScreen;
 import de.tobias.pokegame.frontend.screens.MainMenuScreen;
@@ -19,7 +20,7 @@ public class PokeGameApplication {
 		
 		Game.init(args);
 		
-		Game.window().setIcon(Resources.images().get("src\\main\\resources\\sprites\\icon.png"));
+		Game.window().setIcon(Images.GAME_ICON);
 		Game.graphics().setBaseRenderScale(4.001f);
 		
 		Resources.load("game.litidata");
