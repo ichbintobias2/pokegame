@@ -1,13 +1,22 @@
 package de.tobias.pokegame.frontend.menu;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 import de.gurkenlabs.litiengine.Game;
+import de.gurkenlabs.litiengine.graphics.ImageRenderer;
+import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
+import de.gurkenlabs.litiengine.resources.Resources;
+import de.tobias.pokegame.frontend.constants.Fonts;
 
 public class LocationSign extends GuiComponent {
 	
 	private static LocationSign instance;
+	
+	private BufferedImage signImage = Resources.images().get("src/main/resources/sprites/locationsign/locationsign1.png");
+	private double scaleFactor = Game.window().getHeight() / 240;
 	
 	private long timestamp;
 	private String locationText;
@@ -27,7 +36,10 @@ public class LocationSign extends GuiComponent {
 	@Override
 	public void render(Graphics2D g) {
 		if (Game.time().since(timestamp) < timestamp +3000) {
-			// TODO add image and render locationText on it
+			ImageRenderer.renderScaled(g, signImage, 0, 0, scaleFactor);
+			g.setFont(Fonts.PIXEL_EMULATOR);
+			g.setColor(Color.BLACK);
+			TextRenderer.render(g, locationText, 30, 30, false);
 		}
 	}
 	
