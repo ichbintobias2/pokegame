@@ -21,6 +21,10 @@ public class LocationSign extends GuiComponent {
 	private long timestamp;
 	private String locationText;
 	
+	private int x = 20;
+	private int y = 20;
+	private int duration = 2000;
+	
 	private LocationSign() {
 		super(0, 0);
 	}
@@ -35,11 +39,12 @@ public class LocationSign extends GuiComponent {
 	
 	@Override
 	public void render(Graphics2D g) {
-		if (Game.time().since(timestamp) < timestamp +3000) {
-			ImageRenderer.renderScaled(g, signImage, 0, 0, scaleFactor);
+		if (Game.time().since(timestamp) < timestamp + duration) {
 			g.setFont(Fonts.PIXEL_EMULATOR);
 			g.setColor(Color.BLACK);
-			TextRenderer.render(g, locationText, 30, 30, false);
+			
+			ImageRenderer.renderScaled(g, signImage, x, y, scaleFactor);
+			TextRenderer.render(g, locationText, x + 30, y + 30, false);
 		}
 	}
 	
