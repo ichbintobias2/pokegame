@@ -171,11 +171,13 @@
     <object id="1" name="spawn" type="SPAWNPOINT" x="32" y="256" width="16" height="16"/>
     <object id="2" name="npc1" type="CREATURE" x="160" y="288" width="16" height="16">
      <properties>
+      <property name="spawnDirection" value="LEFT"/>
       <property name="spritesheetName" value="npc_placeholder"/>
      </properties>
     </object>
     <object id="3" name="npc2" type="CREATURE" x="80" y="208" width="16" height="16">
      <properties>
+      <property name="spawnDirection" value="LEFT"/>
       <property name="spritesheetName" value="npc_placeholder"/>
      </properties>
     </object>

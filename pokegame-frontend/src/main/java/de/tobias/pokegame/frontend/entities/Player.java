@@ -29,7 +29,7 @@ public class Player extends Creature implements IUpdateable {
 	private boolean cooldown = false;
 	
 	private Player() {
-		super("src\\main\\resources\\sprites\\player");
+		super("npc_placeholder");
 		
 		KeyboardEntityController<Player> movementController = new KeyboardEntityController<>(this);
 	    movementController.addUpKey(KeyEvent.VK_UP);

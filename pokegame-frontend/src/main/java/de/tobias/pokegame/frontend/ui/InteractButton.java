@@ -1,20 +1,28 @@
 package de.tobias.pokegame.frontend.ui;
 
 import java.awt.Graphics2D;
+import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
 
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.IEntity;
 import de.gurkenlabs.litiengine.entities.Trigger;
+import de.gurkenlabs.litiengine.graphics.ImageRenderer;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
 import de.gurkenlabs.litiengine.util.geom.GeometricUtilities;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.constants.GameState;
+import de.tobias.pokegame.frontend.constants.Images;
 import de.tobias.pokegame.frontend.entities.Player;
 import de.tobias.pokegame.frontend.screens.LocationTriggers;
 
 public class InteractButton extends GuiComponent {
 	
 	private static InteractButton instance;
+	
+	private BufferedImage buttonImage = Images.INTERACT_1;
+	
+	private double scaleFactor = (Game.window().getHeight() / 240) / 3;
 	
 	private InteractButton() {
 		super(0, 0);
@@ -31,10 +39,10 @@ public class InteractButton extends GuiComponent {
 	@Override
 	public void render(Graphics2D g) {
 		if (GameLogic.getState() == GameState.INGAME && canTrigger()) {
-			// BufferedImage useButton;
-
-			// final Point2D loc = Game.world().camera().getViewportLocation(Player.instance().getCenter());
-		    // ImageRenderer.render(g, useButton, (loc.getX() * Game.world().camera().getRenderScale() - useButton.getWidth() / 2.0), loc.getY() * Game.world().camera().getRenderScale() - (useButton.getHeight() * 2.5));
+			Point2D loc = Game.world().camera().getViewportLocation(Player.instance().getCenter());
+			double x = loc.getX() * Game.world().camera().getRenderScale() + buttonImage.getWidth() + 20;
+			double y = loc.getY() * Game.world().camera().getRenderScale() - (buttonImage.getHeight() * 2.5 + 15);
+		    ImageRenderer.renderScaled(g, buttonImage, x, y, scaleFactor);
 		}
 	}
 	
