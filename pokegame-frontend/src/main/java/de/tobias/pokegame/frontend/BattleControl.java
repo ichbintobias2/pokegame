@@ -10,7 +10,6 @@ import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.backend.wild.MonsterGenerator;
 import de.tobias.pokegame.frontend.constants.GameState;
-import de.tobias.pokegame.frontend.entities.HealthBar;
 import de.tobias.pokegame.frontend.entities.Monster;
 import de.tobias.pokegame.frontend.entities.Savegame;
 import de.tobias.pokegame.frontend.entities.controllers.EnemyMonsterController;
@@ -18,7 +17,8 @@ import de.tobias.pokegame.frontend.menu.AttackMenu;
 import de.tobias.pokegame.frontend.menu.BattleMenu;
 import de.tobias.pokegame.frontend.menu.PauseMenu;
 import de.tobias.pokegame.frontend.screens.BattleScreen;
-import de.tobias.pokegame.frontend.screens.Dialog;
+import de.tobias.pokegame.frontend.ui.Dialog;
+import de.tobias.pokegame.frontend.ui.HealthBar;
 import lombok.Getter;
 import lombok.Setter;
 

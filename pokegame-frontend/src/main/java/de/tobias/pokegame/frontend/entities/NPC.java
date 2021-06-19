@@ -11,7 +11,7 @@ import de.tobias.pokegame.backend.entities.npc.DbNPC;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.constants.GameState;
-import de.tobias.pokegame.frontend.screens.Dialog;
+import de.tobias.pokegame.frontend.ui.Dialog;
 
 @EntityInfo(width = 16, height = 16)
 @AnimationInfo(spritePrefix = { "player", "npc_placeholder" })

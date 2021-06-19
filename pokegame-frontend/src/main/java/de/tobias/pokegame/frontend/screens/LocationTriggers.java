@@ -3,7 +3,7 @@ package de.tobias.pokegame.frontend.screens;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.graphics.PositionLockCamera;
 import de.tobias.pokegame.frontend.entities.Player;
-import de.tobias.pokegame.frontend.menu.LocationSign;
+import de.tobias.pokegame.frontend.ui.LocationSign;
 
 public class LocationTriggers {
 	

@@ -4,6 +4,7 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
 import de.gurkenlabs.litiengine.gui.screens.GameScreen;
 import de.tobias.pokegame.frontend.menu.BattleMenu;
+import de.tobias.pokegame.frontend.ui.Dialog;
 
 public class BattleScreen extends GameScreen {
 	

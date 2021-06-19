@@ -1,4 +1,4 @@
-package de.tobias.pokegame.frontend.entities;
+package de.tobias.pokegame.frontend.ui;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -12,6 +12,7 @@ import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.constants.Fonts;
 import de.tobias.pokegame.frontend.constants.GameState;
 import de.tobias.pokegame.frontend.constants.Images;
+import de.tobias.pokegame.frontend.entities.Monster;
 import lombok.Getter;
 import lombok.Setter;
 

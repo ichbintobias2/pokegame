@@ -4,8 +4,8 @@ import java.awt.event.KeyEvent;
 
 import de.gurkenlabs.litiengine.input.Input;
 import de.tobias.pokegame.frontend.entities.Player;
-import de.tobias.pokegame.frontend.menu.InteractButton;
-import de.tobias.pokegame.frontend.screens.Dialog;
+import de.tobias.pokegame.frontend.ui.Dialog;
+import de.tobias.pokegame.frontend.ui.InteractButton;
 
 public final class PlayerInput {
 	

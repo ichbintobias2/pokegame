@@ -1,4 +1,4 @@
-package de.tobias.pokegame.frontend.menu;
+package de.tobias.pokegame.frontend.ui;
 
 import java.awt.Graphics2D;
 

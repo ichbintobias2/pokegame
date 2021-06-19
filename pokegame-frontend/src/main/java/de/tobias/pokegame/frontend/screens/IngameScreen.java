@@ -1,9 +1,10 @@
 package de.tobias.pokegame.frontend.screens;
 
 import de.gurkenlabs.litiengine.gui.screens.GameScreen;
-import de.tobias.pokegame.frontend.menu.InteractButton;
-import de.tobias.pokegame.frontend.menu.LocationSign;
 import de.tobias.pokegame.frontend.menu.PauseMenu;
+import de.tobias.pokegame.frontend.ui.Dialog;
+import de.tobias.pokegame.frontend.ui.InteractButton;
+import de.tobias.pokegame.frontend.ui.LocationSign;
 
 public class IngameScreen extends GameScreen {
 	

@@ -1,4 +1,4 @@
-package de.tobias.pokegame.frontend.screens;
+package de.tobias.pokegame.frontend.ui;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
