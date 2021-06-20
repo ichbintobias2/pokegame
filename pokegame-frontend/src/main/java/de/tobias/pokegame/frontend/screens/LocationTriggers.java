@@ -7,15 +7,15 @@ import de.tobias.pokegame.frontend.ui.LocationSign;
 
 public class LocationTriggers {
 	
-	public static void changeLocation(String whereto) {
-		Game.window().getRenderComponent().fadeOut(1500);
+	public static void changeLocation(String targetMap, String targetSpawn) {
+		Game.window().getRenderComponent().fadeOut(750);
 		
-		Game.loop().perform(2500, () -> {
-			Game.world().loadEnvironment(whereto);
-			Player.instance().setLocation(Game.world().environment().getSpawnpoint("spawn").getLocation());
+		Game.loop().perform(1000, () -> {
+			Game.world().loadEnvironment(targetMap);
+			Player.instance().setLocation(Game.world().environment().getSpawnpoint(targetSpawn).getLocation());
 			Game.world().setCamera(new PositionLockCamera(Player.instance()));
 			
-			LocationSign.instance().setVisibleWithText(whereto);
+			LocationSign.instance().setVisibleWithText(targetMap);
 		});
 	}
 }

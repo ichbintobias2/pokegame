@@ -48,7 +48,9 @@ public class InteractButton extends GuiComponent {
 	
 	public void interact() {
 		if (GameLogic.getState() == GameState.INGAME && canTrigger()) {
-			LocationTriggers.changeLocation(getSurroundingTriggerProperty());
+			String targetMap = getSurroundingTriggerProperty("targetMap");
+			String targetSpawn = getSurroundingTriggerProperty("targetSpawn");
+			LocationTriggers.changeLocation(targetMap, targetSpawn);
 		}
 	}
 	
@@ -62,10 +64,10 @@ public class InteractButton extends GuiComponent {
 		return false;
 	}
 	
-	private String getSurroundingTriggerProperty() {
+	private String getSurroundingTriggerProperty(String propertyName) {
 		for (IEntity entity : Game.world().environment().findEntities(GeometricUtilities.extrude(Player.instance().getBoundingBox(), 2))) {
 			if (entity instanceof Trigger) {
-				return entity.getProperties().getStringValue("whereto");
+				return entity.getProperties().getStringValue(propertyName);
 			}
 		}
 		

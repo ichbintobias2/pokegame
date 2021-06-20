@@ -183,12 +183,14 @@
     </object>
     <object id="4" type="TRIGGER" x="16" y="272" width="16" height="16">
      <properties>
-      <property name="whereto" value="route1"/>
+      <property name="targetMap" value="route1"/>
+      <property name="targetSpawn" value="spawnL1"/>
      </properties>
     </object>
     <object id="5" type="TRIGGER" x="16" y="256" width="16" height="16">
      <properties>
-      <property name="whereto" value="route1"/>
+      <property name="targetMap" value="route1"/>
+      <property name="targetSpawn" value="spawnL1"/>
      </properties>
     </object>
    </objectgroup>
@@ -498,7 +500,7 @@
       <property name="whereto" value="level2"/>
      </properties>
     </object>
-    <object id="5" name="spawn" type="SPAWNPOINT" x="272" y="160" width="16" height="16"/>
+    <object id="5" name="spawnL1" type="SPAWNPOINT" x="272" y="160" width="16" height="16"/>
    </objectgroup>
   </map>
  </maps>
