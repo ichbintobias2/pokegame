@@ -11,6 +11,7 @@ import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.backend.wild.MonsterGenerator;
 import de.tobias.pokegame.frontend.constants.GameState;
 import de.tobias.pokegame.frontend.entities.Monster;
+import de.tobias.pokegame.frontend.entities.NPC;
 import de.tobias.pokegame.frontend.entities.Savegame;
 import de.tobias.pokegame.frontend.entities.controllers.EnemyMonsterController;
 import de.tobias.pokegame.frontend.menu.AttackMenu;
@@ -28,6 +29,8 @@ public class BattleControl {
 	private static boolean isPlayerAtTurn = true;
 	private static String lastPlayerAttack;
 	private static String lastEnemyAttack;
+	
+	private static NPC opponent;
 	
 	@Getter @Setter
 	private static Monster playerMonster;
@@ -50,15 +53,16 @@ public class BattleControl {
 		startBattle();
 	}
 	
-	public static void startTrainerBattle(String trainerName) {
+	public static void startTrainerBattle(NPC opposingTrainer) {
 		// TODO when the battle is starting you will have to determine which monsters will be
 		// sent into battle by the opposing trainer
+		opponent = opposingTrainer;
 		enemyMonster = new Monster(180, 25, NitriteManager.getCurrentMonsterByName("placeholder"));
 		Game.world().getEnvironment("battle").add(enemyMonster);
 		
 		// Adding dialogue
 		List<String> lines = new ArrayList<String>();
-		lines.add("Trainer wants to battle!");
+		lines.add(opposingTrainer.getName()+" wants to battle!");
 		lines.add("Choose your attack!");
 		lines.add("[ask for input]");
 		Dialog.instance().addToQueue(lines);
@@ -96,13 +100,15 @@ public class BattleControl {
 	
 	public static void stopBattle() {
 		Game.window().getRenderComponent().fadeOut(1500);
-
+		
 		Game.loop().perform(2500, () -> {
 			Game.world().camera().setClampToMap(false);
 			
 			Game.screens().display("INGAME");
 			Game.world().loadEnvironment("level1"); // TODO do not hardcode
+			Dialog.instance().addToQueue(opponent.getDialogLines(1));
 			Dialog.instance().enable(true);
+			Dialog.instance().setVisible(true);
 			GameLogic.setState(GameState.TALKING);
 			PauseMenu.instance().update();
 		});

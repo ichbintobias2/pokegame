@@ -222,7 +222,7 @@
         "name" : "npc2",
         "wantsToBattle" : false,
         "team" : [ ],
-        "dialogLines" : [ "I'm a placeholder!" ],
+        "dialogLines" : [ [ "I'm a placeholder!" ] ],
         "_id" : 14411939525500,
         "_revision" : 1,
         "_modified" : 1615657506264
@@ -233,7 +233,7 @@
         "name" : "npc1",
         "wantsToBattle" : true,
         "team" : [ ],
-        "dialogLines" : [ "Hello", "Hi", "[battle]" ],
+        "dialogLines" : [ [ "Hello", "Hi", "[battle]" ], [ "GG!" ] ],
         "_id" : 15397724409500,
         "_revision" : 1,
         "_modified" : 1615657506266

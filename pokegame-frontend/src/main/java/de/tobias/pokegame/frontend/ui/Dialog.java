@@ -16,6 +16,7 @@ import de.tobias.pokegame.frontend.constants.Fonts;
 import de.tobias.pokegame.frontend.constants.GameState;
 import de.tobias.pokegame.frontend.constants.Images;
 import de.tobias.pokegame.frontend.constants.SoundControl;
+import de.tobias.pokegame.frontend.entities.NPC;
 import de.tobias.pokegame.frontend.menu.BattleMenu;
 
 public class Dialog extends GuiComponent {
@@ -33,6 +34,8 @@ public class Dialog extends GuiComponent {
 	
 	private double x = (Game.window().getWidth() / 2.0) - ((dialogImage.getWidth() * scaleFactor) / 2.0);
 	private double y =  Game.window().getHeight() * 0.75;
+	
+	private NPC dialogPartner;
 	
 	private Dialog() {
 		super(0, 0);
@@ -66,7 +69,7 @@ public class Dialog extends GuiComponent {
 				if ("[battle]".equals(queue.get(1))) {
 					setVisible(false);
 					queue.remove(1);
-					BattleControl.startTrainerBattle(""); // TODO trainer name dynamically
+					BattleControl.startTrainerBattle(dialogPartner);
 				} else if ("[ask for input]".equals(queue.get(1))) {
 					enable(false);
 					queue.remove(1);
@@ -103,5 +106,9 @@ public class Dialog extends GuiComponent {
 	
 	public void enable(boolean enable) {
 		enabled = enable;
+	}
+
+	public void setDialogPartner(NPC npc) {
+		dialogPartner = npc;
 	}
 }

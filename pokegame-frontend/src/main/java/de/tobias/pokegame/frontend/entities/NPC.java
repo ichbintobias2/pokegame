@@ -17,7 +17,7 @@ import de.tobias.pokegame.frontend.ui.Dialog;
 @AnimationInfo(spritePrefix = { "player", "npc_placeholder" })
 public class NPC extends Creature {
 	
-	private List<String> dialogLines = new ArrayList<String>();
+	private List<List<String>> dialogLines = new ArrayList<List<String>>();
 	private int cooldown = 500;
 	private long since = 0;
 	private boolean once = false;
@@ -41,11 +41,16 @@ public class NPC extends Creature {
 	
 	private void getTalkedTo() {
 		if (Game.time().since(since) > cooldown) {
-			Dialog.instance().addToQueue(dialogLines);
+			Dialog.instance().setDialogPartner(this);
+			Dialog.instance().addToQueue(dialogLines.get(0));
 			Dialog.instance().setVisible(true);
 			Dialog.instance().enable(true);
 			GameLogic.setState(GameState.TALKING);
 			since = Game.time().now();
 		}
+	}
+	
+	public List<String> getDialogLines(int dialog) {
+		return dialogLines.get(dialog);
 	}
 }
