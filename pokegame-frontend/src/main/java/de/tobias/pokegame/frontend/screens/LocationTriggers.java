@@ -8,11 +8,11 @@ import de.tobias.pokegame.frontend.ui.LocationSign;
 public class LocationTriggers {
 	
 	public static void changeLocation(String targetMap, String targetSpawn) {
-		Game.window().getRenderComponent().fadeOut(750);
+		Game.window().getRenderComponent().fadeOut(500);
 		
-		Game.loop().perform(1000, () -> {
+		Game.loop().perform(500, () -> {
 			Game.world().loadEnvironment(targetMap);
-			Player.instance().setLocation(Game.world().environment().getSpawnpoint(targetSpawn).getLocation());
+			Game.world().environment().getSpawnpoint(targetSpawn).spawn(Player.instance());
 			Game.world().setCamera(new PositionLockCamera(Player.instance()));
 			
 			LocationSign.instance().setVisibleWithText(targetMap);

@@ -49,7 +49,7 @@ public class GameLogic {
 			Game.loop().perform(500, () -> Game.window().getRenderComponent().fadeIn(500));
 			
 			// spawn the player instance on the spawn point with the name "spawn"
-			Spawnpoint enter = e.getSpawnpoint("spawn");
+			Spawnpoint enter = e.getSpawnpoint("spawnR1");
 			
 			if (enter != null) {
 				enter.spawn(Player.instance());

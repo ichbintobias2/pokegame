@@ -168,7 +168,7 @@
 </data>
    </layer>
    <objectgroup id="0" name="default" visible="1">
-    <object id="1" name="spawn" type="SPAWNPOINT" x="32" y="256" width="16" height="16"/>
+    <object id="1" name="spawnR1" type="SPAWNPOINT" x="32" y="256" width="16" height="16"/>
     <object id="2" name="npc1" type="CREATURE" x="160" y="288" width="16" height="16">
      <properties>
       <property name="spawnDirection" value="LEFT"/>
@@ -276,15 +276,17 @@
    <objectgroup id="0" name="default" visible="1">
     <object id="1" type="TRIGGER" x="80" y="208" width="16" height="16">
      <properties>
-      <property name="whereto" value="route1"/>
+      <property name="targetMap" value="route1"/>
+      <property name="targetSpawn" value="spawnL2"/>
      </properties>
     </object>
     <object id="2" type="TRIGGER" x="96" y="208" width="16" height="16">
      <properties>
-      <property name="whereto" value="route1"/>
+      <property name="targetMap" value="route1"/>
+      <property name="targetSpawn" value="spawnL2"/>
      </properties>
     </object>
-    <object id="3" name="spawn" type="SPAWNPOINT" x="80" y="192" width="16" height="16"/>
+    <object id="3" name="spawnR1" type="SPAWNPOINT" x="80" y="192" width="16" height="16"/>
    </objectgroup>
   </map>
   <map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="20" height="11" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1" name="mainmenu">
@@ -482,25 +484,30 @@
    <objectgroup id="0" name="default" visible="1">
     <object id="1" type="TRIGGER" x="288" y="160" width="16" height="16">
      <properties>
-      <property name="whereto" value="level1"/>
+      <property name="targetMap" value="level1"/>
+      <property name="targetSpawn" value="spawnR1"/>
      </properties>
     </object>
     <object id="2" type="TRIGGER" x="288" y="176" width="16" height="16">
      <properties>
-      <property name="whereto" value="level1"/>
+      <property name="targetMap" value="level1"/>
+      <property name="targetSpawn" value="spawnR1"/>
      </properties>
     </object>
     <object id="3" type="TRIGGER" x="112" y="16" width="16" height="16">
      <properties>
-      <property name="whereto" value="level2"/>
+      <property name="targetMap" value="level2"/>
+      <property name="targetSpawn" value="spawnR1"/>
      </properties>
     </object>
     <object id="4" type="TRIGGER" x="96" y="16" width="16" height="16">
      <properties>
-      <property name="whereto" value="level2"/>
+      <property name="targetMap" value="level2"/>
+      <property name="targetSpawn" value="spawnR1"/>
      </properties>
     </object>
     <object id="5" name="spawnL1" type="SPAWNPOINT" x="272" y="160" width="16" height="16"/>
+    <object id="6" name="spawnL2" type="SPAWNPOINT" x="112" y="32" width="16" height="16"/>
    </objectgroup>
   </map>
  </maps>
