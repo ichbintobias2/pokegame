@@ -77,9 +77,10 @@ public class PauseMenu extends KeyboardMenu {
 			instance.setVisible(false);
 		}
 	}
-
+	
 	private void showTeamInfo() {
-		
+		Game.screens().display("TEAM");
+		GameLogic.setState(GameState.TEAM);
 	}
 	
 	private void showPlayerInfo() {

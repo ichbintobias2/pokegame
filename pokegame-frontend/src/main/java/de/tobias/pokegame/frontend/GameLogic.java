@@ -64,6 +64,10 @@ public class GameLogic {
 		} else if (GameLogic.getState() == GameState.INGAME) {
 			GameLogic.setState(GameState.PAUSED);
 			PauseMenu.instance().update();
+		} else if (GameLogic.getState() == GameState.TEAM) {
+			Game.screens().display("INGAME");
+			GameLogic.setState(GameState.PAUSED);
+			PauseMenu.instance().update();
 		}
 	}
 	

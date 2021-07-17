@@ -1,11 +1,10 @@
-package de.tobias.pokegame.frontend.entities;
+package de.tobias.pokegame.backend.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 import de.tobias.pokegame.backend.entities.player.Gamestate;
-import de.tobias.pokegame.backend.persistence.NitriteManager;
 import lombok.Getter;
 
 public class Savegame {
