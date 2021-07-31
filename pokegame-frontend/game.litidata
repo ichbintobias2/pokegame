@@ -508,6 +508,11 @@
     </object>
     <object id="5" name="spawnL1" type="SPAWNPOINT" x="272" y="160" width="16" height="16"/>
     <object id="6" name="spawnL2" type="SPAWNPOINT" x="112" y="32" width="16" height="16"/>
+    <object id="7" type="TRIGGER" x="48" y="80" width="48" height="96">
+     <properties>
+      <property name="grass" value="true"/>
+     </properties>
+    </object>
    </objectgroup>
   </map>
  </maps>

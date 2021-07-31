@@ -13,7 +13,6 @@ import de.tobias.pokegame.backend.wild.MonsterGenerator;
 import de.tobias.pokegame.frontend.constants.GameState;
 import de.tobias.pokegame.frontend.entities.Monster;
 import de.tobias.pokegame.frontend.entities.NPC;
-import de.tobias.pokegame.frontend.entities.Savegame;
 import de.tobias.pokegame.frontend.entities.controllers.EnemyMonsterController;
 import de.tobias.pokegame.frontend.menu.AttackMenu;
 import de.tobias.pokegame.frontend.menu.BattleMenu;
@@ -32,6 +31,7 @@ public class BattleControl {
 	private static String lastEnemyAttack;
 	
 	private static NPC opponent;
+	private static boolean trainerBattle;
 	
 	@Getter @Setter
 	private static Monster playerMonster;
@@ -40,9 +40,10 @@ public class BattleControl {
 	private static Monster enemyMonster;
 	
 	public static void startWildBattle(int registryNumber) {
+		trainerBattle = false;
 		CurrentMonster encounter = MonsterGenerator.generateMonster(registryNumber);
 		enemyMonster = new Monster(180, 25, encounter);
-		Game.world().environment().add(enemyMonster);
+		Game.world().getEnvironment("battle").add(enemyMonster);
 		
 		// Adding dialogue
 		List<String> lines = new ArrayList<String>();
@@ -55,6 +56,7 @@ public class BattleControl {
 	}
 	
 	public static void startTrainerBattle(NPC opposingTrainer) {
+		trainerBattle = true;
 		// TODO when the battle is starting you will have to determine which monsters will be
 		// sent into battle by the opposing trainer
 		opponent = opposingTrainer;
@@ -107,11 +109,18 @@ public class BattleControl {
 			
 			Game.screens().display("INGAME");
 			Game.world().loadEnvironment("level1"); // TODO do not hardcode
-			Dialog.instance().addToQueue(opponent.getDialogLines(1));
-			Dialog.instance().enable(true);
-			Dialog.instance().setVisible(true);
-			GameLogic.setState(GameState.TALKING);
 			PauseMenu.instance().update();
+			if (trainerBattle) {
+				Dialog.instance().addToQueue(opponent.getDialogLines(1));
+				Dialog.instance().setVisible(true);
+				Dialog.instance().enable(true);
+				GameLogic.setState(GameState.TALKING);
+			} else {
+				Dialog.instance().setVisible(false);
+				Dialog.instance().enable(false);
+				GameLogic.setState(GameState.INGAME);
+			}
+			
 		});
 	}
 	

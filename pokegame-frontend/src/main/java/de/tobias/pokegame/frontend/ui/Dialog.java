@@ -77,6 +77,11 @@ public class Dialog extends GuiComponent {
 				} else if ("[enemy attack]".equals(queue.get(1))) {
 					BattleControl.performEnemyAttack();
 					queue.remove(1);
+				} else if ("[stop battle]".equals(queue.get(1))) {
+					BattleControl.stopBattle();
+					enable(false);
+					setVisible(false);
+					queue.remove(1);
 				}
 				
 				queue.remove(0);
@@ -85,7 +90,7 @@ public class Dialog extends GuiComponent {
 				GameLogic.setState(GameState.INGAME);
 				enable(false);
 				setVisible(false);
-				queue.remove(0);
+				if (queue.size() > 0) queue.remove(0);
 			}
 		} 
 	}
@@ -100,15 +105,19 @@ public class Dialog extends GuiComponent {
 	
 	@Override
 	public void setVisible(boolean visible) {
-		currentLine = queue.get(0);
+		if (queue.size() > 0) currentLine = queue.get(0);
 		render = visible;
 	}
 	
 	public void enable(boolean enable) {
 		enabled = enable;
 	}
-
+	
 	public void setDialogPartner(NPC npc) {
 		dialogPartner = npc;
+	}
+	
+	public void clearQueue() {
+		queue.clear();
 	}
 }
