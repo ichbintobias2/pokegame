@@ -8,6 +8,7 @@ import de.tobias.pokegame.backend.calc.DamageCalc;
 import de.tobias.pokegame.backend.calc.TypeCalc;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
+import de.tobias.pokegame.backend.persistence.Savegame;
 import de.tobias.pokegame.backend.wild.MonsterGenerator;
 import de.tobias.pokegame.frontend.constants.GameState;
 import de.tobias.pokegame.frontend.entities.Monster;
