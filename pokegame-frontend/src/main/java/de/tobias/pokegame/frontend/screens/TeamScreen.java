@@ -11,9 +11,9 @@ import de.gurkenlabs.litiengine.graphics.ImageRenderer;
 import de.gurkenlabs.litiengine.gui.screens.GameScreen;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
-import de.tobias.pokegame.backend.persistence.Savegame;
 import de.tobias.pokegame.frontend.constants.Fonts;
 import de.tobias.pokegame.frontend.entities.Monster;
+import de.tobias.pokegame.frontend.entities.Player;
 
 public class TeamScreen extends GameScreen {
 	
@@ -22,7 +22,7 @@ public class TeamScreen extends GameScreen {
 	
 	private double scaleFactor = 4.5;
 	
-	List<Integer> yCoordinates = Arrays.asList(4);
+	List<Integer> yCoordinates = Arrays.asList(4, 59, 114, 169);
 	
 	public TeamScreen() {
 		super("TEAM");
@@ -39,7 +39,7 @@ public class TeamScreen extends GameScreen {
 		
 		ImageRenderer.renderScaled(g, background, imageOffset, 0, scaleFactor);
 		
-		List<CurrentMonster> team = Savegame.getPlayerTeam();
+		List<CurrentMonster> team = Player.instance().team().list();
 		for (int i=0; i<team.size(); i++) {
 			CurrentMonster mon = team.get(i);
 			Monster uiMon = new Monster(0, 0, mon);
@@ -52,6 +52,7 @@ public class TeamScreen extends GameScreen {
 			ImageRenderer.renderScaled(g, module1, x, y, scaleFactor);
 			
 			// render monster name and level
+			g.setColor(Color.BLACK);
 			g.setFont(Fonts.PIXEL_EMULATOR.deriveFont(30f));
 			g.drawString(uiMon.getData().getName(), (int) (x + (43 * scaleFactor)), (int) (y + (10 * scaleFactor)));
 			g.drawString("Lv. "+ uiMon.getData().getLevel(), (int) (x + (120 * scaleFactor)), (int) (y + (10 * scaleFactor)));

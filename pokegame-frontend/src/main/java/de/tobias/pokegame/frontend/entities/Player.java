@@ -9,6 +9,7 @@ import de.gurkenlabs.litiengine.entities.IEntity;
 import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.physics.IMovementController;
 import de.gurkenlabs.litiengine.util.geom.GeometricUtilities;
+import de.tobias.pokegame.backend.persistence.PlayerTeam;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.constants.GameState;
 import de.tobias.pokegame.frontend.entities.controllers.PlayerMovementController;
@@ -19,6 +20,7 @@ import de.tobias.pokegame.frontend.entities.controllers.PlayerMovementController
 public class Player extends Creature {
 	
 	private static Player instance;
+	private static PlayerTeam team;
 	
 	private Player() {
 		super("npc_placeholder");
@@ -32,6 +34,14 @@ public class Player extends Creature {
 		}
 		
 		return instance;
+	}
+	
+	public PlayerTeam team() {
+		if (team == null) {
+			team = new PlayerTeam();
+		}
+		
+		return team;
 	}
 	
 	public void talkToNPC() {

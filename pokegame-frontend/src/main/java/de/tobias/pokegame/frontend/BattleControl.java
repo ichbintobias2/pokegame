@@ -13,6 +13,7 @@ import de.tobias.pokegame.backend.wild.MonsterGenerator;
 import de.tobias.pokegame.frontend.constants.GameState;
 import de.tobias.pokegame.frontend.entities.Monster;
 import de.tobias.pokegame.frontend.entities.NPC;
+import de.tobias.pokegame.frontend.entities.Player;
 import de.tobias.pokegame.frontend.entities.controllers.EnemyMonsterController;
 import de.tobias.pokegame.frontend.menu.AttackMenu;
 import de.tobias.pokegame.frontend.menu.BattleMenu;
@@ -39,9 +40,11 @@ public class BattleControl {
 	@Getter @Setter
 	private static Monster enemyMonster;
 	
+	private static CurrentMonster encounter;
+	
 	public static void startWildBattle(int registryNumber) {
 		trainerBattle = false;
-		CurrentMonster encounter = MonsterGenerator.generateMonster(registryNumber);
+		encounter = MonsterGenerator.generateMonster(registryNumber);
 		enemyMonster = new Monster(180, 25, encounter);
 		Game.world().getEnvironment("battle").add(enemyMonster);
 		
@@ -203,5 +206,12 @@ public class BattleControl {
 		BattleMenu.instance().setEnabled(false);
 		Dialog.instance().enable(true);
 		Dialog.instance().nextLine();
+	}
+	
+	public static void catchWild() {
+		if (encounter != null) {
+			Player.instance().team().add(encounter);
+			encounter = null;
+		}
 	}
 }
