@@ -210,6 +210,7 @@ public class BattleControl {
 	
 	public static void catchWild() {
 		if (encounter != null) {
+			// TODO ask where the monster should be saved (either box or team)
 			Player.instance().team().add(encounter);
 			encounter = null;
 		}

@@ -11,7 +11,7 @@
         "encounterRates" : [ 100 ],
         "_id" : 12338403208200,
         "_revision" : 1,
-        "_modified" : 1615675145911
+        "_modified" : 1631355898394
       }
     } ]
   }, {
@@ -50,7 +50,7 @@
         "evSpeed" : 0,
         "_id" : 6358983984900,
         "_revision" : 1,
-        "_modified" : 1615657506232
+        "_modified" : 1631355898454
       }
     } ]
   }, {
@@ -66,7 +66,7 @@
         "sideEffect" : null,
         "_id" : 13879596337200,
         "_revision" : 1,
-        "_modified" : 1615657506256
+        "_modified" : 1631355898456
       }
     }, {
       "key" : 13895662035400,
@@ -78,7 +78,7 @@
         "sideEffect" : null,
         "_id" : 13895662035400,
         "_revision" : 1,
-        "_modified" : 1615657506257
+        "_modified" : 1631355898457
       }
     }, {
       "key" : 13908143050700,
@@ -90,7 +90,7 @@
         "sideEffect" : null,
         "_id" : 13908143050700,
         "_revision" : 1,
-        "_modified" : 1615657506257
+        "_modified" : 1631355898457
       }
     } ]
   }, {
@@ -109,7 +109,7 @@
         "playerTeam" : [ 6358983984900 ],
         "_id" : 1422009629800,
         "_revision" : 1,
-        "_modified" : 1615657506259
+        "_modified" : 1631355898459
       }
     }, {
       "key" : 13159828923300,
@@ -124,7 +124,7 @@
         "playerTeam" : [ ],
         "_id" : 13159828923300,
         "_revision" : 1,
-        "_modified" : 1616263825919
+        "_modified" : 1631355898461
       }
     } ]
   }, {
@@ -141,7 +141,31 @@
         "speed" : 1.0,
         "_id" : 13879596337300,
         "_revision" : 1,
-        "_modified" : 1615657506260
+        "_modified" : 1631355898463
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.monster.MonsterBox",
+    "indices" : [ {
+      "index" : {
+        "indexType" : "Unique",
+        "field" : "id",
+        "collectionName" : "de.tobias.pokegame.backend.entities.monster.MonsterBox"
+      }
+    } ],
+    "data" : [ {
+      "key" : 398717393222000,
+      "value" : {
+        "id" : 0,
+        "entries" : [ {
+          "id" : 0,
+          "currentMonsterId" : 6358983984900,
+          "coordX" : 0,
+          "coordY" : 0
+        } ],
+        "_id" : 398717393222000,
+        "_revision" : 1,
+        "_modified" : 1631355905524
       }
     } ]
   }, {
@@ -159,7 +183,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12604575659700,
         "_revision" : 1,
-        "_modified" : 1615657506261
+        "_modified" : 1631355898467
       }
     }, {
       "key" : 12752329773400,
@@ -173,7 +197,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12752329773400,
         "_revision" : 1,
-        "_modified" : 1615657506262
+        "_modified" : 1631355898468
       }
     }, {
       "key" : 12823541338200,
@@ -187,7 +211,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12823541338200,
         "_revision" : 1,
-        "_modified" : 1615657506263
+        "_modified" : 1631355898469
       }
     } ]
   }, {
@@ -210,7 +234,7 @@
         "givesEv" : null,
         "_id" : 6478813301400,
         "_revision" : 1,
-        "_modified" : 1615657506264
+        "_modified" : 1631355898471
       }
     } ]
   }, {
@@ -225,7 +249,7 @@
         "dialogLines" : [ [ "I'm a placeholder!" ] ],
         "_id" : 14411939525500,
         "_revision" : 1,
-        "_modified" : 1615657506264
+        "_modified" : 1631355898473
       }
     }, {
       "key" : 15397724409500,
@@ -236,7 +260,7 @@
         "dialogLines" : [ [ "Hello", "Hi", "[battle]" ], [ "GG!" ] ],
         "_id" : 15397724409500,
         "_revision" : 1,
-        "_modified" : 1615657506266
+        "_modified" : 1631355898474
       }
     } ]
   } ]
