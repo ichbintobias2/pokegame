@@ -26,7 +26,7 @@ public class PauseMenu extends KeyboardMenu {
 	private boolean once = false;
 	
 	private PauseMenu() {
-		super(x, y, width, height, continueText, teamText, playerText, optionsText, exitText);
+		super(x, y, width, height, continueText, teamText, playerText, optionsText, exitText, "Box");
 		
 		onConfirm(c -> {
 			switch (c.intValue()) {
@@ -45,6 +45,9 @@ public class PauseMenu extends KeyboardMenu {
 				break;
 			case 4:
 				System.exit(0);
+				break;
+			case 5:
+				showBoxScreen(); // TODO place this at the correct location this was just intended for testing
 				break;
 			}
 		});
@@ -92,5 +95,11 @@ public class PauseMenu extends KeyboardMenu {
 		Game.world().loadEnvironment("options");
 		Game.world().camera().setClampToMap(true);
 		GameLogic.setState(GameState.OPTIONS);
+	}
+	
+	private void showBoxScreen() {
+		Game.screens().display("BOX");
+		Game.world().camera().setClampToMap(true);
+		GameLogic.setState(GameState.BOX);
 	}
 }

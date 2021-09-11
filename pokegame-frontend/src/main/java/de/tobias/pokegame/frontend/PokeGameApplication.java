@@ -5,6 +5,7 @@ import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.frontend.constants.Images;
 import de.tobias.pokegame.frontend.screens.BattleScreen;
+import de.tobias.pokegame.frontend.screens.BoxScreen;
 import de.tobias.pokegame.frontend.screens.IngameScreen;
 import de.tobias.pokegame.frontend.screens.MainMenuScreen;
 import de.tobias.pokegame.frontend.screens.OptionScreen;
@@ -36,6 +37,7 @@ public class PokeGameApplication {
 		Game.screens().add(new OptionScreen());
 		Game.screens().add(new BattleScreen());
 		Game.screens().add(new TeamScreen());
+		Game.screens().add(new BoxScreen());
 		
 		// loading the main menu
 		Game.screens().display("MAIN");
