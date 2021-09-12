@@ -61,14 +61,9 @@ public class NPC extends Creature implements IUpdateable {
 		// check if the player has roughly the same x or y coordinate
 		if ((this.getX() + tolerance >= Player.instance().getX() && this.getX() - tolerance <= Player.instance().getX()) ||
 				(this.getY() + tolerance >= Player.instance().getY() && this.getY() - tolerance <= Player.instance().getY())) {
-			GameLogic.setState(GameState.TALKING);
 			// disabling the method after this execution because it will create a loop otherwise
 			wantsToBattle = false;
-			Dialog.instance().addToQueue("Lass uns kämpfen!");
-			Dialog.instance().addToQueue("[battle]");
-			Dialog.instance().setVisible(true);
-			Dialog.instance().enable(true);
-			Dialog.instance().setDialogPartner(this);
+			getTalkedTo();
 		}
 	}
 	
