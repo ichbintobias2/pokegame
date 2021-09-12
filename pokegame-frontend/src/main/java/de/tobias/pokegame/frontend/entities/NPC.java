@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.gurkenlabs.litiengine.Game;
+import de.gurkenlabs.litiengine.IUpdateable;
 import de.gurkenlabs.litiengine.entities.AnimationInfo;
 import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.entities.EntityInfo;
@@ -15,38 +16,59 @@ import de.tobias.pokegame.frontend.ui.Dialog;
 
 @EntityInfo(width = 16, height = 16)
 @AnimationInfo(spritePrefix = { "player", "npc_placeholder" })
-public class NPC extends Creature {
+public class NPC extends Creature implements IUpdateable {
 	
 	private List<List<String>> dialogLines = new ArrayList<List<String>>();
-	private int cooldown = 500;
-	private long since = 0;
-	private boolean once = false;
+	private int dialogCooldown = 500;
+	private long lastDialog = 0;
+	private boolean initialized = false;
+	private boolean wantsToBattle = true;
+	private double tolerance = 1.0;
 	
 	public NPC() {
-		// TODO this is a very messy implementation. It works but should be improved in the future
-		// the onRendered method is called continuously and thus will waste resources
-		onRendered(l -> {
-			if (!once) {
-				String name = this.getName();
-				DbNPC db = NitriteManager.getNpcByName(name);
-				dialogLines.addAll(db.getDialogLines());
-				once = true;
-			}
-		});
-		
 		this.onMessage(e -> {
 			getTalkedTo();
 		});
 	}
 	
+	@Override
+	public void update() {
+		if (!initialized) {
+			String name = this.getName();
+			DbNPC db = NitriteManager.getNpcByName(name);
+			wantsToBattle = db.isWantsToBattle();
+			dialogLines.addAll(db.getDialogLines());
+			initialized = true;
+		}
+		
+		if (wantsToBattle) {
+			checkForPlayer();
+		}
+	}
+	
 	private void getTalkedTo() {
-		if (Game.time().since(since) > cooldown) {
+		if (Game.time().since(lastDialog) > dialogCooldown) {
 			Dialog.instance().setDialogPartner(this);
 			Dialog.instance().addToQueue(dialogLines.get(0));
 			Dialog.instance().setVisible(true);
 			Dialog.instance().enable(true);
 			GameLogic.setState(GameState.TALKING);
-			since = Game.time().now();
+			lastDialog = Game.time().now();
+		}
+	}
+	
+	private void checkForPlayer() {
+		// check if the player has roughly the same x or y coordinate
+		if ((this.getX() + tolerance >= Player.instance().getX() && this.getX() - tolerance <= Player.instance().getX()) ||
+				(this.getY() + tolerance >= Player.instance().getY() && this.getY() - tolerance <= Player.instance().getY())) {
+			GameLogic.setState(GameState.TALKING);
+			// disabling the method after this execution because it will create a loop otherwise
+			wantsToBattle = false;
+			Dialog.instance().addToQueue("Lass uns kämpfen!");
+			Dialog.instance().addToQueue("[battle]");
+			Dialog.instance().setVisible(true);
+			Dialog.instance().enable(true);
+			Dialog.instance().setDialogPartner(this);
 		}
 	}
 	
