@@ -32,7 +32,7 @@ public class InteractButton extends GuiComponent {
 		if (instance == null) {
 			instance = new InteractButton();
 		}
-
+		
 		return instance;
 	}
 	
@@ -42,15 +42,22 @@ public class InteractButton extends GuiComponent {
 			Point2D loc = Game.world().camera().getViewportLocation(Player.instance().getCenter());
 			double x = loc.getX() * Game.world().camera().getRenderScale() + buttonImage.getWidth() + 20;
 			double y = loc.getY() * Game.world().camera().getRenderScale() - (buttonImage.getHeight() * 2.5 + 15);
-		    ImageRenderer.renderScaled(g, buttonImage, x, y, scaleFactor);
+			ImageRenderer.renderScaled(g, buttonImage, x, y, scaleFactor);
 		}
 	}
 	
 	public void interact() {
 		if (GameLogic.getState() == GameState.INGAME && canTrigger()) {
-			String targetMap = getSurroundingTriggerProperty("targetMap");
-			String targetSpawn = getSurroundingTriggerProperty("targetSpawn");
-			LocationTriggers.changeLocation(targetMap, targetSpawn);
+			String triggerType = getSurroundingTriggerProperty("triggerType");
+			if ("pc".equals(triggerType)) {
+				Game.screens().display("BOX");
+				Game.world().camera().setClampToMap(true);
+				GameLogic.setState(GameState.BOX);
+			} else {
+				String targetMap = getSurroundingTriggerProperty("targetMap");
+				String targetSpawn = getSurroundingTriggerProperty("targetSpawn");
+				LocationTriggers.changeLocation(targetMap, targetSpawn);
+			}
 		}
 	}
 	
@@ -65,6 +72,7 @@ public class InteractButton extends GuiComponent {
 	}
 	
 	private String getSurroundingTriggerProperty(String propertyName) {
+		// TODO just look for triggers in the direction the player looks to
 		for (IEntity entity : Game.world().environment().findEntities(GeometricUtilities.extrude(Player.instance().getBoundingBox(), 2))) {
 			if (entity instanceof Trigger) {
 				return entity.getProperties().getStringValue(propertyName);
