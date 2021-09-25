@@ -2,6 +2,7 @@ package de.tobias.pokegame.frontend.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.IUpdateable;
@@ -21,6 +22,7 @@ public class NPC extends Creature implements IUpdateable {
 	private List<List<String>> dialogLines = new ArrayList<List<String>>();
 	private int dialogCooldown = 500;
 	private long lastDialog = 0;
+	private long lastDirectionChange = 0;
 	private boolean initialized = false;
 	private boolean wantsToBattle = true;
 	private double tolerance = 1.0;
@@ -41,6 +43,8 @@ public class NPC extends Creature implements IUpdateable {
 			initialized = true;
 		}
 		
+		setDirection();
+		
 		if (wantsToBattle) {
 			checkForPlayer();
 		}
@@ -55,6 +59,15 @@ public class NPC extends Creature implements IUpdateable {
 			GameLogic.setState(GameState.TALKING);
 			lastDialog = Game.time().now();
 		}
+	}
+	
+	private void setDirection() {
+		int number = new Random().nextInt(1500);
+		int number2 = new Random().nextInt(4);
+		if (Game.time().since(lastDirectionChange) > number) {
+			this.setAngle(number2 * 90);
+		}
+		lastDirectionChange = Game.time().now();
 	}
 	
 	private void checkForPlayer() {
