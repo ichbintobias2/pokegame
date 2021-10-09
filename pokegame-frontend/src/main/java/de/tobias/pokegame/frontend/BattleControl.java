@@ -17,6 +17,7 @@ import de.tobias.pokegame.frontend.entities.Player;
 import de.tobias.pokegame.frontend.entities.controllers.EnemyMonsterController;
 import de.tobias.pokegame.frontend.menu.AttackMenu;
 import de.tobias.pokegame.frontend.menu.BattleMenu;
+import de.tobias.pokegame.frontend.menu.ItemMenu;
 import de.tobias.pokegame.frontend.menu.PauseMenu;
 import de.tobias.pokegame.frontend.screens.BattleScreen;
 import de.tobias.pokegame.frontend.ui.Dialog;
@@ -83,6 +84,8 @@ public class BattleControl {
 			Game.world().camera().setClampToMap(true);
 			
 			Game.screens().display("BATTLE");
+			ItemMenu.instance().setVisible(false);
+			ItemMenu.instance().setEnabled(false);
 			Game.world().loadEnvironment("battle");
 			Dialog.instance().setVisible(true);
 			Dialog.instance().enable(true);

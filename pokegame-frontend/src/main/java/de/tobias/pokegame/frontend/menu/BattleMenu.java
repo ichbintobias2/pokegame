@@ -3,8 +3,6 @@ package de.tobias.pokegame.frontend.menu;
 import java.awt.Graphics2D;
 
 import de.gurkenlabs.litiengine.Game;
-import de.tobias.pokegame.frontend.BattleControl;
-import de.tobias.pokegame.frontend.ui.Dialog;
 
 public class BattleMenu extends KeyboardMenu {
 	
@@ -65,15 +63,10 @@ public class BattleMenu extends KeyboardMenu {
 	}
 	
 	private void showItemMenu() {
-		// TODO move this to the correct place when the actual menu exists
+		ItemMenu.instance().setVisible(true);
+		ItemMenu.instance().setEnabled(true);
 		instance.setEnabled(false);
-		Dialog.instance().clearQueue();
-		Dialog.instance().addToQueue("Capsule thrown!");
-		Dialog.instance().addToQueue("Success!");
-		Dialog.instance().addToQueue("[stop battle]");
-		Dialog.instance().setVisible(true);
-		Dialog.instance().enable(true);
-		BattleControl.catchWild();
+		instance.setVisible(false);
 	}
 	
 	private void showTeamMenu() {
