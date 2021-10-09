@@ -61,6 +61,8 @@ public class ItemMenu extends KeyboardMenu {
 			BattleControl.catchWild();
 		} else {
 			Dialog.instance().addToQueue("The monster escaped!");
+			Dialog.instance().addToQueue("What will you do?");
+			Dialog.instance().addToQueue("[enable battle menu]");
 		}
 		
 		Dialog.instance().setVisible(true);

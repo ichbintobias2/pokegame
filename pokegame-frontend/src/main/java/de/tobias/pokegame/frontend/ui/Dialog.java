@@ -82,6 +82,10 @@ public class Dialog extends GuiComponent {
 					enable(false);
 					setVisible(false);
 					queue.remove(1);
+				} else if ("[enable battle menu]".equals(queue.get(1))) {
+					BattleMenu.instance().setVisible(true);
+					BattleMenu.instance().setEnabled(true);
+					queue.remove(1);
 				}
 				
 				queue.remove(0);
