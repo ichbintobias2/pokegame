@@ -1,6 +1,11 @@
 package de.tobias.pokegame.frontend.menu;
 
+import java.util.Random;
+
 import de.gurkenlabs.litiengine.Game;
+import de.tobias.pokegame.backend.entities.monster.BaseMonster;
+import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
+import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.frontend.BattleControl;
 import de.tobias.pokegame.frontend.ui.Dialog;
 
@@ -63,6 +68,18 @@ public class ItemMenu extends KeyboardMenu {
 	}
 	
 	private boolean determineCapsuleSuccess() {
-		return true; // TODO implement different decision paths here
+		// get the current wild monster and determine its catch rate
+		CurrentMonster encounter = BattleControl.getEncounter();
+		BaseMonster encounterBase = NitriteManager.getBaseMonsterByRegistryNr(encounter.getRegistryNumber());
+		int encounterCatchRate = encounterBase.getCatchRate();
+		
+		// generate a random number and if it is smaller the catch is successful
+		int randomNumber = new Random().nextInt(101);
+		if (randomNumber < encounterCatchRate) {
+			return true;
+		}
+		
+		// return false if no catching condition applies successfully
+		return false;
 	}
 }

@@ -232,6 +232,7 @@
         "locations" : [ ],
         "learnableMoves" : [ ],
         "givesEv" : null,
+        "catchRate": 75,
         "_id" : 6478813301400,
         "_revision" : 1,
         "_modified" : 1631355898471

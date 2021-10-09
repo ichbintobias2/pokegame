@@ -25,4 +25,6 @@ public class BaseMonster {
 	private List<String> learnableMoves = new ArrayList<String>();
 	
 	private String givesEv;
+	
+	private int catchRate;
 }

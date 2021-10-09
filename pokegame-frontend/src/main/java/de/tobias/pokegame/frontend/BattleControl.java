@@ -41,6 +41,7 @@ public class BattleControl {
 	@Getter @Setter
 	private static Monster enemyMonster;
 	
+	@Getter
 	private static CurrentMonster encounter;
 	
 	public static void startWildBattle(int registryNumber) {
