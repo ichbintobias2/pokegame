@@ -20,7 +20,7 @@ public class ItemMenu extends KeyboardMenu {
 	private static ItemMenu instance;
 	
 	public ItemMenu() {
-		super(x, y, width, height, "Throw Capsule", "1", "2"); // TODO texts, translations
+		super(x, y, width, height, "Throw Capsule", "1", "2", "Back"); // TODO texts, translations
 		
 		onConfirm(c -> {
 			switch (c.intValue()) {
@@ -30,6 +30,9 @@ public class ItemMenu extends KeyboardMenu {
 			case 1:
 				break;
 			case 2:
+				break;
+			case 3:
+				backToBattleMenu();
 				break;
 			}
 		});
@@ -83,5 +86,12 @@ public class ItemMenu extends KeyboardMenu {
 		
 		// return false if no catching condition applies successfully
 		return false;
+	}
+	
+	private void backToBattleMenu() {
+		instance.setVisible(false);
+		instance.setEnabled(false);
+		BattleMenu.instance().setVisible(true);
+		BattleMenu.instance().setEnabled(true);
 	}
 }
