@@ -64,7 +64,10 @@ public class InteractButton extends GuiComponent {
 	private boolean canTrigger() {
 		for (IEntity entity : Game.world().environment().findEntities(GeometricUtilities.extrude(Player.instance().getBoundingBox(), 2))) {
 			if (entity instanceof Trigger) {
-				return true;
+				String triggerType = getSurroundingTriggerProperty("triggerType");
+				if (triggerType != null && !triggerType.equals("grass")) {
+					return true;
+				}
 			}
 		}
 		

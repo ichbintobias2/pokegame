@@ -59,11 +59,11 @@ public class PlayerMovementController extends KeyboardEntityController<IMobileEn
 	
 	private void checkTallGrass() {
 		for (IEntity entity : Game.world().environment().findEntities(GeometricUtilities.extrude(Player.instance().getBoundingBox(), 2))) {
-			if (entity instanceof Trigger && entity.getProperties().getBoolValue("grass")) {
-				if (EncounterCheck.isEncountered() && canEncounter) {
+			if (entity instanceof Trigger && entity.getProperties().hasCustomProperty("triggerType")) {
+				if (EncounterCheck.isEncountered() && canEncounter && entity.getProperties().getStringValue("triggerType").equals("grass")) {
 					int id = EncounterCheck.getEncounter("route1"); // TODO get name dynamically
 					
-					// The idea is that this method should only trigger one battle and then wait until it is concluded
+					// Start a battle and set canEncounter to false to not cause a loop where infinite battles are started
 					BattleControl.startWildBattle(id);
 					canEncounter = false;
 				}
