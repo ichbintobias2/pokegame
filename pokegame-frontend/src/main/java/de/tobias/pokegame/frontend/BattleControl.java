@@ -7,6 +7,7 @@ import de.gurkenlabs.litiengine.Game;
 import de.tobias.pokegame.backend.calc.DamageCalc;
 import de.tobias.pokegame.backend.calc.TypeCalc;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
+import de.tobias.pokegame.backend.entities.player.Registry;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.backend.persistence.Savegame;
 import de.tobias.pokegame.backend.wild.MonsterGenerator;
@@ -153,7 +154,7 @@ public class BattleControl {
 		}
 	}
 	
-	public static void performEnemyAttack() {		
+	public static void performEnemyAttack() {
 		int enemyAttack = enemyMonster.getStats().getCurrentAtk();
 		int playerDefense = playerMonster.getStats().getCurrentDef();
 		int monsterLevel = enemyMonster.getData().getLevel();
@@ -215,6 +216,19 @@ public class BattleControl {
 	public static void catchWild() {
 		if (encounter != null) {
 			// TODO ask where the monster should be saved (either box or team)
+			
+			int encounterRegistryNr = encounter.getRegistryNumber();
+			Registry registry = NitriteManager.getRegistry();
+			registry.setSeen(encounterRegistryNr); // set seen to true in case it was not true already
+			if (!registry.checkCaught(encounterRegistryNr)) {
+				Dialog.instance().addToQueue("Unlocked new registry entry!");
+				registry.setCaught(encounterRegistryNr);
+			}
+			
+			// Dialog.instance().addToQueue("Do you want to give a nickname to"+ encounter.getName() +"?");
+			// Dialog.instance().addToQueue("[input]");
+			Dialog.instance().addToQueue("[stop battle]");
+			
 			Player.instance().team().add(encounter);
 			encounter = null;
 		}

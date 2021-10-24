@@ -87,6 +87,9 @@ public class Dialog extends GuiComponent {
 					BattleMenu.instance().setEnabled(true);
 					enable(false);
 					queue.remove(1);
+				} else if ("[to catch screen]".equals(queue.get(1))) {
+					BattleControl.catchWild();
+					queue.remove(1);
 				}
 				
 				queue.remove(0);

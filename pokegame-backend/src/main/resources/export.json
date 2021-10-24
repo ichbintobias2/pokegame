@@ -11,7 +11,7 @@
         "encounterRates" : [ 100 ],
         "_id" : 12338403208200,
         "_revision" : 1,
-        "_modified" : 1631355898394
+        "_modified" : 1634673286940
       }
     } ]
   }, {
@@ -50,7 +50,7 @@
         "evSpeed" : 0,
         "_id" : 6358983984900,
         "_revision" : 1,
-        "_modified" : 1631355898454
+        "_modified" : 1634673287010
       }
     } ]
   }, {
@@ -66,7 +66,7 @@
         "sideEffect" : null,
         "_id" : 13879596337200,
         "_revision" : 1,
-        "_modified" : 1631355898456
+        "_modified" : 1634673287010
       }
     }, {
       "key" : 13895662035400,
@@ -78,7 +78,7 @@
         "sideEffect" : null,
         "_id" : 13895662035400,
         "_revision" : 1,
-        "_modified" : 1631355898457
+        "_modified" : 1634673287010
       }
     }, {
       "key" : 13908143050700,
@@ -90,7 +90,7 @@
         "sideEffect" : null,
         "_id" : 13908143050700,
         "_revision" : 1,
-        "_modified" : 1631355898457
+        "_modified" : 1634673287010
       }
     } ]
   }, {
@@ -109,7 +109,7 @@
         "playerTeam" : [ 6358983984900 ],
         "_id" : 1422009629800,
         "_revision" : 1,
-        "_modified" : 1631355898459
+        "_modified" : 1634673287010
       }
     }, {
       "key" : 13159828923300,
@@ -124,7 +124,7 @@
         "playerTeam" : [ ],
         "_id" : 13159828923300,
         "_revision" : 1,
-        "_modified" : 1631355898461
+        "_modified" : 1634673287010
       }
     } ]
   }, {
@@ -141,7 +141,7 @@
         "speed" : 1.0,
         "_id" : 13879596337300,
         "_revision" : 1,
-        "_modified" : 1631355898463
+        "_modified" : 1634673287010
       }
     } ]
   }, {
@@ -165,7 +165,7 @@
         } ],
         "_id" : 398717393222000,
         "_revision" : 1,
-        "_modified" : 1631355905524
+        "_modified" : 1634673287020
       }
     } ]
   }, {
@@ -183,7 +183,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12604575659700,
         "_revision" : 1,
-        "_modified" : 1631355898467
+        "_modified" : 1634673287020
       }
     }, {
       "key" : 12752329773400,
@@ -197,7 +197,7 @@
         "noDamageFrom" : [ ],
         "_id" : 12752329773400,
         "_revision" : 1,
-        "_modified" : 1631355898468
+        "_modified" : 1634673287025
       }
     }, {
       "key" : 12823541338200,
@@ -211,7 +211,23 @@
         "noDamageFrom" : [ ],
         "_id" : 12823541338200,
         "_revision" : 1,
-        "_modified" : 1631355898469
+        "_modified" : 1634673287025
+      }
+    } ]
+  }, {
+    "type" : "de.tobias.pokegame.backend.entities.player.Registry",
+    "indices" : [ ],
+    "data" : [ {
+      "key" : 1039779788361,
+      "value" : {
+        "entries" : [ {
+          "monsterId" : 0,
+          "seen" : false,
+          "caught" : false
+        } ],
+        "_id" : 1039779788361,
+        "_revision" : 1,
+        "_modified" : 1634987978314
       }
     } ]
   }, {
@@ -232,10 +248,10 @@
         "locations" : [ ],
         "learnableMoves" : [ ],
         "givesEv" : null,
-        "catchRate": 75,
+        "catchRate" : 75,
         "_id" : 6478813301400,
         "_revision" : 1,
-        "_modified" : 1631355898471
+        "_modified" : 1634673287025
       }
     } ]
   }, {
@@ -250,7 +266,7 @@
         "dialogLines" : [ [ "I'm a placeholder!" ] ],
         "_id" : 14411939525500,
         "_revision" : 1,
-        "_modified" : 1631355898473
+        "_modified" : 1634673287025
       }
     }, {
       "key" : 15397724409500,
@@ -261,7 +277,7 @@
         "dialogLines" : [ [ "Hello", "Hi", "[battle]" ], [ "GG!" ] ],
         "_id" : 15397724409500,
         "_revision" : 1,
-        "_modified" : 1631355898474
+        "_modified" : 1634673287030
       }
     } ]
   } ]

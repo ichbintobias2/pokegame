@@ -60,8 +60,7 @@ public class ItemMenu extends KeyboardMenu {
 		// adding different dialog depending on catch result
 		if (determineCapsuleSuccess()) {
 			Dialog.instance().addToQueue("Success!");
-			Dialog.instance().addToQueue("[stop battle]");
-			BattleControl.catchWild();
+			Dialog.instance().addToQueue("[to catch screen]");
 		} else {
 			Dialog.instance().addToQueue("The monster escaped!");
 			Dialog.instance().addToQueue("What will you do?");

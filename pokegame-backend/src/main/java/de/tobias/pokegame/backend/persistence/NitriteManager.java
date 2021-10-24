@@ -15,6 +15,7 @@ import de.tobias.pokegame.backend.entities.monster.Nature;
 import de.tobias.pokegame.backend.entities.monster.Type;
 import de.tobias.pokegame.backend.entities.npc.DbNPC;
 import de.tobias.pokegame.backend.entities.player.Gamestate;
+import de.tobias.pokegame.backend.entities.player.Registry;
 
 public class NitriteManager {
 	
@@ -28,6 +29,7 @@ public class NitriteManager {
 	private static ObjectRepository<LocationEncounterTable> letRepo;
 	private static ObjectRepository<Gamestate> gsRepo;
 	private static ObjectRepository<MonsterBox> boxRepo;
+	private static ObjectRepository<Registry> registryRepo;
 	
 	private static String dbPath = "../pokegame-backend/src/main/resources/nitrite.db";
 	private static String filepath = "../pokegame-backend/src/main/resources/export.json";
@@ -52,6 +54,7 @@ public class NitriteManager {
 		letRepo = db.getRepository(LocationEncounterTable.class);
 		gsRepo = db.getRepository(Gamestate.class);
 		boxRepo = db.getRepository(MonsterBox.class);
+		registryRepo = db.getRepository(Registry.class);
 	}
 	
 	public static void closeDb() {
@@ -147,5 +150,13 @@ public class NitriteManager {
 	
 	public static void saveMonsterBox(MonsterBox box) {
 		boxRepo.insert(box);
+	}
+	
+	public static Registry getRegistry() {
+		return registryRepo.find(ObjectFilters.eq("_id", 1039779788361L)).firstOrDefault();
+	}
+	
+	public static void saveRegistry(Registry registry) {
+		registryRepo.insert(registry);
 	}
 }
