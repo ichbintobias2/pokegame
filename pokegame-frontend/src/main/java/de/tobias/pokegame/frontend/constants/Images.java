@@ -21,6 +21,8 @@ public abstract class Images {
 	
 	public static final BufferedImage BOX_BG_1 = Resources.images().get(basePath+"box/background.png");
 	
+	public static final BufferedImage REGISTRY_BG1 = Resources.images().get(basePath+"registry/background1.png");
+	
 	public static BufferedImage getMonsterIcon(int monsterId) {
 		return Resources.images().get(basePath+"monsters/icons/"+ monsterId +".png");
 	}

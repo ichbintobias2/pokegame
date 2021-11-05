@@ -4,12 +4,7 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.frontend.constants.Images;
-import de.tobias.pokegame.frontend.screens.BattleScreen;
-import de.tobias.pokegame.frontend.screens.BoxScreen;
-import de.tobias.pokegame.frontend.screens.IngameScreen;
-import de.tobias.pokegame.frontend.screens.MainMenuScreen;
-import de.tobias.pokegame.frontend.screens.OptionScreen;
-import de.tobias.pokegame.frontend.screens.TeamScreen;
+import de.tobias.pokegame.frontend.screens.*;
 
 public class PokeGameApplication {
 	
@@ -38,6 +33,7 @@ public class PokeGameApplication {
 		Game.screens().add(new BattleScreen());
 		Game.screens().add(new TeamScreen());
 		Game.screens().add(new BoxScreen());
+		Game.screens().add(new RegistryScreen());
 		
 		// loading the main menu
 		Game.screens().display("MAIN");

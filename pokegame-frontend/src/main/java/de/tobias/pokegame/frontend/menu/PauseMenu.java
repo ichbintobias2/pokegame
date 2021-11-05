@@ -18,6 +18,7 @@ public class PauseMenu extends KeyboardMenu {
 	private static PauseMenu instance;
 	
 	private static final String continueText = GameLogic.localize("pause.Continue");
+	private static final String registryText = GameLogic.localize("pause.Registry");
 	private static final String teamText = GameLogic.localize("pause.Team");
 	private static final String playerText = GameLogic.localize("pause.Player");
 	private static final String optionsText = GameLogic.localize("pause.Options");
@@ -26,26 +27,30 @@ public class PauseMenu extends KeyboardMenu {
 	private boolean once = false;
 	
 	private PauseMenu() {
-		super(x, y, width, height, continueText, teamText, playerText, optionsText, exitText);
+		super(x, y, width, height, continueText, registryText, teamText, playerText, optionsText, exitText);
 		
 		onConfirm(c -> {
 			switch (c.intValue()) {
-			case 0:
-				GameLogic.setState(GameState.INGAME);
-				instance.setVisible(false);
-				break;
-			case 1:
-				showTeamInfo();
-				break;
-			case 2:
-				showPlayerInfo();
-				break;
-			case 3:
-				showOptionsMenu();
-				break;
-			case 4:
-				System.exit(0);
-				break;
+				case 0:
+					GameLogic.setState(GameState.INGAME);
+					instance.setVisible(false);
+					break;
+				case 1:
+					Game.screens().display("REGISTRY");
+					GameLogic.setState(GameState.REGISTRY);
+					break;
+				case 2:
+					showTeamInfo();
+					break;
+				case 3:
+					showPlayerInfo();
+					break;
+				case 4:
+					showOptionsMenu();
+					break;
+				case 5:
+					System.exit(0);
+					break;
 			}
 		});
 	}

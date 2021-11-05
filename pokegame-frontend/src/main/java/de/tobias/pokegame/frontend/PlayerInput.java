@@ -20,7 +20,7 @@ public final class PlayerInput {
 	}
 	
 	private static void handleEscapeKey() {
-		if (GameLogic.getState() == GameState.BOX) {
+		if (GameLogic.getState() == GameState.BOX || GameLogic.getState() == GameState.REGISTRY) {
 			Game.screens().display("INGAME");
 			GameLogic.setState(GameState.INGAME);
 			PauseMenu.instance().update();
