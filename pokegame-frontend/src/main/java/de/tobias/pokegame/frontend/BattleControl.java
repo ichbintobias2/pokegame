@@ -5,7 +5,9 @@ import java.util.List;
 
 import de.gurkenlabs.litiengine.Game;
 import de.tobias.pokegame.backend.calc.DamageCalc;
+import de.tobias.pokegame.backend.calc.LevelCalc;
 import de.tobias.pokegame.backend.calc.TypeCalc;
+import de.tobias.pokegame.backend.entities.monster.BaseMonster;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 import de.tobias.pokegame.backend.entities.player.Registry;
 import de.tobias.pokegame.backend.persistence.NitriteManager;
@@ -128,7 +130,6 @@ public class BattleControl {
 				Dialog.instance().enable(false);
 				GameLogic.setState(GameState.INGAME);
 			}
-			
 		});
 	}
 	
@@ -141,13 +142,12 @@ public class BattleControl {
 		int currentHp = enemyMonster.getStats().getCurrentHp();
 		
 		int baseDamage = new DamageCalc(playerAttack, enemyDefense, monsterLevel).calculateDamage(lastPlayerAttack);
-		double typeMultiplicator = new TypeCalc(lastPlayerAttack, enemyMonster.getData().getTypes()).getTypeMultiplier();
-		double finalDamage = baseDamage * typeMultiplicator;
+		double typeMultiplier = new TypeCalc(lastPlayerAttack, enemyMonster.getData().getTypes()).getTypeMultiplier();
+		double finalDamage = baseDamage * typeMultiplier;
 		
 		if (currentHp <= finalDamage) {
 			enemyMonster.getStats().receiveDamage(currentHp);
-			
-			BattleControl.stopBattle(); // TODO should cause switch instead
+			onEnemyDefeatedOrCaught();
 		} else {
 			enemyMonster.getStats().receiveDamage(finalDamage);
 			passTurn();
@@ -161,13 +161,12 @@ public class BattleControl {
 		int currentHp = playerMonster.getStats().getCurrentHp();
 		
 		int baseDamage = new DamageCalc(enemyAttack, playerDefense, monsterLevel).calculateDamage(lastEnemyAttack);
-		double typeMultiplicator = new TypeCalc(lastEnemyAttack, playerMonster.getData().getTypes()).getTypeMultiplier();
-		double finalDamage = baseDamage * typeMultiplicator;
+		double typeMultiplier = new TypeCalc(lastEnemyAttack, playerMonster.getData().getTypes()).getTypeMultiplier();
+		double finalDamage = baseDamage * typeMultiplier;
 		
 		if (currentHp <= finalDamage) {
 			playerMonster.getStats().receiveDamage(currentHp);
-			
-			BattleControl.stopBattle(); // TODO should cause switch instead
+			onEnemyDefeatedOrCaught();
 		} else {
 			playerMonster.getStats().receiveDamage(finalDamage);
 		}
@@ -232,5 +231,27 @@ public class BattleControl {
 			Player.instance().team().add(encounter);
 			encounter = null;
 		}
+	}
+	
+	private static void onEnemyDefeatedOrCaught() {
+		// calculate given xp
+		BaseMonster enemyBase = null;
+		int enemyLevel = 0;
+		boolean trainerBattle = false;
+		if (encounter != null && enemyMonster == null) { // test if it was a wild battle
+			enemyBase = NitriteManager.getBaseMonsterByRegistryNr(encounter.getRegistryNumber());
+			enemyLevel = encounter.getLevel();
+		} else if (enemyMonster != null && encounter == null) { // if it was a trainer battle
+			enemyBase = NitriteManager.getBaseMonsterByRegistryNr(enemyMonster.getData().getRegistryNumber());
+			enemyLevel = enemyMonster.getData().getLevel();
+			trainerBattle = true;
+		} else return; // if neither wild or trainer e.g. when an error happened
+		int xpBase = enemyBase.getXpBase();
+		int givenXp = LevelCalc.getXpFromBase(xpBase, enemyLevel, trainerBattle);
+		playerMonster.getData().setXp(playerMonster.getData().getXp() + givenXp);
+		
+		// either end the battle or switch monster TODO
+		// TODO add dialog indicating that a monster is caught / fainted or that the battle is over
+		BattleControl.stopBattle();
 	}
 }

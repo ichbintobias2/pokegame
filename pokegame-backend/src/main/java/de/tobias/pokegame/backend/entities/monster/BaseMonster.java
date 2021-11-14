@@ -27,4 +27,6 @@ public class BaseMonster {
 	private String givesEv;
 	
 	private int catchRate;
+	
+	private int xpBase;
 }

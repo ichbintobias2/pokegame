@@ -41,10 +41,7 @@ public class HealthBar extends GuiComponent {
 			int currentHp = monster.getStats().getCurrentHp();
 			int maxHp = monster.getStats().getMaxHp();
 			double percent = (double) currentHp / (double) maxHp;
-			
-			double xpAfterLevel = monster.getData().getXp() - LevelCalc.getXpForLevel(monster.getData().getLevel());
-			double xpToLevel = LevelCalc.getXpForLevel(monster.getData().getLevel()+1) - (double) LevelCalc.getXpForLevel(monster.getData().getLevel());
-			double xpPercent = xpAfterLevel / xpToLevel;
+			double xpPercent = LevelCalc.getXpPercentageForMonster(monster.getData());
 			
 			// Draw surrounding box
 			ImageRenderer.renderScaled(g, healthBox, x, y, scaleFactor);

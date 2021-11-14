@@ -250,6 +250,7 @@
         "learnableMoves" : [ ],
         "givesEv" : null,
         "catchRate" : 75,
+        "xpBase": 50,
         "_id" : 6478813301400,
         "_revision" : 1,
         "_modified" : 1634673287025
