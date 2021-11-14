@@ -30,6 +30,7 @@
         "name" : "placeholder",
         "types" : [ "Water" ],
         "level" : 50,
+        "xp": "129000",
         "nature" : "Default",
         "attacks" : [ "Base Fire", "Base Water", "Base Plant", null ],
         "heldItem" : null,
