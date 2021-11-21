@@ -90,6 +90,9 @@ public class Dialog extends GuiComponent {
 				} else if ("[to catch screen]".equals(queue.get(1))) {
 					BattleControl.catchWild();
 					queue.remove(1);
+				} else if ("[gain xp]".equals(queue.get(1))) {
+					BattleControl.getPlayerMonster().gainXp(BattleControl.getGivenXp());
+					queue.remove(1);
 				}
 				
 				queue.remove(0);
