@@ -34,6 +34,7 @@ public class BattleControl {
 	@Getter @Setter private static Monster enemyMonster;
 	@Getter private static CurrentMonster encounter;
 	@Getter private static int givenXp;
+	@Getter private static int damageToTake;
 	
 	private static NPC opponent;
 	private static boolean trainerBattle;
@@ -132,23 +133,25 @@ public class BattleControl {
 		
 		int baseDamage = new DamageCalc(playerAttack, enemyDefense, monsterLevel).calculateDamage(attackName);
 		double typeMultiplier = new TypeCalc(attackName, enemyMonster.getData().getTypes()).getTypeMultiplier();
-		double finalDamage = baseDamage * typeMultiplier;
+		int finalDamage = (int) (baseDamage * typeMultiplier);
 		
 		Dialog.instance().addToQueue(""); // Needed to keep queue not empty
 		Dialog.instance().addToQueue(playerMonster.getData().getName() +" setzt "+ attackName +" ein!");
 		String effectivityString = new TypeCalc(attackName, enemyMonster.getData().getTypes()).getEffectivenessAsString();
+		
+		Dialog.instance().addToQueue("[enemy damage]");
 		Dialog.instance().addToQueue(effectivityString);
 		
 		if (currentHp <= finalDamage) {
-			enemyMonster.getStats().receiveDamage(currentHp);
+			damageToTake = currentHp;
 			onEnemyMonsterDefeated();
 		} else {
-			enemyMonster.getStats().receiveDamage(finalDamage);
+			damageToTake = finalDamage;
 			passTurn();
 		}
 	}
 	
-	public static void performEnemyAttack() {
+	private static String performEnemyAttack() {
 		EnemyMonsterController emc = new EnemyMonsterController(enemyMonster);
 		String attackName = emc.decideEnemyAttack();
 		
@@ -166,23 +169,27 @@ public class BattleControl {
 		
 		int baseDamage = new DamageCalc(enemyAttack, playerDefense, monsterLevel).calculateDamage(attackName);
 		double typeMultiplier = new TypeCalc(attackName, playerMonster.getData().getTypes()).getTypeMultiplier();
-		double finalDamage = baseDamage * typeMultiplier;
-		
-		Dialog.instance().addToQueue("[enemy attack]");
-		Dialog.instance().addToQueue(enemyMonster.getData().getName() +" (Gegner) setzt "+ attackName +" ein!");
-		String effectString2 = new TypeCalc(attackName, playerMonster.getData().getTypes()).getEffectivenessAsString();
-		Dialog.instance().addToQueue(effectString2);
+		int finalDamage = (int) (baseDamage * typeMultiplier);
 		
 		if (currentHp <= finalDamage) {
-			playerMonster.getStats().receiveDamage(currentHp);
+			damageToTake = currentHp;
 			onPlayerMonsterDefeated();
 		} else {
-			playerMonster.getStats().receiveDamage(finalDamage);
+			damageToTake = finalDamage;
 		}
+		return attackName;
 	}
 	
 	public static void passTurn() {  // TODO i18n
 		// weather and other turn based events can be checked here
+		
+		String enemyAttackName = performEnemyAttack();
+		
+		Dialog.instance().addToQueue(enemyMonster.getData().getName() +" (Gegner) setzt "+ enemyAttackName +" ein!");
+		String effectivityString = new TypeCalc(enemyAttackName, playerMonster.getData().getTypes()).getEffectivenessAsString();
+		
+		Dialog.instance().addToQueue("[player damage]");
+		Dialog.instance().addToQueue(effectivityString);
 		
 		Dialog.instance().addToQueue("Was soll "+ playerMonster.getData().getName() +" tun?");
 		Dialog.instance().addToQueue("[ask for input]");
@@ -247,7 +254,7 @@ public class BattleControl {
 		AttackMenu.instance().setEnabled(false);
 		Dialog.instance().enable(true);
 		gainXp();
-		Dialog.instance().addToQueue("");
+		Dialog.instance().addToQueue(""); // TODO this line needs to be removed but the [stop battle] currently only works this way
 		Dialog.instance().addToQueue("[stop battle]");
 		// TODO either switch or end battle
 	}
