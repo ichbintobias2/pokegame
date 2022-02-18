@@ -5,13 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import de.tobias.pokegame.backend.calc.LevelCalc;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 
 public class MonsterGenerator {
 	
 	public static CurrentMonster generateMonster(int registryNumber) {
 		String name = ""; // TODO get name from DbMonster by registryNumber
-		int level = 5;
+		int level = 5; // TODO set level dynamically
 		List<String> types = Arrays.asList("Fire");
 		
 		Random random = new Random();
@@ -23,7 +24,8 @@ public class MonsterGenerator {
 		int dvSpeed = random.nextInt(32);
 		
 		// TODO hardcoded id
-		return new CurrentMonster(0, registryNumber, name, types, level, getRandomNature(), getRandomAttacks(), getHeldItem(), null, level, null, dvHp, dvAttack, dvDefense, dvSpAtk, dvSpDef, dvSpeed, 0, 0, 0, 0, 0, 0);
+		int xp = LevelCalc.getXpForLevel(level);
+		return new CurrentMonster(0, registryNumber, name, types, level, xp, getRandomNature(), getRandomAttacks(), getHeldItem(), null, level, null, dvHp, dvAttack, dvDefense, dvSpAtk, dvSpDef, dvSpeed, 0, 0, 0, 0, 0, 0);
 	}
 	
 	private static String getHeldItem() {

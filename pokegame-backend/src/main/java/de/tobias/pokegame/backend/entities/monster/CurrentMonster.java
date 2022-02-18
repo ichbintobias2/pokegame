@@ -24,6 +24,7 @@ public class CurrentMonster {
 	private List<String> types = new ArrayList<String>();
 	
 	private int level;
+	private int xp;
 	
 	private String nature;
 	

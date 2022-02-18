@@ -74,9 +74,6 @@ public class Dialog extends GuiComponent {
 					enable(false);
 					queue.remove(1);
 					BattleMenu.instance().setEnabled(true);
-				} else if ("[enemy attack]".equals(queue.get(1))) {
-					BattleControl.performEnemyAttack();
-					queue.remove(1);
 				} else if ("[stop battle]".equals(queue.get(1))) {
 					BattleControl.stopBattle();
 					enable(false);
@@ -89,6 +86,15 @@ public class Dialog extends GuiComponent {
 					queue.remove(1);
 				} else if ("[to catch screen]".equals(queue.get(1))) {
 					BattleControl.catchWild();
+					queue.remove(1);
+				} else if ("[gain xp]".equals(queue.get(1))) {
+					BattleControl.getPlayerMonster().gainXp(BattleControl.getGivenXp());
+					queue.remove(1);
+				} else if ("[enemy damage]".equals(queue.get(1))) {
+					BattleControl.getEnemyMonster().getStats().receiveDamage(BattleControl.getDamageToTake());
+					queue.remove(1);
+				} else if ("[player damage]".equals(queue.get(1))) {
+					BattleControl.getPlayerMonster().getStats().receiveDamage(BattleControl.getDamageToTake());
 					queue.remove(1);
 				}
 				

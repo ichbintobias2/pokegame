@@ -30,4 +30,8 @@ public class Monster {
 	public String getAttack(int slot) {
 		return cm.getAttacks().get(slot);
 	}
+	
+	public void gainXp(int xp) {
+		cm.setXp(cm.getXp() + xp);
+	}
 }

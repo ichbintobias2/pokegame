@@ -8,6 +8,7 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.graphics.ImageRenderer;
 import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
+import de.tobias.pokegame.backend.calc.LevelCalc;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.constants.Fonts;
 import de.tobias.pokegame.frontend.constants.GameState;
@@ -40,6 +41,7 @@ public class HealthBar extends GuiComponent {
 			int currentHp = monster.getStats().getCurrentHp();
 			int maxHp = monster.getStats().getMaxHp();
 			double percent = (double) currentHp / (double) maxHp;
+			double xpPercent = LevelCalc.getXpPercentageForMonster(monster.getData());
 			
 			// Draw surrounding box
 			ImageRenderer.renderScaled(g, healthBox, x, y, scaleFactor);
@@ -48,6 +50,9 @@ public class HealthBar extends GuiComponent {
 			g.setFont(Fonts.PIXEL_EMULATOR);
 			g.setColor(Color.black);
 			TextRenderer.render(g, monster.getData().getName(), x + (7 * scaleFactor), y + (10 * scaleFactor));
+			
+			// Draw monster level
+			TextRenderer.render(g, "Lv. "+ monster.getData().getLevel(), x + (50 * scaleFactor), y + (10 * scaleFactor));
 			
 			// Draw actual health bar
 			int w = 52 * scaleFactor;
@@ -58,6 +63,11 @@ public class HealthBar extends GuiComponent {
 			g.setColor(Color.BLACK);
 			g.setFont(Fonts.PIXEL_EMULATOR.deriveFont(Fonts.TEXT_SIZE - 2f)); // make health a bit smaller than the name
 			TextRenderer.render(g, monster.getStats().getCurrentHp() +"/"+ monster.getStats().getMaxHp(), x + (7 * scaleFactor), y + (26 * scaleFactor));
+			
+			// Draw xp progress bar
+			int xpW = 23 * scaleFactor;
+			g.setColor(Color.GREEN);
+			g.fillRect(x + (42 * scaleFactor), y + (24 * scaleFactor), (int) (xpW * xpPercent), (scaleFactor));
 		}
 	}
 }
