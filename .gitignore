@@ -12,6 +12,12 @@ pokegame-backend/.classpath
 pokegame-frontend/.project
 pokegame-backend/.project
 
+# IntelliJ IDEA
+.idea
+
+# Visual Studio Code
+*.factorypath
+
 # Litiengine runtime files
 pokegame-frontend/crash.txt
 pokegame-frontend/game.log
