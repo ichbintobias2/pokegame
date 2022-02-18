@@ -8,26 +8,15 @@ import de.tobias.pokegame.backend.calc.StatCalc;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 import de.tobias.pokegame.frontend.constants.Animations;
 
-@EntityInfo(width = 64, height = 64)
-public class Monster extends Creature {
+public class Monster {
 	
-	private CurrentMonster cm;
-	private StatCalc stats;
+	private final CurrentMonster cm;
+	private final StatCalc stats;
 	
-	public Monster(double x, double y, CurrentMonster cm) {
+	public Monster(CurrentMonster cm) {
 		super();
-		
-		this.setX(x);
-		this.setY(y);
 		this.cm = cm;
 		this.stats = new StatCalc(cm);
-		
-		String animationName = cm.getRegistryNumber() + Animations.BASE_PLAYER;
-		this.setSpritesheetName("player_battle");
-		
-		this.createAnimationController();
-		this.animations().setDefault(new Animation(Resources.spritesheets().get(animationName), true));
-		this.animations().play(animationName);
 	}
 	
 	public CurrentMonster getData() {

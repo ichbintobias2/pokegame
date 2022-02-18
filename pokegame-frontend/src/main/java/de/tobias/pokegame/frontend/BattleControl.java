@@ -12,6 +12,7 @@ import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.backend.persistence.Savegame;
 import de.tobias.pokegame.backend.wild.MonsterGenerator;
 import de.tobias.pokegame.frontend.constants.GameState;
+import de.tobias.pokegame.frontend.constants.Images;
 import de.tobias.pokegame.frontend.entities.Monster;
 import de.tobias.pokegame.frontend.entities.NPC;
 import de.tobias.pokegame.frontend.entities.Player;
@@ -23,6 +24,7 @@ import de.tobias.pokegame.frontend.menu.PauseMenu;
 import de.tobias.pokegame.frontend.screens.BattleScreen;
 import de.tobias.pokegame.frontend.ui.Dialog;
 import de.tobias.pokegame.frontend.ui.HealthBar;
+import de.tobias.pokegame.frontend.ui.ImageComponent;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,11 +50,10 @@ public class BattleControl {
 	public static void startWildBattle(int registryNumber) {
 		trainerBattle = false;
 		encounter = MonsterGenerator.generateMonster(registryNumber);
-		enemyMonster = new Monster(180, 25, encounter);
-		Game.world().getEnvironment("battle").add(enemyMonster);
+		enemyMonster = new Monster(encounter);
 		
 		// Adding dialogue
-		List<String> lines = new ArrayList<String>();
+		List<String> lines = new ArrayList<>();
 		lines.add("A wild" + encounter.getName() + " appears!");
 		lines.add("Choose your attack!");
 		lines.add("[ask for input]");
@@ -63,14 +64,12 @@ public class BattleControl {
 	
 	public static void startTrainerBattle(NPC opposingTrainer) {
 		trainerBattle = true;
-		// TODO when the battle is starting you will have to determine which monsters will be
-		// sent into battle by the opposing trainer
+		// TODO when the battle is starting you will have to determine which monsters will be sent into battle by the opposing trainer
 		opponent = opposingTrainer;
-		enemyMonster = new Monster(180, 25, NitriteManager.getCurrentMonsterByName("placeholder"));
-		Game.world().getEnvironment("battle").add(enemyMonster);
+		enemyMonster = new Monster(NitriteManager.getCurrentMonsterByName("placeholder"));
 		
 		// Adding dialogue
-		List<String> lines = new ArrayList<String>();
+		List<String> lines = new ArrayList<>();
 		lines.add(opposingTrainer.getName()+" wants to battle!");
 		lines.add("Choose your attack!");
 		lines.add("[ask for input]");
@@ -94,18 +93,23 @@ public class BattleControl {
 			GameLogic.setState(GameState.BATTLE);
 		});
 		
-		playerMonster = new Monster(40, 50, Savegame.getPlayerTeam().get(0));
-		Game.world().getEnvironment("battle").add(playerMonster);
+		playerMonster = new Monster(Savegame.getPlayerTeam().get(0));
 		
-		// TODO this is a messy approach, it works but surely could be less complicated
 		HealthBar hbPlayer = new HealthBar(800, 700, playerMonster);
 		HealthBar hbEnemy = new HealthBar(40, 25, enemyMonster);
 		
 		BattleScreen.addToScreen(hbPlayer);
 		BattleScreen.addToScreen(hbEnemy);
 		
-		AttackMenu.instance().set(playerMonster);
+		int playerMonsterId = playerMonster.getData().getRegistryNumber();
+		ImageComponent playerIc = new ImageComponent(40, 50, Images.getMonsterSprite(playerMonsterId), 2);
+		BattleScreen.addToScreen(playerIc);
 		
+		int enemyMonsterId = enemyMonster.getData().getRegistryNumber();
+		ImageComponent enemyIc = new ImageComponent(180, 25, Images.getMonsterSprite(enemyMonsterId), 2);
+		BattleScreen.addToScreen(enemyIc);
+		
+		AttackMenu.instance().set(playerMonster);
 		AttackMenu.instance().setEnabled(false);
 	}
 	

@@ -26,4 +26,9 @@ public abstract class Images {
 	public static BufferedImage getMonsterIcon(int monsterId) {
 		return Resources.images().get(basePath+"monsters/icons/"+ monsterId +".png");
 	}
+	
+	public static BufferedImage getMonsterSprite(int monsterId) {
+		String id = String.valueOf(monsterId).length() == 1 ? "0"+ monsterId : String.valueOf(monsterId); // make the id two-digit
+		return Resources.images().get(basePath+"monsters/full/"+ id +".png");
+	}
 }

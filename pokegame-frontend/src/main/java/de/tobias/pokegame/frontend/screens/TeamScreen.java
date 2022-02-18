@@ -12,15 +12,16 @@ import de.gurkenlabs.litiengine.gui.screens.GameScreen;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 import de.tobias.pokegame.frontend.constants.Fonts;
+import de.tobias.pokegame.frontend.constants.Images;
 import de.tobias.pokegame.frontend.entities.Monster;
 import de.tobias.pokegame.frontend.entities.Player;
 
 public class TeamScreen extends GameScreen {
 	
-	private BufferedImage background = Resources.images().get("src/main/resources/sprites/team/teamview1.png");
-	private BufferedImage module1 = Resources.images().get("src/main/resources/sprites/team/module1.png");
+	private final BufferedImage background = Images.TEAM_BG_1;
+	private final BufferedImage module1 = Images.TEAM_MODULE_1;
 	
-	private double scaleFactor = 4.5;
+	private final double scaleFactor = Images.SCALE_FACTOR;
 	
 	List<Integer> yCoordinates = Arrays.asList(4, 59, 114, 169);
 	
@@ -42,14 +43,15 @@ public class TeamScreen extends GameScreen {
 		List<CurrentMonster> team = Player.instance().team().list();
 		for (int i=0; i<team.size(); i++) {
 			CurrentMonster mon = team.get(i);
-			Monster uiMon = new Monster(0, 0, mon);
+			Monster uiMon = new Monster(mon);
 			
 			// coordinates for the module placement
 			double x = (scaleFactor * 148) + imageOffset;
 			double y = yCoordinates.get(i) * scaleFactor;
 			
-			// render module image
+			// render module image and monster sprite
 			ImageRenderer.renderScaled(g, module1, x, y, scaleFactor);
+			ImageRenderer.renderScaled(g, Images.getMonsterSprite(mon.getRegistryNumber()), 0,0, 2);
 			
 			// render monster name and level
 			g.setColor(Color.BLACK);
