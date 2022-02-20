@@ -7,24 +7,25 @@ import de.tobias.pokegame.backend.persistence.NitriteManager;
 
 public class EncounterCheck {
 	
-	public static boolean isEncountered() {
-		int localEncounterPercentage = 50;
-		
-		return new Random().nextInt(101) > localEncounterPercentage;
-	}
-	
-	public static int getEncounter(String locationName) {
+	/**
+	 * Returns the registry number of the encountered monster (if any),
+	 * @param locationName current location of the player
+	 * @return registry id of encountered monster or null if no encounter happens
+	 */
+	public static Integer getEncounter(String locationName) {
 		LocationEncounterTable let = NitriteManager.getLetByLocationName(locationName);
 		
 		int randomInt = new Random().nextInt(101);
-		int percentageSum = 0;
 		int counter = 0;
 		
-		while (percentageSum < randomInt) {
-			percentageSum += let.getEncounterRates().get(counter);
-			counter++;
+		for (Integer encounterRate : let.getEncounterRates()) {
+			if (randomInt > encounterRate) {
+				counter++;
+			} else {
+				return let.getBaseMonsterIds().get(counter);
+			}
 		}
 		
-		return let.getBaseMonsterIds().get(counter-1);
+		return null;
 	}
 }

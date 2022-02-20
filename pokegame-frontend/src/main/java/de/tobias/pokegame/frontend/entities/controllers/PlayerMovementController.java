@@ -60,12 +60,14 @@ public class PlayerMovementController extends KeyboardEntityController<IMobileEn
 	private void checkTallGrass() {
 		for (IEntity entity : Game.world().environment().findEntities(GeometricUtilities.extrude(Player.instance().getBoundingBox(), 2))) {
 			if (entity instanceof Trigger && entity.getProperties().hasCustomProperty("triggerType")) {
-				if (EncounterCheck.isEncountered() && canEncounter && entity.getProperties().getStringValue("triggerType").equals("grass")) {
-					int id = EncounterCheck.getEncounter("route1"); // TODO get name dynamically
+				if (canEncounter && entity.getProperties().getStringValue("triggerType").equals("grass")) {
+					Integer id = EncounterCheck.getEncounter("route1"); // TODO get name dynamically
 					
-					// Start a battle and set canEncounter to false to not cause a loop where infinite battles are started
-					BattleControl.startWildBattle(id);
-					canEncounter = false;
+					if (id != null) {
+						// Start a battle and set canEncounter to false to not cause a loop where infinite battles are started
+						BattleControl.startWildBattle(id);
+						canEncounter = false;
+					}
 				}
 			}
 		}

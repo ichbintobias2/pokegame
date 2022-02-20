@@ -7,8 +7,8 @@
       "key" : 12338403208200,
       "value" : {
         "locationName" : "route1",
-        "baseMonsterIds" : [ 0 ],
-        "encounterRates" : [ 100 ],
+        "baseMonsterIds" : [ 1, 2, 3 ],
+        "encounterRates" : [ 20, 30, 50 ],
         "_id" : 12338403208200,
         "_revision" : 1,
         "_modified" : 1634673286940
@@ -283,6 +283,69 @@
       "value" : {
         "registryNumber" : 0,
         "name" : "Placeholder",
+        "types" : [ "Water" ],
+        "baseHp" : 100,
+        "baseAttack" : 100,
+        "baseDefense" : 100,
+        "baseSpAtk" : 100,
+        "baseSpDef" : 100,
+        "baseSpeed" : 100,
+        "locations" : [ ],
+        "learnableMoves" : [ ],
+        "givesEv" : null,
+        "catchRate" : 75,
+        "xpBase": 50,
+        "_id" : 6478813301400,
+        "_revision" : 1,
+        "_modified" : 1634673287025
+      }
+    }, {
+      "key" : 6478813301401,
+      "value" : {
+        "registryNumber" : 1,
+        "name" : "Placeholder1",
+        "types" : [ "Water" ],
+        "baseHp" : 100,
+        "baseAttack" : 100,
+        "baseDefense" : 100,
+        "baseSpAtk" : 100,
+        "baseSpDef" : 100,
+        "baseSpeed" : 100,
+        "locations" : [ ],
+        "learnableMoves" : [ ],
+        "givesEv" : null,
+        "catchRate" : 75,
+        "xpBase": 50,
+        "_id" : 6478813301400,
+        "_revision" : 1,
+        "_modified" : 1634673287025
+      }
+    }, {
+      "key" : 6478813301402,
+      "value" : {
+        "registryNumber" : 2,
+        "name" : "Placeholder2",
+        "types" : [ "Water" ],
+        "baseHp" : 100,
+        "baseAttack" : 100,
+        "baseDefense" : 100,
+        "baseSpAtk" : 100,
+        "baseSpDef" : 100,
+        "baseSpeed" : 100,
+        "locations" : [ ],
+        "learnableMoves" : [ ],
+        "givesEv" : null,
+        "catchRate" : 75,
+        "xpBase": 50,
+        "_id" : 6478813301400,
+        "_revision" : 1,
+        "_modified" : 1634673287025
+      }
+    }, {
+      "key" : 6478813301403,
+      "value" : {
+        "registryNumber" : 3,
+        "name" : "Placeholder3",
         "types" : [ "Water" ],
         "baseHp" : 100,
         "baseAttack" : 100,
