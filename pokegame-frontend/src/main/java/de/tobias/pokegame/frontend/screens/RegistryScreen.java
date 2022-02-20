@@ -18,8 +18,8 @@ public class RegistryScreen extends GameScreen {
 	
 	private final BufferedImage background = Images.REGISTRY_BG1;
 	
-	private final List<Integer> xCoordinates = Arrays.asList(6);
-	private final List<Integer> yCoordinates = Arrays.asList(26);
+	private final List<Integer> xCoordinates = Arrays.asList(6, 43, 80, 117, 154, 191, 6, 43, 80, 117, 154, 191);
+	private final List<Integer> yCoordinates = Arrays.asList(26, 26, 26, 26, 26, 26, 63, 63, 63, 63, 63, 63);
 	
 	public RegistryScreen() {
 		super("REGISTRY");
@@ -36,7 +36,7 @@ public class RegistryScreen extends GameScreen {
 		Registry registry = NitriteManager.getRegistry();
 		for (int i=0; i<registry.getEntries().size(); i++) {
 			RegistryEntry entry = registry.getEntries().get(i);
-			BufferedImage monsterIcon = Images.getMonsterIcon(entry.getMonsterId());
+			BufferedImage monsterIcon = Images.getMonsterSprite(entry.getMonsterId());
 			ImageRenderer.renderScaled(g, monsterIcon, xCoordinates.get(i) * scaleFactor, yCoordinates.get(i) * scaleFactor, scaleFactor);
 		}
 	}

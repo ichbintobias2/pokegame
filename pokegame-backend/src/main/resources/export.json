@@ -222,7 +222,51 @@
       "key" : 1039779788361,
       "value" : {
         "entries" : [ {
-          "monsterId" : 0,
+          "monsterId" : 1,
+          "seen" : false,
+          "caught" : false
+        }, {
+          "monsterId" : 2,
+          "seen" : false,
+          "caught" : false
+        }, {
+          "monsterId" : 3,
+          "seen" : false,
+          "caught" : false
+        }, {
+          "monsterId" : 4,
+          "seen" : false,
+          "caught" : false
+        }, {
+          "monsterId" : 5,
+          "seen" : false,
+          "caught" : false
+        }, {
+          "monsterId" : 6,
+          "seen" : false,
+          "caught" : false
+        }, {
+          "monsterId" : 7,
+          "seen" : false,
+          "caught" : false
+        }, {
+          "monsterId" : 8,
+          "seen" : false,
+          "caught" : false
+        }, {
+          "monsterId" : 9,
+          "seen" : false,
+          "caught" : false
+        }, {
+          "monsterId" : 10,
+          "seen" : false,
+          "caught" : false
+        }, {
+          "monsterId" : 11,
+          "seen" : false,
+          "caught" : false
+        }, {
+          "monsterId" : 12,
           "seen" : false,
           "caught" : false
         } ],
