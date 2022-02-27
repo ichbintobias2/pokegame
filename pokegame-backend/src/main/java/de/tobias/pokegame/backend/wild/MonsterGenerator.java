@@ -7,11 +7,12 @@ import java.util.Random;
 
 import de.tobias.pokegame.backend.calc.LevelCalc;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
+import de.tobias.pokegame.backend.persistence.NitriteManager;
 
 public class MonsterGenerator {
 	
 	public static CurrentMonster generateMonster(int registryNumber) {
-		String name = ""; // TODO get name from DbMonster by registryNumber
+		String name = NitriteManager.getBaseMonsterByRegistryNr(registryNumber).getName();
 		int level = 5; // TODO set level dynamically
 		List<String> types = Arrays.asList("Fire");
 		

@@ -34,6 +34,8 @@ public class BattleControl {
 	
 	@Getter @Setter private static Monster playerMonster;
 	@Getter @Setter private static Monster enemyMonster;
+	@Getter @Setter private static Monster lastCaught;
+	
 	@Getter private static CurrentMonster encounter;
 	@Getter private static int givenXp;
 	@Getter private static int damageToTake;
@@ -125,6 +127,10 @@ public class BattleControl {
 				Dialog.instance().enable(false);
 				GameLogic.setState(GameState.INGAME);
 			}
+			
+			// clearing encounters
+			enemyMonster = null;
+			lastCaught = null;
 		});
 	}
 	
@@ -215,15 +221,17 @@ public class BattleControl {
 			Registry registry = NitriteManager.getRegistry();
 			registry.setSeen(encounterRegistryNr); // set seen to true in case it was not true already
 			if (!registry.checkCaught(encounterRegistryNr)) {
+				lastCaught = enemyMonster;
 				Dialog.instance().addToQueue("Unlocked new registry entry!");
+				Dialog.instance().addToQueue("[show catch screen]");
 				registry.setCaught(encounterRegistryNr);
 			}
 			
 			Dialog.instance().addToQueue(encounter.getName() +" was caught!");
 			gainXp();
-			
 			// Dialog.instance().addToQueue("Do you want to give a nickname to"+ encounter.getName() +"?");
 			// Dialog.instance().addToQueue("[input]");
+			Dialog.instance().addToQueue(encounter.getName() +" was stored in a box!");
 			Dialog.instance().addToQueue("[stop battle]");
 			
 			Player.instance().team().add(encounter);

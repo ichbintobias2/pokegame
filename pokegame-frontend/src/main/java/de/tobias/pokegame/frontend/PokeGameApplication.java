@@ -34,6 +34,7 @@ public class PokeGameApplication {
 		Game.screens().add(new TeamScreen());
 		Game.screens().add(new BoxScreen());
 		Game.screens().add(new RegistryScreen());
+		Game.screens().add(new CatchScreen());
 		
 		// loading the main menu
 		Game.screens().display("MAIN");

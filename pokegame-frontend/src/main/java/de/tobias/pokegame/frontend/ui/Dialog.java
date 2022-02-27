@@ -84,7 +84,7 @@ public class Dialog extends GuiComponent {
 					BattleMenu.instance().setEnabled(true);
 					enable(false);
 					queue.remove(1);
-				} else if ("[to catch screen]".equals(queue.get(1))) {
+				} else if ("[on monster caught]".equals(queue.get(1))) {
 					BattleControl.catchWild();
 					queue.remove(1);
 				} else if ("[gain xp]".equals(queue.get(1))) {
@@ -95,6 +95,10 @@ public class Dialog extends GuiComponent {
 					queue.remove(1);
 				} else if ("[player damage]".equals(queue.get(1))) {
 					BattleControl.getPlayerMonster().getStats().receiveDamage(BattleControl.getDamageToTake());
+				} else if ("[show catch screen]".equals(queue.get(1))) {
+					Game.screens().display("CATCH");
+					Game.world().loadEnvironment("battle");
+					
 					queue.remove(1);
 				}
 				
