@@ -58,9 +58,8 @@ public class BattleControl {
 	
 	public static void startTrainerBattle(NPC opposingTrainer) {
 		trainerBattle = true;
-		// TODO when the battle is starting you will have to determine which monsters will be sent into battle by the opposing trainer
 		opponent = opposingTrainer;
-		enemyMonster = new Monster(NitriteManager.getCurrentMonsterByName("placeholder"));
+		enemyMonster = new Monster(NitriteManager.getCurrentMonsterById(opponent.getTeamIds().get(0)));
 		
 		// Adding dialogue
 		List<String> lines = new ArrayList<>();

@@ -14,18 +14,21 @@ import de.tobias.pokegame.backend.persistence.NitriteManager;
 import de.tobias.pokegame.frontend.GameLogic;
 import de.tobias.pokegame.frontend.constants.GameState;
 import de.tobias.pokegame.frontend.ui.Dialog;
+import lombok.Getter;
 
 @EntityInfo(width = 16, height = 16)
 @AnimationInfo(spritePrefix = { "player", "npc_placeholder" })
 public class NPC extends Creature implements IUpdateable {
 	
-	private List<List<String>> dialogLines = new ArrayList<List<String>>();
-	private int dialogCooldown = 500;
+	private final List<List<String>> dialogLines = new ArrayList<>();
+	
+	@Getter
+	private final List<Long> teamIds = new ArrayList<>();
+	
 	private long lastDialog = 0;
 	private long lastDirectionChange = 0;
 	private boolean initialized = false;
 	private boolean wantsToBattle = true;
-	private double tolerance = 1.0;
 	
 	public NPC() {
 		this.onMessage(e -> {
@@ -40,6 +43,7 @@ public class NPC extends Creature implements IUpdateable {
 			DbNPC db = NitriteManager.getNpcByName(name);
 			wantsToBattle = db.isWantsToBattle();
 			dialogLines.addAll(db.getDialogLines());
+			teamIds.addAll(db.getTeam());
 			initialized = true;
 		}
 		
@@ -51,7 +55,7 @@ public class NPC extends Creature implements IUpdateable {
 	}
 	
 	private void getTalkedTo() {
-		if (Game.time().since(lastDialog) > dialogCooldown) {
+		if (Game.time().since(lastDialog) > 500) {
 			Dialog.instance().setDialogPartner(this);
 			Dialog.instance().addToQueue(dialogLines.get(0));
 			Dialog.instance().setVisible(true);
@@ -71,6 +75,8 @@ public class NPC extends Creature implements IUpdateable {
 	}
 	
 	private void checkForPlayer() {
+		double tolerance = 1.0;
+		
 		// check if the player has roughly the same x or y coordinate
 		if ((this.getX() + tolerance >= Player.instance().getX() && this.getX() - tolerance <= Player.instance().getX()) ||
 				(this.getY() + tolerance >= Player.instance().getY() && this.getY() - tolerance <= Player.instance().getY())) {

@@ -382,7 +382,7 @@
       "value" : {
         "name" : "npc1",
         "wantsToBattle" : true,
-        "team" : [ ],
+        "team" : [ 6358983984900 ],
         "dialogLines" : [ [ "Hello", "Hi", "[battle]" ], [ "GG!" ] ],
         "_id" : 15397724409500,
         "_revision" : 1,
