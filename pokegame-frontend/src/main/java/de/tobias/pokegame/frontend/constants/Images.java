@@ -18,6 +18,7 @@ public abstract class Images {
 	
 	public static final BufferedImage TEAM_BG_1 = Resources.images().get(basePath+"team/teamview1.png");
 	public static final BufferedImage TEAM_MODULE_1 = Resources.images().get(basePath+"team/module1.png");
+	public static final BufferedImage TEAM_MODULE_1_SELECTED = Resources.images().get(basePath+"team/module1_selected.png");
 	
 	public static final BufferedImage BOX_BG_1 = Resources.images().get(basePath+"box/background.png");
 	

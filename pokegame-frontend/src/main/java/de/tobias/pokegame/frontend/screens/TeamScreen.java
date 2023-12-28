@@ -1,25 +1,24 @@
 package de.tobias.pokegame.frontend.screens;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.util.Arrays;
-import java.util.List;
-
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.graphics.ImageRenderer;
-import de.gurkenlabs.litiengine.gui.screens.GameScreen;
-import de.gurkenlabs.litiengine.resources.Resources;
 import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 import de.tobias.pokegame.frontend.constants.Fonts;
 import de.tobias.pokegame.frontend.constants.Images;
 import de.tobias.pokegame.frontend.entities.Monster;
 import de.tobias.pokegame.frontend.entities.Player;
 
-public class TeamScreen extends GameScreen {
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.util.Arrays;
+import java.util.List;
+
+public class TeamScreen extends ScreenWithControls {
 	
 	private final BufferedImage background = Images.TEAM_BG_1;
 	private final BufferedImage module1 = Images.TEAM_MODULE_1;
+	private final BufferedImage module1Selected = Images.TEAM_MODULE_1_SELECTED; // TODO
 	
 	private final double scaleFactor = Images.SCALE_FACTOR;
 	
@@ -27,6 +26,21 @@ public class TeamScreen extends GameScreen {
 	
 	public TeamScreen() {
 		super("TEAM");
+		
+		int currentPlayerTeamSize = Player.instance().team().list().size();
+		handleUpKeyPressed(currentPlayerTeamSize-1, () -> {
+			Game.log().info(String.valueOf(currentIndex));
+		});
+		
+		handleDownKeyPressed(currentPlayerTeamSize-1, () -> {
+			Game.log().info(String.valueOf(currentIndex));
+		});
+		
+		handleKeyPressed(KeyEvent.VK_ENTER, () -> {
+			// TODO open new menu/dialog here
+			CurrentMonster selectedMon = Player.instance().team().list().get(currentIndex);
+			Game.log().info("Selected " + selectedMon.getName());
+		});
 	}
 	
 	@Override
@@ -50,8 +64,9 @@ public class TeamScreen extends GameScreen {
 			double y = yCoordinates.get(i) * scaleFactor;
 			
 			// render module image and monster sprite
-			ImageRenderer.renderScaled(g, module1, x, y, scaleFactor);
-			ImageRenderer.renderScaled(g, Images.getMonsterSprite(mon.getRegistryNumber()), 0,0, 2);
+			BufferedImage moduleImage = i == currentIndex ? module1Selected : module1;
+			ImageRenderer.renderScaled(g, moduleImage, x, y, scaleFactor);
+			ImageRenderer.renderScaled(g, Images.getMonsterSprite(mon.getRegistryNumber()), 153 * scaleFactor,9 * scaleFactor, scaleFactor);
 			
 			// render monster name and level
 			g.setColor(Color.BLACK);

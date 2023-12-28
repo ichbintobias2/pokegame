@@ -7,9 +7,9 @@ import de.tobias.pokegame.backend.entities.monster.CurrentMonster;
 
 public class PlayerTeam {
 	
-	private List<CurrentMonster> monsters = new ArrayList<>();
+	private final List<CurrentMonster> monsters = new ArrayList<>();
 	
-	private final int teamSize = 4;
+	private static final int MAX_TEAM_SIZE = 4;
 	
 	public PlayerTeam() {
 		monsters.addAll(Savegame.getPlayerTeam());
@@ -20,7 +20,7 @@ public class PlayerTeam {
 	}
 	
 	public void add(CurrentMonster monster) {
-		if (monsters.size() < teamSize) {
+		if (monsters.size() < MAX_TEAM_SIZE) {
 			monsters.add(monster);
 		}
 	}
